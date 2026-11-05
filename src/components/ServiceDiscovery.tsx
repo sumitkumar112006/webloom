@@ -1,280 +1,311 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ChevronRight, CheckCircle2, Sparkles, Globe, Smartphone, Share2, Cpu, Box } from 'lucide-react';
 
 interface ServiceItem {
   id: string;
   number: string;
   title: string;
-  tagline: string;
+  summary: string;
   link: string;
+  icon: React.ComponentType<{ className?: string }>;
   tags: string[];
+  previewDescription: string;
+  highlights: string[];
   previewImage: string;
-  icon: (props: { className?: string }) => React.JSX.Element;
 }
 
 export const ServiceDiscovery: React.FC = () => {
-  // Fifth service "3D Works" selected by default per exact specification
-  const [activeId, setActiveId] = useState<string>('3d');
-
   const services: ServiceItem[] = [
     {
       id: 'web',
       number: '01',
       title: 'Web Services',
-      tagline: 'Websites, platforms & digital products',
+      summary: 'Build your digital presence.',
       link: '/services/web-services',
-      tags: ['Websites & Portals', 'UI/UX Design', 'E-Commerce', 'Core Web Vitals'],
-      previewImage: '/assets/service_web.png',
-      // Clean Outlined Browser SVG Icon
-      icon: ({ className = 'w-5 h-5' }) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <rect x="2.5" y="3.5" width="19" height="17" rx="3" />
-          <line x1="2.5" y1="8.5" x2="21.5" y2="8.5" />
-          <circle cx="5.5" cy="6" r="0.75" fill="currentColor" />
-          <circle cx="8" cy="6" r="0.75" fill="currentColor" />
-          <rect x="6" y="12" width="4.5" height="4.5" rx="1" />
-          <line x1="13.5" y1="12" x2="18" y2="12" />
-          <line x1="13.5" y1="15" x2="16.5" y2="15" />
-        </svg>
-      )
+      icon: Globe,
+      tags: ['Websites', 'UI/UX Design', 'E-Commerce', 'Technical SEO'],
+      previewDescription:
+        'Engineered websites designed with brand-focused typography, responsive-first layouts, and zero visual clutter to establish instant authority.',
+      highlights: [
+        'Custom component-driven UI/UX design',
+        'Sub-second Core Web Vitals optimization',
+        'Direct WhatsApp & form lead routing',
+        '1-Year maintenance & ongoing support'
+      ],
+      previewImage: '/assets/service_web.png'
     },
     {
       id: 'apps',
       number: '02',
       title: 'App Services',
-      tagline: 'Scalable applications & software solutions',
+      summary: 'Turn ideas into useful products.',
       link: '/services/app-services',
-      tags: ['Business Apps', 'Customer Portals', 'Cross-Platform', 'Realtime Sync'],
-      previewImage: '/assets/project_mobile_app.png',
-      // Clean Outlined Smartphone SVG Icon
-      icon: ({ className = 'w-5 h-5' }) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <rect x="5.5" y="2.5" width="13" height="19" rx="3" />
-          <line x1="10" y1="5.5" x2="14" y2="5.5" />
-          <circle cx="12" cy="18" r="0.75" fill="currentColor" />
-        </svg>
-      )
+      icon: Smartphone,
+      tags: ['Business Apps', 'Customer Portals', 'Booking Systems', 'Custom Apps'],
+      previewDescription:
+        'Ergonomic, role-based business applications built to coordinate appointments, record attendance, manage inventory, and serve customers.',
+      highlights: [
+        'Cross-platform mobile & responsive web apps',
+        'Role-based permissions & secure authentication',
+        'Real-time database sync & data export',
+        'Automated booking & customer notification flow'
+      ],
+      previewImage: '/assets/project_mobile_app.png'
     },
     {
       id: 'social',
       number: '03',
       title: 'Social Media',
-      tagline: 'Creative strategy, content & brand presence',
+      summary: 'Create content that gets attention.',
       link: '/social-media',
-      tags: ['Reels Production', 'Brand Posts', 'Meta Ads', 'Motion Graphics'],
-      previewImage: '/assets/project_social_campaign.png',
-      // Clean Outlined Media Reel & Book SVG Icon
-      icon: ({ className = 'w-5 h-5' }) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <rect x="3.5" y="4" width="17" height="16" rx="2.5" />
-          <line x1="8" y1="4" x2="8" y2="20" />
-          <circle cx="14" cy="12" r="2.5" />
-        </svg>
-      )
+      icon: Share2,
+      tags: ['Reels Production', 'Brand Posts', 'Meta Ads', 'Community Growth'],
+      previewDescription:
+        'Complete short-form video scripting, filming, and post-production paired with hyper-targeted Meta advertising campaigns.',
+      highlights: [
+        'High-retention reel scripting and shooting',
+        'Designed graphics, carousels & daily stories',
+        'Radius & pincode-specific Meta Ads management',
+        'Consistent weekly brand publishing cadence'
+      ],
+      previewImage: '/assets/project_social_campaign.png'
     },
     {
       id: 'ai',
       number: '04',
       title: 'AI Automation',
-      tagline: 'Intelligent workflows & AI-driven solutions',
+      summary: 'Remove repetitive work.',
       link: '/ai-automation',
-      tags: ['WhatsApp Bots', 'CRM Pipelines', 'Task Routing', 'AI Agents'],
-      previewImage: '/assets/service_ai.png',
-      // Clean Outlined Neural Tree Nodes SVG Icon
-      icon: ({ className = 'w-5 h-5' }) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <circle cx="6" cy="6" r="2.5" />
-          <circle cx="18" cy="6" r="2.5" />
-          <circle cx="12" cy="18" r="2.5" />
-          <path d="M7.8 7.8L10.5 15.5" />
-          <path d="M16.2 7.8L13.5 15.5" />
-        </svg>
-      )
+      icon: Cpu,
+      tags: ['Business Workflows', 'WhatsApp Bots', 'CRM Pipelines', 'AI Agents'],
+      previewDescription:
+        'Connect your lead channels, databases, and customer support with intelligent automated pipelines that work reliably 24/7.',
+      highlights: [
+        'Automated WhatsApp inquiry & booking bots',
+        'Instant multi-channel CRM lead distribution',
+        'Inventory threshold & restock alert triggers',
+        'Custom grounded AI agents for customer Q&A'
+      ],
+      previewImage: '/assets/service_ai.png'
     },
     {
       id: '3d',
       number: '05',
       title: '3D Works',
-      tagline: 'Photorealistic CGI, VFX & product visualization',
+      summary: 'Photorealistic CGI, 3D motion, VFX & product visualization.',
       link: '/3d-works',
-      // Exact four small yellow outlined tags from target reference
-      tags: ['Product CGI Stills', '3D Motion', 'Exploded Animation', 'Spatial VFX'],
-      previewImage: '/assets/project_3d_chrono.png',
-      // Clean Outlined Isometric 3D Cube SVG Icon
-      icon: ({ className = 'w-5 h-5' }) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <path d="M12 2.5L3.5 7.5L12 12.5L20.5 7.5L12 2.5Z" />
-          <path d="M3.5 7.5V16.5L12 21.5V12.5" />
-          <path d="M20.5 7.5V16.5L12 21.5" />
-        </svg>
-      )
+      icon: Box,
+      tags: ['Photorealistic CGI Stills', '3D Motion & Commercials', 'VFX & Environmental Scenes', 'Product Visualization'],
+      previewDescription:
+        'Studio-grade photorealistic CGI stills, commercial 3D motion choreographies, atmospheric VFX scenes, and precision product visualization.',
+      highlights: [
+        'Photorealistic CGI stills & studio lighting',
+        '3D motion, commercials & exploded animations',
+        'VFX simulations & environmental scenes',
+        'Precision 3D product visualization'
+      ],
+      previewImage: '/assets/project_3d_chrono.png'
     }
   ];
 
-  const activeService = services.find((s) => s.id === activeId) || services[4];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeService = services[activeIndex];
 
   return (
-    <section
-      id="our-services"
-      className="py-20 lg:py-28 bg-[#FCFCFD] border-y border-amber-100/40 relative overflow-hidden transition-colors select-none"
-    >
-      {/* Soft warm ivory / subtle golden radial mesh glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-r from-[#FEF08A]/25 via-[#FDE68A]/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-[#FEF9C3]/20 rounded-full blur-[120px] pointer-events-none" />
-
-      {/* ENTIRE WIDTH CONTAINER WITH GENEROUS HORIZONTAL MARGINS */}
-      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
-        
-        {/* EXACT TWO-COLUMN LAYOUT (Vertically Centered Left & Right Columns) */}
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12 xl:gap-16">
-          
-          {/* LEFT COLUMN: ~28–30% Width */}
-          <div className="w-full lg:w-[29%] xl:w-[28%] shrink-0 space-y-6">
-            <div>
-              {/* Heading: Large, bold and tightly spaced */}
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-[#0F172A] tracking-[-0.035em] font-display leading-[1.05]">
-                Our <br />
-                Services
-              </h2>
-              {/* Two-line supporting description */}
-              <p className="text-[14.5px] sm:text-[15px] text-slate-500 mt-3 max-w-[280px] leading-relaxed font-normal">
-                End-to-end digital, creative and AI solutions for modern businesses.
-              </p>
+    <section id="service-matrix" className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] border-y border-gray-200/60 dark:border-white/10 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* SECTION HEADER */}
+        <div className="max-w-3xl mb-12 lg:mb-16">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-100/60 dark:bg-blue-900/40">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Capability Matrix</span>
             </div>
-
-            {/* Underlined 'View all services ↗' link */}
-            <div>
-              <Link
-                to="/services"
-                className="group inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0F172A] hover:text-amber-800 transition-colors"
-              >
-                <span className="underline decoration-slate-300 decoration-1 underline-offset-4 group-hover:decoration-amber-500">
-                  View all services
-                </span>
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </div>
-
-            {/* SMALL FEATURED PROJECT CARD DIRECTLY UNDERNEATH */}
-            <div className="rounded-2xl bg-white p-3.5 sm:p-4 border border-amber-200/60 shadow-[0_10px_30px_-6px_rgba(251,191,36,0.18)] max-w-[270px] sm:max-w-[280px] transition-all duration-300">
-              
-              {/* Featured Card Image Container */}
-              <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-100">
-                <img
-                  src={activeService.previewImage}
-                  alt={activeService.title}
-                  className="w-full h-full object-cover transition-opacity duration-300"
-                />
-                
-                {/* Small Project Index Badge: '05 / 05' */}
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 text-white font-mono font-bold text-[10px] tracking-wider border border-white/10 backdrop-blur-xs">
-                  {activeService.number} / 05
-                </div>
-              </div>
-
-              {/* Four Small Yellow Outlined Tags (2x2 grid) */}
-              <div className="grid grid-cols-2 gap-1.5">
-                {activeService.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-1 rounded-md text-[10px] font-semibold text-center truncate bg-[#FEFCE8] text-amber-900 border border-amber-300/80 shadow-2xs"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-            </div>
-
+            <span className="font-handwriting text-lg sm:text-xl font-bold text-[#23469F] dark:text-[#B9DFF2] -rotate-2 select-none">
+              (all 5 departments work as one)
+            </span>
           </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101A35] dark:text-white tracking-tight font-display mb-4">
+            ONE PARTNER. MULTIPLE CAPABILITIES.
+          </h2>
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards standard.
+          </p>
+        </div>
 
-          {/* RIGHT COLUMN: ~70–72% Width (Five Horizontal Service Navigation Rows) */}
-          <div className="w-full lg:w-[71%] xl:w-[72%] flex-1 flex flex-col justify-center space-y-2.5">
-            {services.map((item) => {
+        {/* DESKTOP SPLIT VIEW */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
+          {/* LEFT: INTERACTIVE SERVICE LIST */}
+          <div className="lg:col-span-6 space-y-2.5">
+            {services.map((item, idx) => {
+              const isSelected = activeIndex === idx;
               const Icon = item.icon;
-              const isActive = activeId === item.id;
-
               return (
                 <div
                   key={item.id}
-                  onClick={() => setActiveId(item.id)}
-                  className={`group w-full min-h-[92px] sm:min-h-[98px] lg:h-[100px] px-5 sm:px-7 rounded-2xl flex items-center justify-between transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#FEFCE8] border border-amber-300 shadow-[0_4px_20px_-4px_rgba(251,191,36,0.22)]'
-                      : 'bg-white border border-slate-100 hover:border-slate-200 hover:bg-slate-50/50'
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`cursor-pointer rounded-2xl p-5 transition-all duration-200 border ${
+                    isSelected
+                      ? 'bg-white dark:bg-[#111C33] border-[#23469F] dark:border-[#B9DFF2] shadow-md -translate-x-1'
+                      : 'bg-white/70 dark:bg-[#111C33]/60 border-gray-200/70 dark:border-white/10 hover:bg-white dark:hover:bg-[#111C33] hover:border-gray-300 dark:hover:border-white/20'
                   }`}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isActive}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      setActiveId(item.id);
-                    }
-                  }}
                 >
-                  {/* Left Group: Index + Icon Container + Bold Service Name */}
-                  <div className="flex items-center gap-4 sm:gap-6 min-w-[210px] sm:min-w-[250px] lg:min-w-[280px]">
-                    {/* Small Service Index */}
-                    <span
-                      className={`text-xs sm:text-sm font-mono font-bold transition-colors w-6 ${
-                        isActive ? 'text-amber-700' : 'text-slate-400'
-                      }`}
-                    >
-                      {item.number}
-                    </span>
-
-                    {/* Small Outlined Icon Container */}
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                        isActive
-                          ? 'bg-[#FEF9C3] border border-amber-300 text-amber-800'
-                          : 'bg-slate-50 border border-slate-200/90 text-slate-500'
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className={`text-sm font-mono font-bold ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2]' : 'text-gray-400 dark:text-gray-500'}`}>
+                        {item.number}
+                      </span>
+                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2]' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-[#101A35] dark:text-white font-display">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          {item.summary}
+                        </p>
+                      </div>
                     </div>
 
-                    {/* Service Name: Bold typography approx 23-25px on desktop */}
-                    <h3 className="text-xl sm:text-[23px] lg:text-[24px] font-bold text-[#0F172A] tracking-[-0.02em] font-display">
-                      {item.title}
-                    </h3>
-                  </div>
-
-                  {/* Middle: Supporting Description Horizontally Aligned */}
-                  <div className="hidden md:block flex-1 px-4 lg:px-6">
-                    <p className="text-[13.5px] lg:text-[14.5px] text-slate-500 font-normal leading-normal">
-                      {item.tagline}
-                    </p>
-                  </div>
-
-                  {/* Right: Arrow Button */}
-                  <div className="shrink-0 flex items-center justify-end">
-                    {isActive ? (
-                      /* Exact Active State: Dark circular arrow button with white arrow */
-                      <Link
-                        to={item.link}
-                        onClick={(e) => e.stopPropagation()}
-                        className="w-10 h-10 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform"
-                        title={`Explore ${item.title}`}
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
-                    ) : (
-                      /* Inactive State: Subtle blue-grey arrow */
-                      <div className="w-10 h-10 flex items-center justify-center text-slate-400 group-hover:text-slate-700 transition-colors">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </div>
-                    )}
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs font-semibold ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2]' : 'text-gray-400 dark:text-gray-500'}`}>
+                        {isSelected ? 'Active Preview' : 'Hover to View'}
+                      </span>
+                      <ChevronRight className={`h-4 w-4 transition-transform ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2] translate-x-0.5' : 'text-gray-300 dark:text-gray-600'}`} />
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
 
+          {/* RIGHT: DYNAMIC PREVIEW PANEL */}
+          <div className="lg:col-span-6 sticky top-28">
+            <div className="bg-white dark:bg-[#111C33] rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden p-8 transition-all">
+              <div className="flex items-center justify-between pb-4 mb-5 border-b border-gray-100 dark:border-white/10">
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono font-bold text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 px-2.5 py-1 rounded">
+                    {activeService.number} / 05
+                  </span>
+                  <h4 className="text-xl font-bold text-[#101A35] dark:text-white">
+                    {activeService.title}
+                  </h4>
+                  <span className="font-handwriting text-sm text-blue-600 dark:text-[#B9DFF2] hidden sm:inline-block">
+                    ★ engineered in-house
+                  </span>
+                </div>
+                <Link
+                  to={activeService.link}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white transition-colors"
+                >
+                  <span>Explore Department</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+
+              {/* VISUAL PREVIEW ASSET */}
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-slate-900 border border-gray-100 dark:border-white/10">
+                <img
+                  src={activeService.previewImage}
+                  alt={activeService.title}
+                  className="w-full h-full object-cover transition-opacity duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101A35]/80 via-transparent to-transparent flex items-end p-5">
+                  <p className="text-white text-xs font-medium">
+                    {activeService.summary}
+                  </p>
+                </div>
+              </div>
+
+              {/* DESCRIPTION & HIGHLIGHTS */}
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+                {activeService.previewDescription}
+              </p>
+
+              <div className="space-y-2.5 mb-6">
+                {activeService.highlights.map((highlight, i) => (
+                  <div key={i} className="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-200">
+                    <CheckCircle2 className="h-4 w-4 text-[#23469F] dark:text-[#B9DFF2] shrink-0" />
+                    <span>{highlight}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* ACTION LINK */}
+              <Link
+                to={activeService.link}
+                className="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#101A35] dark:bg-[#23469F] text-white hover:bg-[#23469F] dark:hover:bg-[#1b367c] flex items-center justify-center gap-2 transition-colors shadow-sm"
+              >
+                <span>View Full {activeService.title} Specifications</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
 
+        {/* MOBILE ACCORDION VIEW */}
+        <div className="lg:hidden space-y-3">
+          {services.map((item, idx) => {
+            const isExpanded = activeIndex === idx;
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.id}
+                className="bg-white dark:bg-[#111C33] rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden shadow-sm"
+              >
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex(isExpanded ? -1 : idx)}
+                  className="w-full p-4 flex items-center justify-between text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono font-bold text-[#23469F] dark:text-[#B9DFF2]">
+                      {item.number}
+                    </span>
+                    <Icon className="h-4 w-4 text-[#23469F] dark:text-[#B9DFF2]" />
+                    <div>
+                      <h3 className="text-sm font-bold text-[#101A35] dark:text-white">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{item.summary}</p>
+                    </div>
+                  </div>
+                  <ChevronRight
+                    className={`h-4 w-4 text-gray-400 dark:text-gray-500 transition-transform ${isExpanded ? 'rotate-90 text-[#23469F] dark:text-[#B9DFF2]' : ''}`}
+                  />
+                </button>
+
+                {isExpanded && (
+                  <div className="px-4 pb-5 pt-1 border-t border-gray-100 dark:border-white/10 bg-slate-50/50 dark:bg-[#0B1120]/50">
+                    <p className="text-xs text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                      {item.previewDescription}
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      {item.highlights.map((h, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-200">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[#23469F] dark:text-[#B9DFF2] shrink-0" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      to={item.link}
+                      className="inline-flex items-center gap-2 text-xs font-bold text-[#23469F] dark:text-[#B9DFF2] hover:underline"
+                    >
+                      <span>Explore {item.title} Page</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 };
+

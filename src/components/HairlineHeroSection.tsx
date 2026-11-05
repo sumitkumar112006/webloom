@@ -34,24 +34,29 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
           {/* LEFT COLUMN: EDITORIAL TYPOGRAPHY & IDENTITY */}
           <div className="lg:col-span-6 space-y-6 text-left">
             
-            {/* Small agency identity label / studio indicator */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-white/5 border border-blue-200/80 dark:border-white/10 shadow-sm dark:shadow-none backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            {/* Small agency identity label & human-made annotation */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-white/5 border border-blue-200/80 dark:border-white/10 shadow-sm dark:shadow-none backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>WEBLOOM // STUDIO • PARTAPUR, MEERUT</span>
+              </div>
+              <span className="font-handwriting text-lg sm:text-xl font-bold text-blue-600 dark:text-[#B9DFF2] -rotate-2 select-none">
+                ✦ crafted by humans, not templates
               </span>
-              <span>WEBLOOM // STUDIO • PARTAPUR, MEERUT</span>
             </div>
 
-            {/* Large, bold, editorial headline with selective accent styling */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.06] font-display text-[#101A35] dark:text-white">
+            {/* Large editorial headline with human craft serif accents */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.85rem] font-bold tracking-tight leading-[1.08] font-display text-[#101A35] dark:text-white">
               BUILD DIGITAL EXPERIENCES AT THE INTERSECTION OF{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#101A35] via-[#23469F] to-[#2563EB] dark:from-white dark:via-[#B9DFF2] dark:to-[#60A5FA]">
-                CREATIVE CODE
+              <span className="font-editorial italic font-normal text-[1.15em] tracking-normal text-[#23469F] dark:text-[#93C5FD]">
+                Creative Code
               </span>{' '}
-              &amp;{' '}
-              <span className="text-[#23469F] dark:text-[#B9DFF2] underline decoration-blue-500/40 underline-offset-8">
-                3D PRECISION
+              <span className="font-editorial italic font-light text-[0.9em] text-gray-400 dark:text-gray-500">&amp;</span>{' '}
+              <span className="font-editorial italic font-normal text-[1.15em] tracking-normal text-[#1E40AF] dark:text-[#60A5FA] underline decoration-blue-500/40 underline-offset-8">
+                3D Precision
               </span>
               .
             </h1>
@@ -78,6 +83,10 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
               >
                 <span>Let's Talk</span>
               </button>
+
+              <span className="font-handwriting text-base text-gray-500 dark:text-gray-400 rotate-1 select-none hidden sm:inline-block">
+                ~ direct developer contact
+              </span>
             </div>
 
             {/* Studio Pillars & Live Specs Strip */}

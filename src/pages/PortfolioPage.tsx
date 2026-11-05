@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Film, ArrowRight, Sparkles } from 'lucide-react';
+import { Sparkles, Film, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ProjectCard } from '../components/ProjectCard';
 import { projectsData } from '../data/projectsData';
@@ -14,81 +14,72 @@ export const PortfolioPage: React.FC = () => {
     : projectsData.filter((p) => p.category === selectedFilter);
 
   return (
-    <div className="min-h-screen bg-white py-14 sm:py-20 relative overflow-hidden transition-colors select-none">
-      
-      {/* WARM YELLOW AMBIENT SUNSHINE GLOW */}
-      <div className="absolute top-10 right-10 w-[500px] h-[400px] bg-gradient-to-b from-[#FEF08A]/40 to-transparent rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[#FEF9C3]/50 rounded-full blur-[100px] pointer-events-none" />
-
-      {/* ENTIRE WIDTH CONTAINER */}
-      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
-        
+    <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] py-14 sm:py-20 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-          <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-amber-800 bg-[#FEF9C3] border border-amber-200/80">
-              <Sparkles className="h-3.5 w-3.5 text-amber-600" />
-              <span>SELECTED ARCHIVE (2025 – 2026)</span>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 border border-blue-100 dark:border-blue-800/40 mb-4">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Studio Portfolio</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#0F172A] font-display tracking-tight leading-[1.05]">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
               OUR WORK
             </h1>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed">
-              Real web platforms, interactive systems, short-form creative production, and 3D precision motion engineered with architectural discipline.
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mt-2">
+              See what we've built across web platforms, applications, social media content, AI automation, and 3D visualization.
             </p>
           </div>
 
           <Link
             to="/video-showcase"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F172A] text-white hover:bg-slate-800 shadow-sm transition-all shrink-0 self-start md:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white dark:bg-[#111C33] text-[#23469F] dark:text-[#B9DFF2] border border-[#23469F]/30 dark:border-[#B9DFF2]/30 hover:bg-blue-50 dark:hover:bg-[#162340] shadow-sm transition-all shrink-0"
           >
             <Film className="h-4 w-4" />
-            <span>Video Showcase Reel</span>
-            <ArrowRight className="h-3.5 w-3.5 ml-1" />
+            <span>Video Showcase</span>
+            <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        {/* CATEGORY FILTER PILLS (Physical Studio Filter Tabs) */}
-        <div className="flex items-center gap-2.5 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        {/* 10 — CATEGORY FILTER BUTTONS */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
           {categories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setSelectedFilter(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
                 selectedFilter === cat
-                  ? 'bg-[#0F172A] text-white shadow-md scale-105'
-                  : 'bg-white text-slate-700 hover:bg-[#FEFCE8] hover:text-amber-900 border border-slate-200/90 shadow-2xs'
+                  ? 'bg-[#23469F] text-white shadow-sm'
+                  : 'bg-white dark:bg-[#111C33] text-gray-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-[#162340] border border-gray-200/80 dark:border-white/10'
               }`}
             >
-              {cat === 'All' ? 'All Projects' : cat}
+              {cat}
             </button>
           ))}
         </div>
 
-        {/* ASYMMETRICAL EDITORIAL GRID WITH STICKER BADGES */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        {/* VARIED EDITORIAL GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project, idx) => {
-            const variantType = project.gridSpan === 'large' ? 'large' : (idx === 0 || idx % 4 === 0 ? 'large' : 'standard');
+            const variantType = project.gridSpan === 'large' ? 'large' : project.gridSpan === 'medium' ? 'medium' : (idx % 3 === 0 ? 'large' : 'standard');
             return (
               <ProjectCard
                 key={project.id}
                 project={project}
                 variant={variantType}
-                index={idx}
               />
             );
           })}
         </div>
 
         {filteredProjects.length === 0 && (
-          <div className="p-16 text-center bg-white rounded-3xl border border-slate-200/80 shadow-xs">
-            <p className="text-sm font-semibold text-slate-500">
+          <div className="p-12 text-center bg-white dark:bg-[#111C33] rounded-2xl border border-gray-200 dark:border-white/10">
+            <p className="text-sm font-semibold text-gray-600 dark:text-gray-300">
               No projects found in this category right now.
             </p>
           </div>
         )}
-
       </div>
     </div>
   );

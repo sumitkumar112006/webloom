@@ -11,7 +11,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>(() => {
+    try {
+      const saved = localStorage.getItem('webloom-theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return 'dark'; // Dark theme is default
+    } catch {
+      return 'dark';
+    }
+  });
 
   useEffect(() => {
     const root = document.documentElement;

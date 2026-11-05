@@ -1,28 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webloom — Human-Crafted Digital Studio & 3D Engineering</title>
-    <meta name="description" content="Webloom is a human-crafted digital studio building modern web architectures, visual interfaces, and 3D precision engineering." />
+    <title>Webloom — Digital Growth, Technology & Creative Studio</title>
+    <meta name="description" content="Webloom combines technology, creative design, AI automation and digital marketing to help ambitious businesses build, grow and scale online." />
     <link rel="icon" type="image/png" href="/assets/logo_emblem.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="theme-color" content="#FFFFFF" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#0B1120" />
     <script>
       (function() {
         try {
-          // Reset dark mode to guarantee pristine light/glass mode with yellow & white theme
-          localStorage.setItem('webloom-theme', 'light');
-          document.documentElement.classList.remove('dark');
+          var saved = localStorage.getItem('webloom-theme');
+          if (saved === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
         } catch (e) {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('dark');
         }
       })();
     </script>
   </head>
-  <body class="bg-white text-[#111827] antialiased selection:bg-[#FDE047] selection:text-[#111827]">
+  <body class="bg-[#F6F8FC] dark:bg-[#0B1120] text-[#111827] dark:text-[#F3F4F6] antialiased selection:bg-[#23469F] selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

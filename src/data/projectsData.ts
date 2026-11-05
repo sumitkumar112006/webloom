@@ -1,9 +1,3 @@
-export interface ProjectSticker {
-  label: string;
-  variant: 'yellow-star' | 'holographic' | 'stamp' | 'tape' | 'badge';
-  rotation?: string;
-}
-
 export interface ProjectItem {
   id: string;
   title: string;
@@ -18,10 +12,6 @@ export interface ProjectItem {
   mediaUrl: string;
   liveUrl?: string;
   githubUrl?: string;
-  client?: string;
-  impact?: string;
-  status?: string;
-  sticker?: ProjectSticker;
   overview: string;
   challenge: string;
   solution: string;
@@ -46,14 +36,6 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "large",
     year: "2026",
-    client: "Autonomous Systems Lab",
-    impact: "Self-Healing DOM Engine",
-    status: "Live Production",
-    sticker: {
-      label: "AGENTIC ENGINE ✦ 0% OUTSOURCED",
-      variant: "yellow-star",
-      rotation: "-rotate-2"
-    },
     thumbnail: "/assets/project_web_automation.png",
     mediaType: "image",
     mediaUrl: "/assets/project_web_automation.png",
@@ -100,14 +82,6 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "medium",
     year: "2025",
-    client: "Tanmatra Bridal Studio",
-    impact: "+340% Direct Inquiries",
-    status: "Active Client",
-    sticker: {
-      label: "BESPOKE BRANDING ✦ ZERO FLUFF",
-      variant: "tape",
-      rotation: "rotate-3"
-    },
     thumbnail: "/assets/project_luxury_studio.png",
     mediaType: "image",
     mediaUrl: "/assets/project_luxury_studio.png",
@@ -141,14 +115,6 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "medium",
     year: "2026",
-    client: "Talent Engine Inc.",
-    impact: "Google Gemini AI Orchestration",
-    status: "Production Deployed",
-    sticker: {
-      label: "VERIFIED ARCHITECTURE // 2026",
-      variant: "stamp",
-      rotation: "-rotate-3"
-    },
     thumbnail: "/assets/project_ai_interview.png",
     mediaType: "image",
     mediaUrl: "/assets/project_ai_interview.png",
@@ -181,14 +147,6 @@ export const projectsData: ProjectItem[] = [
     featured: false,
     gridSpan: "standard",
     year: "2025",
-    client: "Webloom Studio",
-    impact: "Sub-100ms Performance",
-    status: "Studio System",
-    sticker: {
-      label: "GEOMETRIC DISCIPLINE ✦ 100% LIGHT",
-      variant: "badge",
-      rotation: "rotate-2"
-    },
     thumbnail: "/assets/service_web.png",
     mediaType: "image",
     mediaUrl: "/assets/service_web.png",
@@ -221,14 +179,6 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "standard",
     year: "2025",
-    client: "Apex Athletics",
-    impact: "Offline-First SQLite Cache",
-    status: "Client Mobile Build",
-    sticker: {
-      label: "ONE-THUMB ERGONOMICS ✦ RN",
-      variant: "tape",
-      rotation: "-rotate-2"
-    },
     thumbnail: "/assets/project_mobile_app.png",
     mediaType: "image",
     mediaUrl: "/assets/project_mobile_app.png",
@@ -258,14 +208,6 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "large",
     year: "2026",
-    client: "Aura Horology Studio",
-    impact: "4K Exploded CAD Simulation",
-    status: "Featured CGI Case",
-    sticker: {
-      label: "CGI & 3D MOTION AWARDS ✦ 4K",
-      variant: "holographic",
-      rotation: "-rotate-3"
-    },
     thumbnail: "/assets/project_3d_chrono.png",
     mediaType: "image",
     mediaUrl: "/assets/project_3d_chrono.png",
@@ -297,14 +239,6 @@ export const projectsData: ProjectItem[] = [
     featured: false,
     gridSpan: "standard",
     year: "2025",
-    client: "Regional Retail Brand",
-    impact: "+220% Footfall Growth",
-    status: "Active Campaign",
-    sticker: {
-      label: "HIGH-RETENTION REELS ✦ META ADS",
-      variant: "yellow-star",
-      rotation: "rotate-3"
-    },
     thumbnail: "/assets/project_social_campaign.png",
     mediaType: "image",
     mediaUrl: "/assets/project_social_campaign.png",

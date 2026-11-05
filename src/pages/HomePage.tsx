@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { FlowStudioHeroSection } from '../components/FlowStudioHeroSection';
+import { ArrowRight, Globe, Smartphone, Cpu, Box, Sparkles, CheckCircle2, ShieldCheck, Layers } from 'lucide-react';
+import { HairlineHeroSection } from '../components/HairlineHeroSection';
 import { ServiceDiscovery } from '../components/ServiceDiscovery';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProcessTimeline } from '../components/ProcessTimeline';
@@ -17,119 +17,94 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
   const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* 01 — FLOWSTUDIO HERO SECTION (Exact Reference Match, Full Width) */}
-      <FlowStudioHeroSection onOpenContact={onOpenContact} />
+    <div className="min-h-screen">
+      {/* 06 — INTERACTIVE HAIRLINE HERO SECTION */}
+      <HairlineHeroSection onOpenContact={onOpenContact} />
 
-      {/* 02 — OUR SERVICES EDITORIAL MATRIX (Exact Reference Match, Full Width) */}
+      {/* 07 — SERVICE DISCOVERY SECTION */}
       <ServiceDiscovery />
 
-      {/* 03 — FEATURED EDITORIAL WORK GRID (With Physical Stickers & Asymmetrical Rhythm) */}
-      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 relative overflow-hidden transition-colors select-none">
-        
-        {/* Subtle warm sunshine background ambient glow */}
-        <div className="absolute top-1/3 left-1/3 w-[600px] h-[400px] bg-gradient-to-r from-[#FEF08A]/30 to-transparent rounded-full blur-[130px] pointer-events-none" />
-
-        <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-6">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-amber-800 bg-[#FEF9C3] border border-amber-200/80 mb-3">
-                <span>PORTFOLIO // SELECTED CASE STUDIES (2025 – 2026)</span>
+      {/* 10 — FEATURED EDITORIAL WORK GRID */}
+      <section className="py-20 lg:py-28 bg-white dark:bg-[#0B1120] transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-16 gap-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
+                Selected Case Studies
+              </span>
+              <div className="flex items-baseline gap-3">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
+                  OUR WORK
+                </h2>
+                <span className="font-handwriting text-lg sm:text-xl text-emerald-600 dark:text-emerald-400 rotate-2 select-none">
+                  ~ real code & production assets
+                </span>
               </div>
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] font-display tracking-tight leading-[1.06]">
-                Work that commands <br />
-                attention.
-              </h2>
-              <p className="text-base sm:text-lg text-slate-600 mt-3 max-w-xl font-normal leading-relaxed">
-                Real web platforms, interactive systems, short-form creative production, and 3D precision visualization engineered with zero outsourced fluff.
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">
+                See what we've built across web applications, mock platforms, local studios, and 3D visualization.
               </p>
             </div>
 
-            {/* Circular Rotating Studio Stamp & Link */}
-            <div className="flex items-center gap-6 self-start lg:self-auto">
-              {/* Rotating Circular Stamp Seal */}
-              <div className="hidden sm:block relative w-24 h-24 pointer-events-none">
-                <svg
-                  className="w-full h-full animate-[spin_18s_linear_infinite]"
-                  viewBox="0 0 100 100"
-                >
-                  <defs>
-                    <path
-                      id="circlePath"
-                      d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                    />
-                  </defs>
-                  <text className="text-[8.5px] font-mono font-bold uppercase tracking-[0.22em] fill-slate-500">
-                    <textPath href="#circlePath">
-                      ✦ WEBLOOM CRAFT ✦ VERIFIED BUILD ✦
-                    </textPath>
-                  </text>
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center font-bold text-amber-600 text-sm">
-                  ✦
-                </div>
-              </div>
-
-              <Link
-                to="/our-work"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F172A] text-white hover:bg-slate-800 shadow-sm transition-all"
-              >
-                <span>View All Projects</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <Link
+              to="/our-work"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white transition-colors"
+            >
+              <span>View All Projects</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
 
-          {/* Asymmetrical Editorial Grid with Tactile Physical Stickers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {/* Varied Editorial Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredProjects.map((project, idx) => (
               <ProjectCard
                 key={project.id}
                 project={project}
-                variant={idx === 0 ? 'large' : 'standard'}
-                index={idx}
+                variant={idx === 0 ? 'large' : 'medium'}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 04 — AUTHENTIC WEBLOOM PHILOSOPHY & FOUNDER CARD */}
-      <section className="py-24 bg-gradient-to-b from-white via-[#FEFCE8]/40 to-white text-[#0F172A] border-y border-amber-100/60 relative overflow-hidden">
-        {/* Subtle yellow gradient highlight orb */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-[#FEF08A]/40 to-[#FDE68A]/30 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
+      {/* 16 — AUTHENTIC WEBLOOM POSITIONING */}
+      <section className="py-20 bg-slate-50 dark:bg-[#0A1022] text-[#101A35] dark:text-white border-y border-gray-200/80 dark:border-white/10 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-700 font-mono">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#23469F] dark:text-[#B9DFF2]">
               The Webloom Philosophy
             </span>
-            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug font-display text-[#0F172A]">
-              “At Webloom, we believe a website should be more than just a digital business card. It should be an experience, a communication tool, and a driver of growth.”
+            <blockquote className="font-editorial italic font-normal text-3xl sm:text-4xl lg:text-5xl leading-snug text-[#101A35] dark:text-white">
+              “At Webloom, we believe a website should be more than just a digital business card. It should be an <span className="font-semibold text-[#23469F] dark:text-[#93C5FD]">experience</span>, a communication tool, and a driver of growth.”
             </blockquote>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
-              We bring together thoughtful web design, modern front-end engineering, UI/UX architecture, and 3D precision to help companies build an authentic, authoritative presence.
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+              We bring together thoughtful web design, development, UI/UX, branding, and digital marketing to help businesses build a stronger and more memorable online identity.
             </p>
 
             {/* Founder Profile Badge */}
-            <div className="pt-4 flex items-center justify-center gap-3.5">
-              <img
-                src="/assets/Profile.png"
-                alt="Founder & Principal"
-                className="h-12 w-12 rounded-full object-cover border-2 border-amber-300 shadow-sm"
-              />
-              <div className="text-left">
-                <p className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">Webloom Leadership</p>
-                <p className="text-[11px] text-amber-700 font-medium font-mono">Founder & Lead Technical Strategist</p>
+            <div className="pt-2 flex flex-col items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-3.5">
+                <img
+                  src="/assets/Profile.png"
+                  alt="Founder & Principal"
+                  className="h-12 w-12 rounded-full object-cover border-2 border-[#23469F]/30 dark:border-[#B9DFF2]/50 shadow-md"
+                />
+                <div className="text-left">
+                  <p className="text-xs font-bold text-[#101A35] dark:text-white uppercase tracking-wider">Webloom Leadership</p>
+                  <p className="text-[11px] text-[#23469F] dark:text-[#B9DFF2] font-medium">Founder & Lead Technical Strategist</p>
+                </div>
               </div>
+              <span className="font-handwriting text-lg sm:text-xl text-[#23469F] dark:text-[#B9DFF2] -rotate-2 select-none">
+                — hands-on craft, every single line
+              </span>
             </div>
 
-            <div className="pt-4 flex flex-wrap justify-center gap-4">
+            <div className="pt-2 flex flex-wrap justify-center gap-4">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F172A] text-white hover:bg-slate-800 shadow-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] dark:bg-white dark:text-[#101A35] dark:hover:bg-[#B9DFF2] shadow-sm transition-colors"
               >
-                <span>Read Mission & Studio Principles</span>
+                <span>Read Mission & Vision</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -137,51 +112,56 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
         </div>
       </section>
 
-      {/* 05 — 4-STEP DISCIPLINED APPROACH TIMELINE */}
+      {/* 4-STEP DISCIPLINED APPROACH TIMELINE */}
       <ProcessTimeline />
 
-      {/* 06 — ONBOARDING TIMELINE */}
+      {/* ONBOARDING TIMELINE */}
       <ProcessTimeline
         title="Client Onboarding Journey"
         subtitle="Transparent onboarding designed for clarity and rapid time-to-market without guesswork."
         type="onboarding"
       />
 
-      {/* 07 — CONTACT & PROJECT INQUIRY */}
-      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 transition-colors" id="contact">
-        <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20">
+      {/* 18 — CONTACT & PROJECT INQUIRY */}
+      <section className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors" id="contact">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 font-mono">
-                Start A Conversation
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] font-display tracking-tight">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2]">
+                  Start A Conversation
+                </span>
+                <span className="font-handwriting text-base text-blue-600 dark:text-[#B9DFF2] -rotate-2 select-none">
+                  ✦ direct conversation with founders
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
                 Have a project in mind?
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                 Whether you need a full digital redesign, an internal workflow app, or continuous short-form content and Meta Ads, our engineers and strategists are ready to collaborate.
               </p>
 
-              <div className="pt-4 space-y-4 border-t border-slate-200 text-xs text-slate-700">
+              <div className="pt-4 space-y-4 border-t border-gray-200 dark:border-white/10 text-xs text-gray-700 dark:text-gray-300">
                 <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+                  <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2] flex items-center justify-center shrink-0">
                     <ShieldCheck className="h-4 w-4" />
                   </div>
                   <span>Documented scope of work with milestone timelines</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+                  <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2] flex items-center justify-center shrink-0">
                     <CheckCircle2 className="h-4 w-4" />
                   </div>
                   <span>Direct founder & engineer accessibility — zero outsourced fluff</span>
                 </div>
               </div>
 
-              <div className="pt-6 p-5 rounded-2xl bg-[#FEFCE8]/50 border border-amber-200/80 space-y-2 text-xs">
-                <p className="font-bold text-[#0F172A]">Headquarters & Direct Inquiries</p>
-                <p className="text-slate-600">{companyData.legalLocation}</p>
-                <p className="text-amber-800 font-semibold">{companyData.primaryPhone}</p>
-                <p className="text-slate-500">{companyData.email}</p>
+              <div className="pt-6 p-5 rounded-2xl bg-white dark:bg-[#111C33] border border-gray-200 dark:border-white/10 space-y-2 text-xs">
+                <p className="font-bold text-[#101A35] dark:text-white">Headquarters & Direct Inquiries</p>
+                <p className="text-gray-600 dark:text-gray-300">{companyData.legalLocation}</p>
+                <p className="text-[#23469F] dark:text-[#B9DFF2] font-semibold">{companyData.primaryPhone}</p>
+                <p className="text-gray-500 dark:text-gray-400">{companyData.email}</p>
               </div>
             </div>
 
