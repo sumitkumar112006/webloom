@@ -62,3 +62,4 @@ export const ProjectStickerBadge: React.FC<ProjectStickerBadgeProps> = ({ sticke
       );
   }
 };
+

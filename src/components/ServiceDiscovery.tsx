@@ -14,7 +14,8 @@ interface ServiceItem {
 }
 
 export const ServiceDiscovery: React.FC = () => {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // Fifth service "3D Works" selected by default per exact specification
+  const [activeId, setActiveId] = useState<string>('3d');
 
   const services: ServiceItem[] = [
     {
@@ -23,18 +24,18 @@ export const ServiceDiscovery: React.FC = () => {
       title: 'Web Services',
       tagline: 'Websites, platforms & digital products',
       link: '/services/web-services',
-      tags: ['React & Next.js', 'UI/UX Systems', 'E-Commerce', 'Core Web Vitals'],
+      tags: ['Websites & Portals', 'UI/UX Design', 'E-Commerce', 'Core Web Vitals'],
       previewImage: '/assets/service_web.png',
-      // Bespoke Hand-Crafted Browser Wireframe SVG Icon
+      // Clean Outlined Browser SVG Icon
       icon: ({ className = 'w-5 h-5' }) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <rect x="2" y="3" width="20" height="18" rx="3" className="stroke-current" />
-          <line x1="2" y1="8" x2="22" y2="8" />
-          <circle cx="5" cy="5.5" r="0.75" fill="currentColor" />
-          <circle cx="8" cy="5.5" r="0.75" fill="currentColor" />
-          <line x1="6" y1="12" x2="14" y2="12" strokeDasharray="1 1" />
-          <rect x="6" y="15" width="5" height="3" rx="0.5" className="fill-current/10" />
-          <rect x="13" y="15" width="5" height="3" rx="0.5" className="fill-current/10" />
+          <rect x="2.5" y="3.5" width="19" height="17" rx="3" />
+          <line x1="2.5" y1="8.5" x2="21.5" y2="8.5" />
+          <circle cx="5.5" cy="6" r="0.75" fill="currentColor" />
+          <circle cx="8" cy="6" r="0.75" fill="currentColor" />
+          <rect x="6" y="12" width="4.5" height="4.5" rx="1" />
+          <line x1="13.5" y1="12" x2="18" y2="12" />
+          <line x1="13.5" y1="15" x2="16.5" y2="15" />
         </svg>
       )
     },
@@ -44,16 +45,14 @@ export const ServiceDiscovery: React.FC = () => {
       title: 'App Services',
       tagline: 'Scalable applications & software solutions',
       link: '/services/app-services',
-      tags: ['Cross-Platform', 'Client Portals', 'Role Auth', 'Realtime Sync'],
+      tags: ['Business Apps', 'Customer Portals', 'Cross-Platform', 'Realtime Sync'],
       previewImage: '/assets/project_mobile_app.png',
-      // Bespoke Hand-Crafted Mobile App & System Interface SVG Icon
+      // Clean Outlined Smartphone SVG Icon
       icon: ({ className = 'w-5 h-5' }) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <rect x="5" y="2" width="14" height="20" rx="3" className="stroke-current" />
-          <line x1="10" y1="5" x2="14" y2="5" />
-          <rect x="8" y="9" width="8" height="4" rx="1" className="fill-current/10" />
-          <rect x="8" y="15" width="3.5" height="3.5" rx="0.5" />
-          <rect x="12.5" y="15" width="3.5" height="3.5" rx="0.5" />
+          <rect x="5.5" y="2.5" width="13" height="19" rx="3" />
+          <line x1="10" y1="5.5" x2="14" y2="5.5" />
+          <circle cx="12" cy="18" r="0.75" fill="currentColor" />
         </svg>
       )
     },
@@ -63,15 +62,14 @@ export const ServiceDiscovery: React.FC = () => {
       title: 'Social Media',
       tagline: 'Creative strategy, content & brand presence',
       link: '/social-media',
-      tags: ['Short-Form Reels', 'Meta Ads', 'Brand Assets', 'Motion Graphics'],
+      tags: ['Reels Production', 'Brand Posts', 'Meta Ads', 'Motion Graphics'],
       previewImage: '/assets/project_social_campaign.png',
-      // Bespoke Hand-Crafted Media Production Reel SVG Icon
+      // Clean Outlined Media Reel & Book SVG Icon
       icon: ({ className = 'w-5 h-5' }) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <rect x="3" y="4" width="18" height="16" rx="3" />
-          <path d="M7 4v16" strokeDasharray="2 2" />
-          <path d="M17 4v16" strokeDasharray="2 2" />
-          <polygon points="11,10 15,12 11,14" fill="currentColor" stroke="none" />
+          <rect x="3.5" y="4" width="17" height="16" rx="2.5" />
+          <line x1="8" y1="4" x2="8" y2="20" />
+          <circle cx="14" cy="12" r="2.5" />
         </svg>
       )
     },
@@ -81,17 +79,16 @@ export const ServiceDiscovery: React.FC = () => {
       title: 'AI Automation',
       tagline: 'Intelligent workflows & AI-driven solutions',
       link: '/ai-automation',
-      tags: ['WhatsApp Bots', 'CRM Pipelines', 'Task Routing', 'Custom Agents'],
+      tags: ['WhatsApp Bots', 'CRM Pipelines', 'Task Routing', 'AI Agents'],
       previewImage: '/assets/service_ai.png',
-      // Bespoke Hand-Crafted Neural Nodes & Flow Graph SVG Icon
+      // Clean Outlined Neural Tree Nodes SVG Icon
       icon: ({ className = 'w-5 h-5' }) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <circle cx="6" cy="6" r="3" />
-          <circle cx="18" cy="6" r="3" />
-          <circle cx="12" cy="18" r="3" />
-          <path d="M8.5 7.5L15.5 7.5" />
-          <path d="M7.5 8.5L10.5 15.5" />
-          <path d="M16.5 8.5L13.5 15.5" />
+          <circle cx="6" cy="6" r="2.5" />
+          <circle cx="18" cy="6" r="2.5" />
+          <circle cx="12" cy="18" r="2.5" />
+          <path d="M7.8 7.8L10.5 15.5" />
+          <path d="M16.2 7.8L13.5 15.5" />
         </svg>
       )
     },
@@ -101,157 +98,182 @@ export const ServiceDiscovery: React.FC = () => {
       title: '3D Works',
       tagline: 'Photorealistic CGI, VFX & product visualization',
       link: '/3d-works',
+      // Exact four small yellow outlined tags from target reference
       tags: ['Product CGI Stills', '3D Motion', 'Exploded Animation', 'Spatial VFX'],
       previewImage: '/assets/project_3d_chrono.png',
-      // Bespoke Hand-Crafted Isometric 3D Prism SVG Icon
+      // Clean Outlined Isometric 3D Cube SVG Icon
       icon: ({ className = 'w-5 h-5' }) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-          <path d="M12 2L3 7L12 12L21 7L12 2Z" />
-          <path d="M3 7V17L12 22V12" />
-          <path d="M21 7V17L12 22" />
-          <path d="M12 12L17 9.5" strokeDasharray="1 1" />
+          <path d="M12 2.5L3.5 7.5L12 12.5L20.5 7.5L12 2.5Z" />
+          <path d="M3.5 7.5V16.5L12 21.5V12.5" />
+          <path d="M20.5 7.5V16.5L12 21.5" />
         </svg>
       )
     }
   ];
 
-  const activeHoverItem = services.find((s) => s.id === hoveredId);
+  const activeService = services.find((s) => s.id === activeId) || services[4];
 
   return (
-    <section id="our-services" className="py-20 lg:py-28 bg-white border-y border-amber-100/60 relative overflow-hidden transition-colors select-none">
-      
-      {/* WARM YELLOW AMBIENT SUNSHINE GLOW (Strictly Yellow Gradient & White BG) */}
-      <div className="absolute bottom-0 right-0 w-[550px] h-[450px] bg-gradient-to-tl from-[#FEF08A]/45 via-[#FDE68A]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-10 left-10 w-[380px] h-[380px] bg-[#FEF9C3]/50 rounded-full blur-[100px] pointer-events-none" />
+    <section
+      id="our-services"
+      className="py-20 lg:py-28 bg-[#FCFCFD] border-y border-amber-100/40 relative overflow-hidden transition-colors select-none"
+    >
+      {/* Soft warm ivory / subtle golden radial mesh glow */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-r from-[#FEF08A]/25 via-[#FDE68A]/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-[#FEF9C3]/20 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* ENTIRE WIDTH CONTAINER (No max-w-7xl restriction, full edge-to-edge) */}
+      {/* ENTIRE WIDTH CONTAINER WITH GENEROUS HORIZONTAL MARGINS */}
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-start">
+        
+        {/* EXACT TWO-COLUMN LAYOUT (Vertically Centered Left & Right Columns) */}
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12 xl:gap-16">
           
-          {/* LEFT COLUMN: EDITORIAL ANCHOR (Matching FlowStudio reference) */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
+          {/* LEFT COLUMN: ~28–30% Width */}
+          <div className="w-full lg:w-[29%] xl:w-[28%] shrink-0 space-y-6">
             <div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#0F172A] tracking-[-0.03em] font-display leading-[1.04]">
+              {/* Heading: Large, bold and tightly spaced */}
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-[#0F172A] tracking-[-0.035em] font-display leading-[1.05]">
                 Our <br />
                 Services
               </h2>
-              <p className="text-sm sm:text-base text-slate-500 mt-4 max-w-sm leading-relaxed font-normal">
+              {/* Two-line supporting description */}
+              <p className="text-[14.5px] sm:text-[15px] text-slate-500 mt-3 max-w-[280px] leading-relaxed font-normal">
                 End-to-end digital, creative and AI solutions for modern businesses.
               </p>
             </div>
 
-            <div className="pt-2">
+            {/* Underlined 'View all services ↗' link */}
+            <div>
               <Link
                 to="/services"
-                className="group inline-flex items-center gap-2 text-sm font-bold text-[#0F172A] hover:text-amber-700 transition-colors"
+                className="group inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0F172A] hover:text-amber-800 transition-colors"
               >
-                <span className="underline decoration-slate-300 decoration-2 underline-offset-6 group-hover:decoration-amber-500 transition-all">
+                <span className="underline decoration-slate-300 decoration-1 underline-offset-4 group-hover:decoration-amber-500">
                   View all services
                 </span>
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
 
-            {/* DYNAMIC FLOATING PREVIEW CARD (Visible on hover on desktop) */}
-            <div
-              className={`hidden lg:block transition-all duration-300 ease-out pt-4 ${
-                activeHoverItem ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
-              }`}
-            >
-              {activeHoverItem && (
-                <div className="rounded-2xl bg-white/95 backdrop-blur-md p-3.5 border border-amber-200/80 shadow-[0_16px_36px_-12px_rgba(251,191,36,0.35)] w-72">
-                  <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-900 mb-3 border border-slate-100">
-                    <img
-                      src={activeHoverItem.previewImage}
-                      alt={activeHoverItem.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/70 text-white backdrop-blur">
-                      {activeHoverItem.number} / 05
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {activeHoverItem.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-[#FEF9C3] text-amber-900 border border-amber-200/60"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+            {/* SMALL FEATURED PROJECT CARD DIRECTLY UNDERNEATH */}
+            <div className="rounded-2xl bg-white p-3.5 sm:p-4 border border-amber-200/60 shadow-[0_10px_30px_-6px_rgba(251,191,36,0.18)] max-w-[270px] sm:max-w-[280px] transition-all duration-300">
+              
+              {/* Featured Card Image Container */}
+              <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-100">
+                <img
+                  src={activeService.previewImage}
+                  alt={activeService.title}
+                  className="w-full h-full object-cover transition-opacity duration-300"
+                />
+                
+                {/* Small Project Index Badge: '05 / 05' */}
+                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 text-white font-mono font-bold text-[10px] tracking-wider border border-white/10 backdrop-blur-xs">
+                  {activeService.number} / 05
                 </div>
-              )}
+              </div>
+
+              {/* Four Small Yellow Outlined Tags (2x2 grid) */}
+              <div className="grid grid-cols-2 gap-1.5">
+                {activeService.tags.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2 py-1 rounded-md text-[10px] font-semibold text-center truncate bg-[#FEFCE8] text-amber-900 border border-amber-300/80 shadow-2xs"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
             </div>
+
           </div>
 
-          {/* RIGHT COLUMN: SLEEK FULL-WIDTH EDITORIAL ROWS WITH BESPOKE ICON CRAFT */}
-          <div className="lg:col-span-8 divide-y divide-slate-200/80">
+          {/* RIGHT COLUMN: ~70–72% Width (Five Horizontal Service Navigation Rows) */}
+          <div className="w-full lg:w-[71%] xl:w-[72%] flex-1 flex flex-col justify-center space-y-2.5">
             {services.map((item) => {
               const Icon = item.icon;
-              const isHovered = hoveredId === item.id;
+              const isActive = activeId === item.id;
 
               return (
-                <Link
+                <div
                   key={item.id}
-                  to={item.link}
-                  onMouseEnter={() => setHoveredId(item.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  className={`group grid grid-cols-12 items-center py-6 sm:py-7 px-4 -mx-4 rounded-2xl transition-all duration-200 cursor-pointer ${
-                    isHovered
-                      ? 'bg-[#FEFCE8]/80 shadow-[0_6px_20px_-6px_rgba(251,191,36,0.22)]'
-                      : 'hover:bg-[#FEFCE8]/40'
+                  onClick={() => setActiveId(item.id)}
+                  className={`group w-full min-h-[92px] sm:min-h-[98px] lg:h-[100px] px-5 sm:px-7 rounded-2xl flex items-center justify-between transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#FEFCE8] border border-amber-300 shadow-[0_4px_20px_-4px_rgba(251,191,36,0.22)]'
+                      : 'bg-white border border-slate-100 hover:border-slate-200 hover:bg-slate-50/50'
                   }`}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isActive}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setActiveId(item.id);
+                    }
+                  }}
                 >
-                  {/* Left: Number + Icon + Title (Col 1 to 5) */}
-                  <div className="col-span-12 sm:col-span-5 flex items-center gap-4 sm:gap-6">
-                    {/* Editorial Number */}
-                    <span className="text-sm font-mono font-semibold text-slate-400 group-hover:text-amber-800 transition-colors w-6">
+                  {/* Left Group: Index + Icon Container + Bold Service Name */}
+                  <div className="flex items-center gap-4 sm:gap-6 min-w-[210px] sm:min-w-[250px] lg:min-w-[280px]">
+                    {/* Small Service Index */}
+                    <span
+                      className={`text-xs sm:text-sm font-mono font-bold transition-colors w-6 ${
+                        isActive ? 'text-amber-700' : 'text-slate-400'
+                      }`}
+                    >
                       {item.number}
                     </span>
 
-                    {/* Bespoke Hand-Crafted Icon Badge */}
+                    {/* Small Outlined Icon Container */}
                     <div
-                      className={`h-11 w-11 rounded-2xl flex items-center justify-center transition-all duration-200 shrink-0 ${
-                        isHovered
-                          ? 'bg-[#FEF9C3] text-amber-900 border border-amber-300 scale-105 shadow-xs'
-                          : 'bg-slate-50 text-slate-700 border border-slate-200/80 group-hover:bg-[#FEF9C3] group-hover:text-amber-900 group-hover:border-amber-300'
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                        isActive
+                          ? 'bg-[#FEF9C3] border border-amber-300 text-amber-800'
+                          : 'bg-slate-50 border border-slate-200/90 text-slate-500'
                       }`}
                     >
-                      <Icon className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
+                      <Icon className="w-5 h-5" />
                     </div>
 
-                    {/* Service Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] tracking-[-0.02em] font-display transition-transform duration-200 group-hover:translate-x-1">
+                    {/* Service Name: Bold typography approx 23-25px on desktop */}
+                    <h3 className="text-xl sm:text-[23px] lg:text-[24px] font-bold text-[#0F172A] tracking-[-0.02em] font-display">
                       {item.title}
                     </h3>
                   </div>
 
-                  {/* Center: Description (Col 6 to 11) */}
-                  <div className="col-span-10 sm:col-span-6 mt-2 sm:mt-0 pl-16 sm:pl-0">
-                    <span className="text-xs sm:text-sm text-slate-500 group-hover:text-slate-800 font-normal transition-colors">
+                  {/* Middle: Supporting Description Horizontally Aligned */}
+                  <div className="hidden md:block flex-1 px-4 lg:px-6">
+                    <p className="text-[13.5px] lg:text-[14.5px] text-slate-500 font-normal leading-normal">
                       {item.tagline}
-                    </span>
+                    </p>
                   </div>
 
-                  {/* Right: Directional Arrow (Col 12) */}
-                  <div className="col-span-2 sm:col-span-1 flex justify-end">
-                    <div
-                      className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${
-                        isHovered
-                          ? 'bg-[#0F172A] text-white shadow-xs'
-                          : 'text-slate-400 group-hover:text-[#0F172A] group-hover:bg-white'
-                      }`}
-                    >
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
+                  {/* Right: Arrow Button */}
+                  <div className="shrink-0 flex items-center justify-end">
+                    {isActive ? (
+                      /* Exact Active State: Dark circular arrow button with white arrow */
+                      <Link
+                        to={item.link}
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-10 h-10 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform"
+                        title={`Explore ${item.title}`}
+                      >
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      /* Inactive State: Subtle blue-grey arrow */
+                      <div className="w-10 h-10 flex items-center justify-center text-slate-400 group-hover:text-slate-700 transition-colors">
+                        <ArrowUpRight className="h-4 w-4" />
+                      </div>
+                    )}
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
 
         </div>
+
       </div>
     </section>
   );
