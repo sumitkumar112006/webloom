@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-blue: #23469F;
+  --color-deep-blue: #101A35;
+  --color-light-blue: #B9DFF2;
+  --color-soft-bg: #F6F8FC;
+  --color-text-main: #111827;
+  --color-text-muted: #667085;
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-main: #F6F8FC;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+    --text-heading: #101A35;
+    --text-body: #111827;
+    --text-muted: #667085;
+    --border-subtle: rgba(226, 232, 240, 0.8);
+  }
+
+  html.dark {
+    --bg-main: #0B1120;
+    --bg-surface: #111C33;
+    --bg-subtle: #162442;
+    --text-heading: #F8FAFC;
+    --text-body: #E2E8F0;
+    --text-muted: #94A3B8;
+    --border-subtle: rgba(255, 255, 255, 0.09);
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--text-body);
+    background-color: var(--bg-main);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text-heading);
+  }
+}
+
+/* Custom interactive utility styles aligned with design specs */
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-subtle {
+  background: rgba(17, 28, 51, 0.85);
+}
+
+/* Card Shimmer Hover Effect */
+@keyframes card-shimmer {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.card-hover {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(35, 70, 159, 0.14), 0 0 0 1px rgba(35, 70, 159, 0.15);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 38px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(185, 223, 242, 0.22);
+}
+
+/* Shimmer beam element for .card-hover and .shimmer-sweep */
+.card-hover::before,
+.shimmer-sweep {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(185, 223, 242, 0.45) 65%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-20deg);
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0;
+}
+
+.dark .card-hover::before,
+.dark .shimmer-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(185, 223, 242, 0.35) 50%,
+    rgba(35, 70, 159, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+.card-hover:hover::before,
+.card-hover-pricing:hover .shimmer-sweep {
+  animation: card-shimmer 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.card-hover-pricing {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease;
+}
+
+.card-hover-pricing:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(35, 70, 159, 0.14), 0 0 0 1px rgba(35, 70, 159, 0.15);
+}
+
+.dark .card-hover-pricing:hover {
+  box-shadow: 0 20px 38px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(185, 223, 242, 0.22);
+}
+
+/* Diagonal accent subtle lines representing Webloom's geometric identity */
+.bg-diagonal-pattern {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(35, 70, 159, 0.03) 0,
+    rgba(35, 70, 159, 0.03) 1px,
+    transparent 0,
+    transparent 50px
+  );
+}
+
+.dark .bg-diagonal-pattern {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(185, 223, 242, 0.04) 0,
+    rgba(185, 223, 242, 0.04) 1px,
+    transparent 0,
+    transparent 50px
+  );
+}

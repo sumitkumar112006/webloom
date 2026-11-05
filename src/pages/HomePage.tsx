@@ -1,0 +1,148 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Globe, Smartphone, Cpu, Box, Sparkles, CheckCircle2, ShieldCheck, Layers } from 'lucide-react';
+import { HairlineHeroSection } from '../components/HairlineHeroSection';
+import { ServiceDiscovery } from '../components/ServiceDiscovery';
+import { ProjectCard } from '../components/ProjectCard';
+import { ProcessTimeline } from '../components/ProcessTimeline';
+import { ContactForm } from '../components/ContactForm';
+import { projectsData } from '../data/projectsData';
+import { companyData } from '../data/companyData';
+
+interface HomePageProps {
+  onOpenContact: () => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
+  const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 4);
+
+  return (
+    <div className="min-h-screen">
+      {/* 06 — INTERACTIVE HAIRLINE HERO SECTION */}
+      <HairlineHeroSection onOpenContact={onOpenContact} />
+
+      {/* 07 — SERVICE DISCOVERY SECTION */}
+      <ServiceDiscovery />
+
+      {/* 10 — FEATURED EDITORIAL WORK GRID */}
+      <section className="py-20 lg:py-28 bg-white dark:bg-[#0B1120] transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-16 gap-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
+                Selected Case Studies
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
+                OUR WORK
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">
+                See what we've built across web applications, mock platforms, local studios, and 3D visualization.
+              </p>
+            </div>
+
+            <Link
+              to="/our-work"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white transition-colors"
+            >
+              <span>View All Projects</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          {/* Varied Editorial Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredProjects.map((project, idx) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                variant={idx === 0 ? 'large' : 'medium'}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 16 — AUTHENTIC WEBLOOM POSITIONING */}
+      <section className="py-20 bg-[#101A35] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B9DFF2]">
+              The Webloom Philosophy
+            </span>
+            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug font-display text-white">
+              “At Webloom, we believe a website should be more than just a digital business card. It should be an experience, a communication tool, and a driver of growth.”
+            </blockquote>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl mx-auto">
+              We bring together thoughtful web design, development, UI/UX, branding, and digital marketing to help businesses build a stronger and more memorable online identity.
+            </p>
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-[#101A35] hover:bg-[#B9DFF2] transition-colors"
+              >
+                <span>Read Mission & Vision</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4-STEP DISCIPLINED APPROACH TIMELINE */}
+      <ProcessTimeline />
+
+      {/* ONBOARDING TIMELINE */}
+      <ProcessTimeline
+        title="Client Onboarding Journey"
+        subtitle="Transparent onboarding designed for clarity and rapid time-to-market without guesswork."
+        type="onboarding"
+      />
+
+      {/* 18 — CONTACT & PROJECT INQUIRY */}
+      <section className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors" id="contact">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-5 space-y-5">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2]">
+                Start A Conversation
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
+                Have a project in mind?
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                Whether you need a full digital redesign, an internal workflow app, or continuous short-form content and Meta Ads, our engineers and strategists are ready to collaborate.
+              </p>
+
+              <div className="pt-4 space-y-4 border-t border-gray-200 dark:border-white/10 text-xs text-gray-700 dark:text-gray-300">
+                <div className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2] flex items-center justify-center shrink-0">
+                    <ShieldCheck className="h-4 w-4" />
+                  </div>
+                  <span>Documented scope of work with milestone timelines</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2] flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <span>Direct founder & engineer accessibility — zero outsourced fluff</span>
+                </div>
+              </div>
+
+              <div className="pt-6 p-5 rounded-2xl bg-white dark:bg-[#111C33] border border-gray-200 dark:border-white/10 space-y-2 text-xs">
+                <p className="font-bold text-[#101A35] dark:text-white">Headquarters & Direct Inquiries</p>
+                <p className="text-gray-600 dark:text-gray-300">{companyData.legalLocation}</p>
+                <p className="text-[#23469F] dark:text-[#B9DFF2] font-semibold">{companyData.primaryPhone}</p>
+                <p className="text-gray-500 dark:text-gray-400">{companyData.email}</p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+

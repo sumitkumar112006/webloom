@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hairline · Keyboard Figure</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: dark; --ground: #070a14; --ink: #d0d6e0; --muted: #8a8c95; --line: #1e293b; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px;
+    background: var(--ground); color: var(--ink);
+    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 680px; }
+  .plate { position: relative; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #070a14; }
+  .tag, .label, output, button { font: 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0.02em; }
+  .tag { position: absolute; top: 14px; z-index: 10; color: var(--muted); pointer-events: none; }
+  #name { left: 16px; }
+  #read { right: 16px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 16px; }
+  .label { color: var(--muted); }
+  input[type="range"] {
+    flex: 1 1 96px; min-width: 0; height: 32px; margin: 0; background: transparent; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: var(--muted); }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 13px; height: 13px; margin-top: -6px; border-radius: 50%;
+    border: 1px solid var(--ink); background: var(--ground);
+  }
+  button {
+    height: 32px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: transparent; color: var(--ink); cursor: pointer;
+  }
+  #play[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  #means { margin: 14px 0 0; text-wrap: pretty; color: #e2e8f0; font-size: 14px; }
+  #rules { margin: 6px 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+<main>
+  <div class="plate">
+    <span class="tag" id="name">keyboard</span>
+    <span class="tag" id="read">rest</span>
+    <div id="stage"></div>
+  </div>
+  <div class="controls">
+    <label class="label" for="intensity">intensity</label>
+    <input id="intensity" type="range" min="0" max="1" step="0.01" value="0.6">
+    <span class="label">tour</span>
+    <button id="play" type="button" aria-pressed="false">play tour</button>
+  </div>
+  <p id="means">A sixty-key board. The key under the pointer sinks, and its neighbours follow it down, less the further away.</p>
+  <p id="rules" class="label">Hairline official figure · packages/hairline/src/figures/keyboard.ts</p>
+</main>
+
+<script type="module">
+  import { keyboard } from "https://esm.sh/@lucasmarkes/hairline";
+
+  const stage = document.getElementById("stage");
+  const read = document.getElementById("read");
+  const slider = document.getElementById("intensity");
+  const playBtn = document.getElementById("play");
+
+  const fig = keyboard(stage, {
+    intensity: parseFloat(slider.value),
+    theme: "dark",
+    onRead: (text) => { read.textContent = text || "rest"; }
+  });
+
+  slider.addEventListener("input", () => {
+    fig.update({ intensity: parseFloat(slider.value) });
+  });
+
+  let playing = false;
+  playBtn.addEventListener("click", () => {
+    playing = !playing;
+    playBtn.setAttribute("aria-pressed", String(playing));
+    fig.update({ play: playing });
+  });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hairline · nexus</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: dark; --ground: #070a13; --ink: #d0d6e0; --muted: #8a8c95; --line: #1e293b; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px;
+    background: var(--ground); color: var(--ink);
+    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 640px; }
+  .plate { position: relative; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #090d18; }
+  .tag, .label, output, button { font: 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0.02em; }
+  .tag { position: absolute; top: 12px; z-index: 1; color: var(--muted); pointer-events: none; }
+  #name { left: 14px; }
+  #read { right: 14px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 14px; }
+  .label { color: var(--muted); }
+  input[type="range"] {
+    flex: 1 1 96px; min-width: 0; height: 32px; margin: 0; background: transparent; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: var(--muted); }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 13px; height: 13px; margin-top: -6px; border-radius: 50%;
+    border: 1px solid var(--ink); background: var(--ground);
+  }
+  input[type="range"]::-moz-range-track { height: 1px; background: var(--muted); }
+  input[type="range"]::-moz-range-thumb { width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--ink); background: var(--ground); }
+  button {
+    height: 32px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: transparent; color: var(--ink); cursor: pointer;
+  }
+  #play[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  #means { margin: 14px 0 0; text-wrap: pretty; }
+  #rules { margin: 6px 0 0; line-height: 1.6; }
+</style>
+<style>
+  [data-hairline] {
+    display: block; position: relative; aspect-ratio: 5/4; touch-action: pan-y;
+    user-select: none; -webkit-user-select: none; --hl-sw: 1.1;
+    --hl-plate: #090d18; --hl-hi: #60a5fa; --hl-edge: #93c5fd; --hl-mid: #1e3a8a; --hl-lo: #1e293b;
+  }
+  [data-hairline] > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  [data-hairline] > svg path, [data-hairline] > svg polygon, [data-hairline] > svg line {
+    fill: var(--hl-plate); stroke: var(--hl-mid); stroke-width: var(--hl-sw);
+    vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round;
+  }
+  [data-hairline] > svg .sil { stroke: var(--hl-edge); stroke-width: 1.35; }
+  [data-hairline] > svg .hi { stroke: var(--hl-hi); stroke-width: 1.6; }
+  [data-hairline] > svg .lo { stroke: var(--hl-lo); stroke-width: 1; }
+  [data-hairline] > svg .dash { stroke-dasharray: 2 4; stroke: var(--hl-mid); stroke-width: 0.9; }
+  [data-hairline] > svg .dot { stroke: none; fill: var(--hl-hi); }
+  [data-hairline] > svg .dot.m { fill: var(--hl-edge); }
+  [data-hairline] > svg .dot.off { fill: var(--hl-lo); }
+</style>
+</head>
+<body>
+<main>
+  <div class="plate">
+    <span class="tag" id="name">nexus</span>
+    <span class="tag" id="read">STUDIO // REST POSE</span>
+    <div id="stage" data-hairline="nexus" role="img" aria-label="Webloom Creative Technology Nexus Core"></div>
+  </div>
+  <div class="controls">
+    <span class="label">tour</span>
+    <button id="play" type="button" aria-pressed="false">play tour</button>
+  </div>
+  <p id="means">A modular creative technology matrix: monolithic core and satellite prisms that answer the pointer with spring-damped physics.</p>
+  <p id="rules" class="label">01 hit · 03 reach · 04 accent · 05 rest · 08 clock · 09 radius</p>
+</main>
+
+<script>
+  // Inlined Hairline Nexus Script
+  const stage = document.getElementById("stage");
+  const read = document.getElementById("read");
+  const playBtn = document.getElementById("play");
+
+  const rad = (d) => (d * Math.PI) / 180;
+  const r2 = (n) => Math.round(n * 100) / 100;
+  const poly = (pts) => pts.length ? "M" + pts.map((p) => r2(p[0]) + " " + r2(p[1])).join("L") + "Z" : "";
+  const open = (pts) => pts.length < 2 ? "" : "M" + pts.map((p) => r2(p[0]) + " " + r2(p[1])).join("L");
+  const seg = (a, b) => `M${r2(a[0])} ${r2(a[1])}L${r2(b[0])} ${r2(b[1])}`;
+
+  const Cam = (azDeg, k, S) => ({ az: rad(azDeg), k, S, ox: 0, oy: 0 });
+  const proj = (C) => {
+    const c = Math.cos(C.az), s = Math.sin(C.az), zf = Math.sqrt(1 - C.k * C.k);
+    return (x, y, z) => [C.ox + C.S * (x * c - y * s), C.oy + C.S * ((x * s + y * c) * C.k - z * zf)];
+  };
+  const unproj = (C, sx, sy, z) => {
+    const c = Math.cos(C.az), s = Math.sin(C.az), zf = Math.sqrt(1 - C.k * C.k);
+    const X = (sx - C.ox) / C.S, Y = ((sy - C.oy) / C.S + z * zf) / C.k;
+    return [X * c + Y * s, -X * s + Y * c];
+  };
+
+  const rrect = (u0, v0, u1, v1, r, n = 4) => {
+    r = Math.max(0, Math.min(r, (u1 - u0) / 2, (v1 - v0) / 2));
+    const out = [];
+    const corners = [[u1 - r, v1 - r, 0], [u0 + r, v1 - r, 90], [u0 + r, v0 + r, 180], [u1 - r, v0 + r, 270]];
+    for (const [cu, cv, a0] of corners) {
+      for (let k = 0; k <= n; k++) {
+        const a = rad(a0 + (90 * k) / n);
+        out.push({ u: cu + r * Math.cos(a), v: cv + r * Math.sin(a), nu: Math.cos(a), nv: Math.sin(a) });
+      }
+    }
+    return out;
+  };
+  const rings = (x0, y0, x1, y1, r, b) => [rrect(x0, y0, x1, y1, r), rrect(x0 + b, y0 + b, x1 - b, y1 - b, Math.max(0.1, r - b))];
+  const facing = (C) => {
+    const c = Math.cos(C.az), s = Math.sin(C.az);
+    return (sm) => sm.nu * s + sm.nv * c > 0;
+  };
+  const run = (ring, keep) => {
+    const n = ring.length;
+    let s = 0;
+    while (s < n && keep(ring[s])) s++;
+    if (s === n) return ring.slice();
+    while (s < 2 * n && !keep(ring[s % n])) s++;
+    const out = [];
+    while (out.length < n && keep(ring[s % n])) { out.push(ring[s % n]); s++; }
+    return out;
+  };
+  const ringAt = (P, ring, z) => ring.map((sm) => P(sm.u, sm.v, z));
+  const hull = (input) => {
+    const pts = input.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = [];
+    for (const p of pts) {
+      while (lo.length > 1 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop();
+      lo.push(p);
+    }
+    for (let i = pts.length - 1; i >= 0; i--) {
+      const p = pts[i];
+      while (up.length > 1 && cross(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop();
+      up.push(p);
+    }
+    lo.pop(); up.pop();
+    return lo.concat(up);
+  };
+  const prism = (P, front, outer, inner, z0, z1) => ({
+    sil: poly(hull(ringAt(P, outer, z0).concat(ringAt(P, outer, z1)))),
+    crease: open(ringAt(P, run(inner, front), z1))
+  });
+  const solid = (parent) => {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    const sil = document.createElementNS("http://www.w3.org/2000/svg", "path"); sil.setAttribute("class", "sil");
+    const cr = document.createElementNS("http://www.w3.org/2000/svg", "path"); cr.setAttribute("class", "lo");
+    g.appendChild(sil); g.appendChild(cr); parent.appendChild(g);
+    return { g, sil, cr };
+  };
+  const put = (el, p) => { el.sil.setAttribute("d", p.sil); el.cr.setAttribute("d", p.crease); };
+  const spring = (x) => ({ x, v: 0, t: x, k: 95, c: 17, m: 1, eps: 0.04 });
+  const stepS = (sp, dt) => {
+    const f = -sp.k * (sp.x - sp.t) - sp.c * sp.v;
+    sp.v += (f / sp.m) * dt; sp.x += sp.v * dt;
+    if (Math.abs(sp.v) < sp.eps && Math.abs(sp.x - sp.t) < sp.eps) { sp.x = sp.t; sp.v = 0; return false; }
+    return true;
+  };
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 400 320");
+  stage.appendChild(svg);
+
+  const C = Cam(45, 0.5, 1.55);
+  C.ox = 200; C.oy = 160;
+  const P = proj(C), front = facing(C);
+  const mainGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.appendChild(mainGroup);
+
+  // Chassis
+  const [plinthRing, plinthInner] = rings(-55, -55, 55, 55, 16, 2.5);
+  put(solid(mainGroup), prism(P, front, plinthRing, plinthInner, -8, 0));
+
+  // Core
+  const [cLRing, cLInner] = rings(-18, -18, 18, 18, 5, 1.4);
+  put(solid(mainGroup), prism(P, front, cLRing, cLInner, 0, 36));
+  const [cURing, cUInner] = rings(-13, -13, 13, 13, 3.8, 1.1);
+  const cUSolid = solid(mainGroup);
+  const cUSpring = spring(48);
+
+  // Satellites
+  const nodes = [
+    { id: "ai", code: "CAPABILITY // 01 · AI", rx: 0, ry: -34, z0: 26, r: rings(-8.5, -42.5, 8.5, -25.5, 4, 1.1), sp: spring(26), el: solid(mainGroup) },
+    { id: "3d", code: "CAPABILITY // 02 · 3D", rx: 34, ry: 0, z0: 32, r: rings(25.5, -8.5, 42.5, 8.5, 4, 1.1), sp: spring(32), el: solid(mainGroup) },
+    { id: "web", code: "CAPABILITY // 03 · WEB", rx: 0, ry: 34, z0: 18, r: rings(-8.5, 25.5, 8.5, 42.5, 4, 1.1), sp: spring(18), el: solid(mainGroup) },
+    { id: "app", code: "CAPABILITY // 04 · APPS", rx: -34, ry: 0, z0: 24, r: rings(-42.5, -8.5, -25.5, 8.5, 4, 1.1), sp: spring(24), el: solid(mainGroup) }
+  ];
+
+  let raf = 0, last = performance.now();
+  function loop() {
+    const now = performance.now();
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    stepS(cUSpring, dt);
+    put(cUSolid, prism(P, front, cURing, cUInner, cUSpring.x, cUSpring.x + 14));
+    nodes.forEach((n) => {
+      stepS(n.sp, dt);
+      put(n.el, prism(P, front, n.r[0], n.r[1], n.sp.x, n.sp.x + 14));
+    });
+    raf = requestAnimationFrame(loop);
+  }
+  loop();
+
+  function onPointer(sx, sy) {
+    const [wx, wy] = unproj(C, sx, sy, 0);
+    let minD = Infinity, closest = null;
+    nodes.forEach((n) => {
+      const d = Math.hypot(wx - n.rx, wy - n.ry);
+      n.sp.t = n.z0 + Math.max(0, 1 - d / 55) * 22;
+      if (d < minD) { minD = d; closest = n; }
+    });
+    cUSpring.t = 48 + Math.max(0, 1 - Math.hypot(wx, wy) / 45) * 16;
+    if (closest && minD < 38) {
+      nodes.forEach((n) => n.el.sil.classList.toggle("hi", n === closest));
+      cUSolid.sil.classList.remove("hi");
+      read.textContent = closest.code;
+    } else {
+      nodes.forEach((n) => n.el.sil.classList.remove("hi"));
+      read.textContent = "STUDIO // REST POSE";
+    }
+  }
+
+  stage.addEventListener("pointermove", (e) => {
+    const rect = stage.getBoundingClientRect();
+    onPointer(((e.clientX - rect.left) / rect.width) * 400, ((e.clientY - rect.top) / rect.height) * 320);
+  });
+  stage.addEventListener("pointerleave", () => {
+    nodes.forEach((n) => { n.sp.t = n.z0; n.el.sil.classList.remove("hi"); });
+    cUSpring.t = 48;
+    read.textContent = "STUDIO // REST POSE";
+  });
+</script>
+</body>
+</html>
+
