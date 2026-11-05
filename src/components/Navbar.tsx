@@ -56,6 +56,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
           {/* DESKTOP NAVIGATION */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
+            <Link
+              to="/"
+              className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors ${
+                location.pathname === '/'
+                  ? 'text-[#23469F] dark:text-[#B9DFF2] bg-blue-50/60 dark:bg-blue-950/40'
+                  : 'text-[#111827] dark:text-gray-300 hover:text-[#23469F] dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
+              }`}
+            >
+              Home
+            </Link>
+
             {/* SERVICES DROPDOWN */}
             <div
               className="relative"
@@ -206,6 +217,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             </div>
 
             <div className="border-t border-gray-100 dark:border-white/10 pt-4 space-y-2">
+              <Link
+                to="/"
+                className="block px-3 py-2 rounded-lg text-base font-semibold text-[#101A35] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
+              >
+                Home
+              </Link>
               <Link
                 to="/our-work"
                 className="block px-3 py-2 rounded-lg text-base font-semibold text-[#101A35] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
