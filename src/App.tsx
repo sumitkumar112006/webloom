@@ -15,6 +15,7 @@ import { PricingPage } from './pages/PricingPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { VideoShowcasePage } from './pages/VideoShowcasePage';
+import { ReviewsPage } from './pages/ReviewsPage';
 
 // Scroll to top helper
 function ScrollToTop() {
@@ -63,6 +64,8 @@ export const App: React.FC = () => {
           <Route path="/video-showcase" element={<VideoShowcasePage onOpenContact={handleOpenContact} />} />
           <Route path="/showreel" element={<VideoShowcasePage onOpenContact={handleOpenContact} />} />
           <Route path="/pricing" element={<PricingPage onOpenContact={handleOpenContact} />} />
+          <Route path="/reviews" element={<ReviewsPage onOpenContact={handleOpenContact} />} />
+          <Route path="/clients" element={<ReviewsPage onOpenContact={handleOpenContact} />} />
           <Route path="/about" element={<AboutPage onOpenContact={handleOpenContact} />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* Catch-all fallback */}

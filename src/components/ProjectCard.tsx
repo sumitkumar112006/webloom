@@ -31,13 +31,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         />
 
         {/* OVERLAY WITH ACCENT BADGE */}
-        <div className="absolute top-4 left-4 flex items-center gap-2">
+        <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
           <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-black/60 text-white backdrop-blur-md">
             {project.categoryLabel}
           </span>
           <span className="px-2 py-0.5 rounded text-[10px] font-mono text-gray-300 bg-black/40 backdrop-blur">
             {project.year}
           </span>
+          {project.liveUrl && (
+            <span className="px-2 py-0.5 rounded text-[10px] font-mono text-emerald-300 bg-emerald-950/70 border border-emerald-500/30 backdrop-blur">
+              Live ↗
+            </span>
+          )}
         </div>
 
         <div className="absolute top-4 right-4 h-9 w-9 rounded-full bg-white/90 text-[#101A35] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">

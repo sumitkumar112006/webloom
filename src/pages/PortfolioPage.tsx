@@ -31,14 +31,24 @@ export const PortfolioPage: React.FC = () => {
             </p>
           </div>
 
-          <Link
-            to="/video-showcase"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white dark:bg-[#111C33] text-[#23469F] dark:text-[#B9DFF2] border border-[#23469F]/30 dark:border-[#B9DFF2]/30 hover:bg-blue-50 dark:hover:bg-[#162340] shadow-sm transition-all shrink-0"
-          >
-            <Film className="h-4 w-4" />
-            <span>Video Showcase</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Link
+              to="/reviews"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200/80 dark:border-amber-800/40 hover:bg-amber-100 dark:hover:bg-amber-900/40 shadow-sm transition-all"
+            >
+              <span>50+ Projects & 5.0 ★ Rating</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+
+            <Link
+              to="/video-showcase"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white dark:bg-[#111C33] text-[#23469F] dark:text-[#B9DFF2] border border-[#23469F]/30 dark:border-[#B9DFF2]/30 hover:bg-blue-50 dark:hover:bg-[#162340] shadow-sm transition-all"
+            >
+              <Film className="h-4 w-4" />
+              <span>Video Showcase</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
 
         {/* 10 — CATEGORY FILTER BUTTONS */}
