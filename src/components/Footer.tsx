@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <Link
               to="/"
-              className="inline-flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg logo-shimmer p-0.5"
+              className="inline-flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-0.5"
               aria-label="Webloom Home"
             >
               <img

@@ -38,10 +38,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     >
       <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex items-center justify-between h-20">
-          {/* LOGO: Profile.png + WEBLOOM TEXT WITH SHIMMER EFFECT */}
+          {/* LOGO: Profile.png + WEBLOOM TEXT */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 sm:gap-3 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-0.5 sm:p-1 group logo-shimmer"
+            className="flex items-center gap-2.5 sm:gap-3 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-0.5 sm:p-1 group"
             aria-label="Webloom Home"
           >
             <img

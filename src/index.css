@@ -73,69 +73,7 @@
   background: rgba(17, 28, 51, 0.85);
 }
 
-/* Logo Shimmer / Simmer Effect (Applied exclusively to Logo) */
-@keyframes logo-shimmer-sweep {
-  0% {
-    transform: translateX(-180%) skewX(-20deg);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.9;
-  }
-  60% {
-    opacity: 0.9;
-  }
-  85%, 100% {
-    transform: translateX(260%) skewX(-20deg);
-    opacity: 0;
-  }
-}
-
-.logo-shimmer {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 0.5rem;
-}
-
-.logo-shimmer::after {
-  content: '';
-  position: absolute;
-  top: -15%;
-  left: 0;
-  width: 55%;
-  height: 130%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 20%,
-    rgba(255, 255, 255, 0.85) 50%,
-    rgba(96, 165, 250, 0.65) 75%,
-    transparent 100%
-  );
-  transform: translateX(-180%) skewX(-20deg);
-  pointer-events: none;
-  z-index: 10;
-  animation: logo-shimmer-sweep 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.dark .logo-shimmer::after {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 20%,
-    rgba(185, 223, 242, 0.85) 50%,
-    rgba(147, 197, 253, 0.75) 75%,
-    transparent 100%
-  );
-}
-
-.logo-shimmer:hover::after {
-  animation: logo-shimmer-sweep 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-}
-
-/* Card Hover Elevation (Shimmer removed from hover per user request) */
+/* Card Hover Elevation */
 .card-hover {
   position: relative;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
