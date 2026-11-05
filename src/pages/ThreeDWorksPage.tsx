@@ -6,7 +6,7 @@ import { FAQAccordion } from '../components/FAQAccordion';
 import { servicesData } from '../data/servicesData';
 
 interface ThreeDWorksPageProps {
-  onOpenContact: (service?: string) => void;
+  onOpenContact: (service?: string, prompt?: string, source?: string) => void;
 }
 
 export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact }) => {
@@ -82,7 +82,13 @@ export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact 
             <div className="flex flex-wrap gap-4 pt-2">
               <button
                 type="button"
-                onClick={() => onOpenContact('3D Works & CGI')}
+                onClick={() =>
+                  onOpenContact(
+                    '3D Works, Motion & CGI',
+                    'Request for custom 3D modeling, animation, or CAD drafting quote',
+                    '3D Works Hero'
+                  )
+                }
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#2b54bc] transition-all shadow-lg"
               >
                 <span>Request Custom 3D Quote</span>
@@ -144,7 +150,13 @@ export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact 
                 </div>
                 <button
                   type="button"
-                  onClick={() => onOpenContact(`3D Work Inquiry: ${item.title}`)}
+                  onClick={() =>
+                    onOpenContact(
+                      '3D Works, Motion & CGI',
+                      `Project Reference: ${item.title} (${item.category})`,
+                      '3D Works Gallery Item'
+                    )
+                  }
                   className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 hover:bg-[#23469F] text-white transition-colors"
                 >
                   Inquire
@@ -186,7 +198,13 @@ export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact 
           <div className="pt-6">
             <button
               type="button"
-              onClick={() => onOpenContact('3D Works — Custom Quote Request')}
+              onClick={() =>
+                onOpenContact(
+                  '3D Works, Motion & CGI',
+                  'Request for Custom Milestone-Based 3D Engagement',
+                  '3D Works Custom Quote'
+                )
+              }
               className="px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#2b54bc] transition-all shadow-lg"
             >
               Request Custom 3D Quote

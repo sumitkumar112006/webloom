@@ -62,27 +62,71 @@
   background: rgba(17, 28, 51, 0.85);
 }
 
-/* Card Shimmer Hover Effect */
-@keyframes card-shimmer {
+/* Logo Shimmer / Simmer Effect (Applied exclusively to Logo) */
+@keyframes logo-shimmer-sweep {
   0% {
-    transform: translateX(-160%) skewX(-20deg);
+    transform: translateX(-180%) skewX(-20deg);
     opacity: 0;
   }
   20% {
-    opacity: 1;
+    opacity: 0.9;
   }
-  80% {
-    opacity: 1;
+  60% {
+    opacity: 0.9;
   }
-  100% {
-    transform: translateX(220%) skewX(-20deg);
+  85%, 100% {
+    transform: translateX(260%) skewX(-20deg);
     opacity: 0;
   }
 }
 
+.logo-shimmer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.logo-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 55%;
+  height: 130%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(96, 165, 250, 0.65) 75%,
+    transparent 100%
+  );
+  transform: translateX(-180%) skewX(-20deg);
+  pointer-events: none;
+  z-index: 10;
+  animation: logo-shimmer-sweep 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.dark .logo-shimmer::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(185, 223, 242, 0.85) 50%,
+    rgba(147, 197, 253, 0.75) 75%,
+    transparent 100%
+  );
+}
+
+.logo-shimmer:hover::after {
+  animation: logo-shimmer-sweep 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* Card Hover Elevation (Shimmer removed from hover per user request) */
 .card-hover {
   position: relative;
-  overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.25s ease;
@@ -90,51 +134,11 @@
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 35px -10px rgba(35, 70, 159, 0.14), 0 0 0 1px rgba(35, 70, 159, 0.15);
+  box-shadow: 0 16px 30px -10px rgba(35, 70, 159, 0.12), 0 0 0 1px rgba(35, 70, 159, 0.1);
 }
 
 .dark .card-hover:hover {
-  box-shadow: 0 20px 38px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(185, 223, 242, 0.22);
-}
-
-/* Shimmer beam element for .card-hover and .shimmer-sweep */
-.card-hover::before,
-.shimmer-sweep {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 65%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 20%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(185, 223, 242, 0.45) 65%,
-    transparent 100%
-  );
-  transform: translateX(-160%) skewX(-20deg);
-  pointer-events: none;
-  z-index: 25;
-  opacity: 0;
-}
-
-.dark .card-hover::before,
-.dark .shimmer-sweep {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.05) 20%,
-    rgba(185, 223, 242, 0.35) 50%,
-    rgba(35, 70, 159, 0.3) 70%,
-    transparent 100%
-  );
-}
-
-.card-hover:hover::before,
-.card-hover-pricing:hover .shimmer-sweep {
-  animation: card-shimmer 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(185, 223, 242, 0.18);
 }
 
 .card-hover-pricing {
@@ -146,11 +150,16 @@
 
 .card-hover-pricing:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 35px -10px rgba(35, 70, 159, 0.14), 0 0 0 1px rgba(35, 70, 159, 0.15);
+  box-shadow: 0 16px 30px -10px rgba(35, 70, 159, 0.12), 0 0 0 1px rgba(35, 70, 159, 0.1);
 }
 
 .dark .card-hover-pricing:hover {
-  box-shadow: 0 20px 38px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(185, 223, 242, 0.22);
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(185, 223, 242, 0.18);
+}
+
+/* Shimmer sweep placeholder kept inert for backward compatibility */
+.shimmer-sweep {
+  display: none;
 }
 
 /* Diagonal accent subtle lines representing Webloom's geometric identity */

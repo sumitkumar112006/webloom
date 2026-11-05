@@ -5,32 +5,63 @@ import { companyData } from '../data/companyData';
 import { ProcessTimeline } from '../components/ProcessTimeline';
 
 interface AboutPageProps {
-  onOpenContact: () => void;
+  onOpenContact: (serviceName?: string, promptText?: string, sourceName?: string) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenContact }) => {
   return (
     <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors">
-      {/* 16 — HERO WITH AUTHENTIC CORE POSITIONING */}
+      {/* 16 — HERO WITH AUTHENTIC CORE POSITIONING & PROFILE */}
       <section className="bg-white dark:bg-[#0B1120] border-b border-gray-100 dark:border-white/10 pt-14 pb-20 lg:pt-20 lg:pb-28 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 border border-blue-100 dark:border-blue-800/40">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>About Webloom Studio</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 border border-blue-100 dark:border-blue-800/40">
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>About Webloom Studio</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight leading-tight">
+                A Digital Partner Built on Craft, Utility and Authenticity.
+              </h1>
+
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-200 leading-relaxed font-medium">
+                “{companyData.coreBelief}”
+              </p>
+
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                Based in Partapur, Meerut, Webloom operates across digital design, software development, creative media, and business process automation. We build tools and brand presences that serve genuine business objectives rather than temporary vanity trends.
+              </p>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight leading-tight">
-              A Digital Partner Built on Craft, Utility and Authenticity.
-            </h1>
+            {/* Main Profile Showcase Card */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative group max-w-sm w-full">
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600 to-cyan-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity" />
+                <div className="relative rounded-3xl bg-white dark:bg-[#111C33] p-4 sm:p-5 border border-gray-200/80 dark:border-white/10 shadow-xl overflow-hidden card-hover">
+                  <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 mb-4">
+                    <img
+                      src="/assets/Profile.png"
+                      alt="Webloom Studio Leadership"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Founder & Studio Lead</span>
+                    </div>
+                  </div>
 
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-200 leading-relaxed font-medium">
-              “{companyData.coreBelief}”
-            </p>
-
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-              Based in Partapur, Meerut, Webloom operates across digital design, software development, creative media, and business process automation. We build tools and brand presences that serve genuine business objectives rather than temporary vanity trends.
-            </p>
+                  <div className="space-y-1 text-left">
+                    <h3 className="text-base font-bold text-[#101A35] dark:text-white font-display">
+                      Founder-Led Engineering
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Direct strategic planning, clean architecture, and hands-on execution for every engagement.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -152,7 +183,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenContact }) => {
             <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
               <button
                 type="button"
-                onClick={onOpenContact}
+                onClick={() => onOpenContact('Web Services', 'Discussion initiated from About Webloom page', 'About Page CTA')}
                 className="px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] transition-all shadow-md text-center"
               >
                 Start a Project

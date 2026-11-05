@@ -5,7 +5,7 @@ import { FAQAccordion } from '../components/FAQAccordion';
 import { servicesData } from '../data/servicesData';
 
 interface SocialMediaPageProps {
-  onOpenContact: (plan?: string) => void;
+  onOpenContact: (service?: string, prompt?: string, source?: string) => void;
 }
 
 export const SocialMediaPage: React.FC<SocialMediaPageProps> = ({ onOpenContact }) => {
@@ -61,7 +61,13 @@ export const SocialMediaPage: React.FC<SocialMediaPageProps> = ({ onOpenContact 
             <div className="pt-2 flex flex-wrap gap-4">
               <button
                 type="button"
-                onClick={() => onOpenContact('Social Media Management')}
+                onClick={() =>
+                  onOpenContact(
+                    'Social Media & Reels',
+                    'Request for Social Media & Reels content production scope',
+                    'Social Media Hero'
+                  )
+                }
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] shadow-sm transition-all"
               >
                 <span>Request Social Media Scope</span>
@@ -145,7 +151,13 @@ export const SocialMediaPage: React.FC<SocialMediaPageProps> = ({ onOpenContact 
               <PricingCard
                 key={pkg.id}
                 packageData={pkg}
-                onSelectPackage={(pkgName) => onOpenContact(`Social Media — ${pkgName}`)}
+                onSelectPackage={(pkgName) =>
+                  onOpenContact(
+                    'Social Media & Reels',
+                    `Selected Plan: ${pkgName}`,
+                    'Social Media Plans Grid'
+                  )
+                }
               />
             ))}
           </div>

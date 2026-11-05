@@ -10,7 +10,7 @@ import { projectsData } from '../data/projectsData';
 import { companyData } from '../data/companyData';
 
 interface HomePageProps {
-  onOpenContact: () => void;
+  onOpenContact: (serviceName?: string, promptText?: string, sourceName?: string) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
@@ -63,22 +63,36 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
       </section>
 
       {/* 16 — AUTHENTIC WEBLOOM POSITIONING */}
-      <section className="py-20 bg-[#101A35] text-white">
+      <section className="py-20 bg-slate-50 dark:bg-[#0A1022] text-[#101A35] dark:text-white border-y border-gray-200/80 dark:border-white/10 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B9DFF2]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#23469F] dark:text-[#B9DFF2]">
               The Webloom Philosophy
             </span>
-            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug font-display text-white">
+            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug font-display text-[#101A35] dark:text-white">
               “At Webloom, we believe a website should be more than just a digital business card. It should be an experience, a communication tool, and a driver of growth.”
             </blockquote>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
               We bring together thoughtful web design, development, UI/UX, branding, and digital marketing to help businesses build a stronger and more memorable online identity.
             </p>
-            <div className="pt-4 flex flex-wrap justify-center gap-4">
+
+            {/* Founder Profile Badge */}
+            <div className="pt-2 flex items-center justify-center gap-3.5">
+              <img
+                src="/assets/Profile.png"
+                alt="Founder & Principal"
+                className="h-12 w-12 rounded-full object-cover border-2 border-[#23469F]/30 dark:border-[#B9DFF2]/50 shadow-md"
+              />
+              <div className="text-left">
+                <p className="text-xs font-bold text-[#101A35] dark:text-white uppercase tracking-wider">Webloom Leadership</p>
+                <p className="text-[11px] text-[#23469F] dark:text-[#B9DFF2] font-medium">Founder & Lead Technical Strategist</p>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap justify-center gap-4">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-[#101A35] hover:bg-[#B9DFF2] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] dark:bg-white dark:text-[#101A35] dark:hover:bg-[#B9DFF2] shadow-sm transition-colors"
               >
                 <span>Read Mission & Vision</span>
                 <ArrowRight className="h-4 w-4" />
@@ -137,7 +151,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
             </div>
 
             <div className="lg:col-span-7">
-              <ContactForm />
+              <ContactForm source="Homepage Contact Section" />
             </div>
           </div>
         </div>

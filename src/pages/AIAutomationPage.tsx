@@ -6,7 +6,7 @@ import { FAQAccordion } from '../components/FAQAccordion';
 import { servicesData } from '../data/servicesData';
 
 interface AIAutomationPageProps {
-  onOpenContact: (plan?: string) => void;
+  onOpenContact: (service?: string, prompt?: string, source?: string) => void;
 }
 
 export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContact }) => {
@@ -57,7 +57,13 @@ export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContac
             <div className="pt-2 flex flex-wrap gap-4">
               <button
                 type="button"
-                onClick={() => onOpenContact('AI Automation & Workflows')}
+                onClick={() =>
+                  onOpenContact(
+                    'AI Automation',
+                    'Request for full AI Automation audit & workflow assessment',
+                    'AI Automation Hero'
+                  )
+                }
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] shadow-sm transition-all"
               >
                 <span>Request Automation Audit</span>
@@ -143,7 +149,13 @@ export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContac
             <PricingCard
               key={pkg.id}
               packageData={pkg}
-              onSelectPackage={(pkgName) => onOpenContact(`AI Automation — ${pkgName}`)}
+              onSelectPackage={(pkgName) =>
+                onOpenContact(
+                  'AI Automation',
+                  `Selected AI Package: ${pkgName}`,
+                  'AI Automation Package Grid'
+                )
+              }
             />
           ))}
         </div>

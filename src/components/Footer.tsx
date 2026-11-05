@@ -10,10 +10,16 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/10">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="inline-block">
-              <span className="text-2xl font-extrabold tracking-tight text-white font-display">
-                WEB<span className="text-[#B9DFF2]">LOOM</span>
-              </span>
+            <Link
+              to="/"
+              className="inline-block focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg logo-shimmer"
+              aria-label="Webloom Home"
+            >
+              <img
+                src="/assets/Logo_dark.png"
+                alt="Webloom"
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-gray-300 max-w-sm leading-relaxed">
               {companyData.subheadline}

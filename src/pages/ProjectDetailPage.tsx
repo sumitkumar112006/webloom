@@ -5,7 +5,7 @@ import { projectsData } from '../data/projectsData';
 import { MediaViewer } from '../components/MediaViewer';
 
 interface ProjectDetailPageProps {
-  onOpenContact: (projectTitle?: string) => void;
+  onOpenContact: (serviceName?: string, promptText?: string, sourceName?: string) => void;
 }
 
 export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ onOpenContact }) => {
@@ -199,7 +199,13 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ onOpenCont
               </p>
               <button
                 type="button"
-                onClick={() => onOpenContact(`Inquiry based on case study: ${project.title}`)}
+                onClick={() =>
+                  onOpenContact(
+                    'Web Services',
+                    `Inquiry based on case study: ${project.title} (${project.category})`,
+                    `Case Study: ${project.title}`
+                  )
+                }
                 className="w-full py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] transition-colors"
               >
                 Inquire About Similar Project

@@ -5,7 +5,7 @@ import { MegaMenu } from './MegaMenu';
 import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
-  onOpenContact: () => void;
+  onOpenContact: (service?: string, prompt?: string, source?: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
@@ -38,14 +38,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* LOGO */}
-          <Link to="/" className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-1">
-            <span className="text-2xl font-extrabold tracking-tight text-[#101A35] dark:text-white font-display">
-              WEB<span className="text-[#23469F] dark:text-[#B9DFF2]">LOOM</span>
-            </span>
-            <span className="hidden sm:inline-block text-[10px] font-bold uppercase tracking-widest text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded">
-              STUDIO
-            </span>
+          {/* LOGO WITH EXCLUSIVE SHIMMER EFFECT */}
+          <Link
+            to="/"
+            className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-0.5 sm:p-1 group logo-shimmer"
+            aria-label="Webloom Home"
+          >
+            <img
+              src="/assets/Logo_light.png"
+              alt="Webloom"
+              className="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain dark:hidden transition-opacity"
+            />
+            <img
+              src="/assets/Logo_dark.png"
+              alt="Webloom"
+              className="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain hidden dark:block transition-opacity"
+            />
           </Link>
 
           {/* DESKTOP NAVIGATION */}
@@ -124,10 +132,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <ThemeToggle />
             <button
               type="button"
-              onClick={onOpenContact}
+              onClick={() => onOpenContact('Web Services', '', 'Header Connect')}
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg bg-[#23469F] text-white hover:bg-[#1b367c] active:scale-[0.98] transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[#23469F] focus:ring-offset-2"
             >
-              <span>Start a Project</span>
+              <span>Connect</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -135,6 +143,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           {/* MOBILE CONTROLS & THEME TOGGLE */}
           <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => onOpenContact('Web Services', '', 'Header Connect (Mobile)')}
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#23469F] text-white hover:bg-[#1b367c] active:scale-[0.98] transition-all shadow-sm"
+            >
+              Connect
+            </button>
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -231,11 +246,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               type="button"
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                onOpenContact();
+                onOpenContact('Web Services', '', 'Header Connect (Mobile Drawer)');
               }}
               className="w-full py-3.5 text-center text-sm font-semibold rounded-lg bg-[#23469F] text-white hover:bg-[#1b367c] transition-colors"
             >
-              Start a Project
+              Connect
             </button>
             <p className="text-xs text-center text-gray-500 dark:text-gray-400">
               Partapur, Meerut • info.webloom4u@gmail.com

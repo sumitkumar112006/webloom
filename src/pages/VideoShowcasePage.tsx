@@ -5,7 +5,7 @@ import { videoShowcaseList } from '../data/videoShowcaseData';
 import { DriveVideoPlayer } from '../components/DriveVideoPlayer';
 
 interface VideoShowcasePageProps {
-  onOpenContact: (topic?: string) => void;
+  onOpenContact: (serviceName?: string, promptText?: string, sourceName?: string) => void;
 }
 
 export const VideoShowcasePage: React.FC<VideoShowcasePageProps> = ({ onOpenContact }) => {
@@ -64,7 +64,7 @@ export const VideoShowcasePage: React.FC<VideoShowcasePageProps> = ({ onOpenCont
             <span>•</span>
             <span>Google Drive Embedded Player</span>
             <span>•</span>
-            <span>16:9 HD Quality</span>
+            <span>Responsive Mobile & Desktop Player</span>
           </div>
         </div>
 
@@ -97,7 +97,13 @@ export const VideoShowcasePage: React.FC<VideoShowcasePageProps> = ({ onOpenCont
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end justify-center">
               <button
                 type="button"
-                onClick={() => onOpenContact('Video Showcase & 3D Animation')}
+                onClick={() =>
+                  onOpenContact(
+                    '3D Works, Motion & CGI',
+                    'Inquiry originating from Video Showcase & 3D Animation showreel',
+                    'Video Showcase Page'
+                  )
+                }
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] transition-all shadow-md w-full sm:w-auto"
               >
                 <span>Start a Project</span>

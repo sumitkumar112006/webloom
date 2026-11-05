@@ -30,11 +30,15 @@ function ScrollToTop() {
 export const App: React.FC = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [modalService, setModalService] = useState('Web Services');
+  const [modalPrompt, setModalPrompt] = useState('');
+  const [modalSource, setModalSource] = useState('Header Connect');
 
-  const handleOpenContact = (serviceName?: string) => {
+  const handleOpenContact = (serviceName?: string, promptText?: string, sourceName?: string) => {
     if (serviceName) {
       setModalService(serviceName);
     }
+    setModalPrompt(promptText || '');
+    setModalSource(sourceName || (serviceName ? `Website — ${serviceName}` : 'Header Connect'));
     setIsContactModalOpen(true);
   };
 
@@ -43,7 +47,7 @@ export const App: React.FC = () => {
       <ScrollToTop />
       
       {/* Sticky Navigation */}
-      <Navbar onOpenContact={() => handleOpenContact()} />
+      <Navbar onOpenContact={handleOpenContact} />
 
       {/* Main Content Viewport */}
       <main className="flex-grow">
@@ -74,6 +78,8 @@ export const App: React.FC = () => {
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
         initialService={modalService}
+        initialPrompt={modalPrompt}
+        source={modalSource}
       />
     </div>
   );

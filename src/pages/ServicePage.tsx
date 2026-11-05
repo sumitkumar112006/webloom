@@ -8,7 +8,7 @@ import { ProjectCard } from '../components/ProjectCard';
 import { FAQAccordion } from '../components/FAQAccordion';
 
 interface ServicePageProps {
-  onOpenContact: (serviceName?: string) => void;
+  onOpenContact: (serviceName?: string, promptText?: string, sourceName?: string) => void;
 }
 
 export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
@@ -53,7 +53,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
             <div className="pt-2 flex flex-wrap gap-4">
               <button
                 type="button"
-                onClick={() => onOpenContact(service.title)}
+                onClick={() => onOpenContact(service.title, `Inquiry for ${service.title}`, `Service Hero: ${service.slug}`)}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] shadow-sm active:scale-[0.98] transition-all"
               >
                 <span>Inquire About {service.title}</span>
@@ -231,7 +231,13 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
               <PricingCard
                 key={pkg.id}
                 packageData={pkg}
-                onSelectPackage={(pkgName) => onOpenContact(`${service.title} — ${pkgName}`)}
+                onSelectPackage={(pkgName) =>
+                  onOpenContact(
+                    service.title,
+                    `Selected Package: ${pkgName} (${service.title})`,
+                    `Service Package Grid: ${service.slug}`
+                  )
+                }
               />
             ))}
           </div>
@@ -260,7 +266,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
           <div className="pt-2 flex flex-wrap justify-center gap-4">
             <button
               type="button"
-              onClick={() => onOpenContact(service.title)}
+              onClick={() => onOpenContact(service.title, `Let's discuss ${service.title}`, `Service Bottom CTA: ${service.slug}`)}
               className="px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] transition-all shadow-md"
             >
               Start My Project

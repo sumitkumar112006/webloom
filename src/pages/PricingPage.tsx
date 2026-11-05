@@ -5,7 +5,7 @@ import { PricingCard } from '../components/PricingCard';
 import { FAQAccordion } from '../components/FAQAccordion';
 
 interface PricingPageProps {
-  onOpenContact: (plan?: string) => void;
+  onOpenContact: (service?: string, prompt?: string, source?: string) => void;
 }
 
 export const PricingPage: React.FC<PricingPageProps> = ({ onOpenContact }) => {
@@ -81,7 +81,13 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenContact }) => {
             <PricingCard
               key={pkg.id}
               packageData={pkg}
-              onSelectPackage={(pkgName) => onOpenContact(`${currentService.title} — ${pkgName}`)}
+              onSelectPackage={(pkgName) =>
+                onOpenContact(
+                  currentService.title,
+                  `Selected Tier: ${pkgName} (${currentService.title})`,
+                  'Pricing Package Grid'
+                )
+              }
             />
           ))}
         </div>

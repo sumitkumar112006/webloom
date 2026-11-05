@@ -24,9 +24,21 @@ export const ContactPage: React.FC = () => {
           {/* CONTACT INFO SIDEBAR */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white dark:bg-[#111C33] rounded-2xl p-7 border border-gray-200/80 dark:border-white/10 shadow-sm space-y-4">
-              <h3 className="text-base font-bold text-[#101A35] dark:text-white font-display">
-                Studio Location & Inquiries
-              </h3>
+              <div className="flex items-center gap-3.5 pb-4 border-b border-gray-100 dark:border-white/10">
+                <img
+                  src="/assets/Profile.png"
+                  alt="Studio Principal"
+                  className="h-12 w-12 rounded-xl object-cover border border-gray-200 dark:border-white/15 shadow-sm shrink-0"
+                />
+                <div>
+                  <h3 className="text-sm font-bold text-[#101A35] dark:text-white font-display">
+                    Direct Founder Consultation
+                  </h3>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                    Lead Technical Strategist & Principal
+                  </p>
+                </div>
+              </div>
 
               <div className="space-y-3.5 text-xs text-gray-700 dark:text-gray-300">
                 <div className="flex items-start gap-3">
@@ -83,7 +95,7 @@ export const ContactPage: React.FC = () => {
 
           {/* CONTACT FORM */}
           <div className="lg:col-span-7">
-            <ContactForm />
+            <ContactForm source="Contact Page" />
           </div>
         </div>
       </div>
