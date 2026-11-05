@@ -22,7 +22,7 @@ export const VideoShowcasePage: React.FC<VideoShowcasePageProps> = ({ onOpenCont
 
   return (
     <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] py-12 sm:py-16 lg:py-20 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 space-y-12">
         {/* TOP BREADCRUMB / BACK LINK */}
         <div className="flex items-center justify-between">
           <Link

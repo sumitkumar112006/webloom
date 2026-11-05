@@ -6,7 +6,7 @@ import { companyData } from '../data/companyData';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#101A35] text-white border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/10">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">

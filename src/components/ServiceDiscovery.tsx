@@ -114,9 +114,9 @@ export const ServiceDiscovery: React.FC = () => {
 
   return (
     <section id="service-matrix" className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] border-y border-gray-200/60 dark:border-white/10 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         {/* SECTION HEADER */}
-        <div className="max-w-3xl mb-12 lg:mb-16">
+        <div className="max-w-4xl mb-12 lg:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-100/60 dark:bg-blue-900/40">
               <Sparkles className="h-3.5 w-3.5" />

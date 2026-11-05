@@ -26,7 +26,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
 
       {/* 10 — FEATURED EDITORIAL WORK GRID */}
       <section className="py-20 lg:py-28 bg-white dark:bg-[#0B1120] transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-16 gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
@@ -69,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
 
       {/* 16 — AUTHENTIC WEBLOOM POSITIONING */}
       <section className="py-20 bg-slate-50 dark:bg-[#0A1022] text-[#101A35] dark:text-white border-y border-gray-200/80 dark:border-white/10 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-[#23469F] dark:text-[#B9DFF2]">
               The Webloom Philosophy
@@ -124,7 +124,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
 
       {/* 18 — CONTACT & PROJECT INQUIRY */}
       <section className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors" id="contact">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
               <div className="flex flex-wrap items-center gap-3">

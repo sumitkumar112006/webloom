@@ -58,7 +58,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
       className="absolute top-full left-0 w-full bg-white dark:bg-[#0E1626] border-b border-gray-200/80 dark:border-white/10 shadow-2xl py-8 px-4 transition-all duration-200 z-40"
       onMouseLeave={onClose}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         <div className="flex items-center justify-between pb-5 mb-6 border-b border-gray-100 dark:border-white/10">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2]">

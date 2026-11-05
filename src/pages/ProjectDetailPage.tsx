@@ -20,7 +20,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ onOpenCont
 
   return (
     <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] py-12 sm:py-16 transition-colors">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 space-y-10">
         {/* BACK NAVIGATION */}
         <div>
           <Link
