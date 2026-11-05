@@ -124,13 +124,14 @@ export const ServiceDiscovery: React.FC = () => {
       <div className="absolute bottom-0 right-0 w-[550px] h-[450px] bg-gradient-to-tl from-[#FEF08A]/45 via-[#FDE68A]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-10 left-10 w-[380px] h-[380px] bg-[#FEF9C3]/50 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      {/* ENTIRE WIDTH CONTAINER (No max-w-7xl restriction, full edge-to-edge) */}
+      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-start">
           
           {/* LEFT COLUMN: EDITORIAL ANCHOR (Matching FlowStudio reference) */}
           <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
             <div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] tracking-[-0.03em] font-display leading-[1.06]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#0F172A] tracking-[-0.03em] font-display leading-[1.04]">
                 Our <br />
                 Services
               </h2>
@@ -184,7 +185,7 @@ export const ServiceDiscovery: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: SLEEK EDITORIAL ROWS WITH BESPOKE ICON CRAFT */}
+          {/* RIGHT COLUMN: SLEEK FULL-WIDTH EDITORIAL ROWS WITH BESPOKE ICON CRAFT */}
           <div className="lg:col-span-8 divide-y divide-slate-200/80">
             {services.map((item) => {
               const Icon = item.icon;
@@ -196,14 +197,14 @@ export const ServiceDiscovery: React.FC = () => {
                   to={item.link}
                   onMouseEnter={() => setHoveredId(item.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  className={`group flex flex-col sm:flex-row sm:items-center justify-between py-6 sm:py-7 px-4 -mx-4 rounded-2xl transition-all duration-200 cursor-pointer ${
+                  className={`group grid grid-cols-12 items-center py-6 sm:py-7 px-4 -mx-4 rounded-2xl transition-all duration-200 cursor-pointer ${
                     isHovered
                       ? 'bg-[#FEFCE8]/80 shadow-[0_6px_20px_-6px_rgba(251,191,36,0.22)]'
                       : 'hover:bg-[#FEFCE8]/40'
                   }`}
                 >
-                  {/* Left: Number + Bespoke Icon + Title */}
-                  <div className="flex items-center gap-4 sm:gap-6">
+                  {/* Left: Number + Icon + Title (Col 1 to 5) */}
+                  <div className="col-span-12 sm:col-span-5 flex items-center gap-4 sm:gap-6">
                     {/* Editorial Number */}
                     <span className="text-sm font-mono font-semibold text-slate-400 group-hover:text-amber-800 transition-colors w-6">
                       {item.number}
@@ -226,13 +227,15 @@ export const ServiceDiscovery: React.FC = () => {
                     </h3>
                   </div>
 
-                  {/* Right: Tagline / Description & Directional Arrow */}
-                  <div className="flex items-center justify-between sm:justify-end gap-5 mt-3 sm:mt-0 pl-16 sm:pl-0">
+                  {/* Center: Description (Col 6 to 11) */}
+                  <div className="col-span-10 sm:col-span-6 mt-2 sm:mt-0 pl-16 sm:pl-0">
                     <span className="text-xs sm:text-sm text-slate-500 group-hover:text-slate-800 font-normal transition-colors">
                       {item.tagline}
                     </span>
+                  </div>
 
-                    {/* Interactive Arrow Button */}
+                  {/* Right: Directional Arrow (Col 12) */}
+                  <div className="col-span-2 sm:col-span-1 flex justify-end">
                     <div
                       className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${
                         isHovered

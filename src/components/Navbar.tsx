@@ -47,23 +47,38 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       {/* 3. SUBTLE PRISMATIC REFLECTION GRADIENT */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/20 to-white/40 pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* ENTIRE WIDTH CONTAINER (No max-w-7xl restriction, full edge-to-edge) */}
+      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20">
         <div className="flex items-center justify-between h-20">
-          {/* LOGO WITH EXCLUSIVE SHIMMER EFFECT */}
+          {/* LOGO WITH EXCLUSIVE SHIMMER EFFECT & BRAND SYMBOL */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-lg p-0.5 sm:p-1 group logo-shimmer"
+            className="flex items-center gap-2.5 focus:outline-none rounded-lg p-0.5 sm:p-1 group logo-shimmer"
             aria-label="Webloom Home"
           >
             <img
               src="/assets/Logo_light.png"
               alt="Webloom"
-              className="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
             />
+            <span className="text-xl sm:text-2xl font-extrabold text-[#0F172A] font-display tracking-tight flex items-center">
+              Webloom<span className="text-xs font-mono font-bold align-super ml-0.5 text-slate-400">®</span>
+            </span>
           </Link>
 
           {/* DESKTOP NAVIGATION */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-3">
+            <Link
+              to="/our-work"
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all ${
+                location.pathname === '/our-work' || location.pathname.startsWith('/our-work/')
+                  ? 'text-[#0F172A] bg-white/90 shadow-xs border border-white'
+                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70'
+              }`}
+            >
+              Work
+            </Link>
+
             {/* SERVICES DROPDOWN */}
             <div
               className="relative"
@@ -75,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-full transition-all ${
                   isServicesOpen || location.pathname.startsWith('/services')
                     ? 'text-[#0F172A] bg-white/90 shadow-xs border border-white'
-                    : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70 hover:shadow-xs hover:border hover:border-white/80'
+                    : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70'
                 }`}
                 aria-expanded={isServicesOpen}
               >
@@ -89,14 +104,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             </div>
 
             <Link
-              to="/our-work"
+              to="/about"
               className={`px-4 py-2 text-sm font-semibold rounded-full transition-all ${
-                location.pathname === '/our-work' || location.pathname.startsWith('/our-work/')
+                location.pathname === '/about'
                   ? 'text-[#0F172A] bg-white/90 shadow-xs border border-white'
-                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70 hover:shadow-xs hover:border hover:border-white/80'
+                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70'
               }`}
             >
-              Work
+              About
             </Link>
 
             <Link
@@ -104,63 +119,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               className={`px-4 py-2 text-sm font-semibold rounded-full transition-all ${
                 location.pathname === '/video-showcase' || location.pathname === '/showreel'
                   ? 'text-[#0F172A] bg-white/90 shadow-xs border border-white'
-                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70 hover:shadow-xs hover:border hover:border-white/80'
+                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70'
               }`}
             >
-              Video Showcase
-            </Link>
-
-            <Link
-              to="/pricing"
-              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all ${
-                location.pathname === '/pricing'
-                  ? 'text-[#0F172A] bg-white/90 shadow-xs border border-white'
-                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70 hover:shadow-xs hover:border hover:border-white/80'
-              }`}
-            >
-              Pricing
-            </Link>
-
-            <Link
-              to="/about"
-              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all ${
-                location.pathname === '/about'
-                  ? 'text-[#0F172A] bg-white/90 shadow-xs border border-white'
-                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-white/70 hover:shadow-xs hover:border hover:border-white/80'
-              }`}
-            >
-              About
+              Showreel
             </Link>
           </nav>
 
-          {/* DESKTOP CTA BUTTON */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* DESKTOP CTA BUTTON & HAMBURGER (Exact FlowStudio layout: [ Let's talk ↗ ]  [ ≡ ]) */}
+          <div className="flex items-center gap-3">
             <button
               type="button"
-              onClick={() => onOpenContact('Web Services', '', 'Header Connect')}
-              className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold rounded-full bg-[#0F172A] text-white hover:bg-slate-800 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(0,0,0,0.12)] border border-slate-800"
+              onClick={() => onOpenContact('Web Services', '', 'Header Let\'s Talk')}
+              className="inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 text-sm font-bold rounded-full bg-[#0F172A] text-white hover:bg-slate-800 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(0,0,0,0.12)] border border-slate-800"
             >
-              <span>Connect</span>
-              <ArrowRight className="h-4 w-4" />
+              <span>Let's talk</span>
+              <ArrowRight className="h-4 w-4 rotate-[-45deg]" />
             </button>
-          </div>
 
-          {/* MOBILE CONTROLS */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              type="button"
-              onClick={() => onOpenContact('Web Services', '', 'Header Connect (Mobile)')}
-              className="px-4 py-1.5 text-xs font-bold rounded-full bg-[#0F172A] text-white hover:bg-slate-800 active:scale-[0.98] transition-all shadow-xs"
-            >
-              Connect
-            </button>
+            {/* Tactile Hamburger Icon Button */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-black hover:bg-white/80 focus:outline-none"
-              aria-label="Toggle navigation menu"
+              className="p-2.5 rounded-full text-slate-700 hover:text-black hover:bg-white/80 border border-slate-200/80 shadow-xs transition-colors focus:outline-none"
+              aria-label="Toggle navigation drawer"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
