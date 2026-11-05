@@ -1,311 +1,369 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight, CheckCircle2, Sparkles, Globe, Smartphone, Share2, Cpu, Box } from 'lucide-react';
 
-interface ServiceItem {
+interface DepartmentSpec {
   id: string;
   number: string;
-  title: string;
-  summary: string;
+  shortName: string;
+  fullName: string;
+  oneLiner: string;
   link: string;
-  icon: React.ComponentType<{ className?: string }>;
-  tags: string[];
-  previewDescription: string;
-  highlights: string[];
   previewImage: string;
+  stack: string;
+  shipTime: string;
+  output: string;
 }
 
+const CornerCropMarks: React.FC = () => (
+  <>
+    {/* Top-Left */}
+    <div className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-[1.5px] border-l-[1.5px] border-[#4d9bff] pointer-events-none" />
+    {/* Top-Right */}
+    <div className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-[1.5px] border-r-[1.5px] border-[#4d9bff] pointer-events-none" />
+    {/* Bottom-Left */}
+    <div className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-[1.5px] border-l-[1.5px] border-[#4d9bff] pointer-events-none" />
+    {/* Bottom-Right */}
+    <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-[1.5px] border-r-[1.5px] border-[#4d9bff] pointer-events-none" />
+  </>
+);
+
 export const ServiceDiscovery: React.FC = () => {
-  const services: ServiceItem[] = [
+  const departments: DepartmentSpec[] = [
     {
       id: 'web',
       number: '01',
-      title: 'Web Services',
-      summary: 'Build your digital presence.',
+      shortName: 'Web',
+      fullName: 'Web Engineering',
+      oneLiner: 'Custom web applications, responsive architectures, technical SEO.',
       link: '/services/web-services',
-      icon: Globe,
-      tags: ['Websites', 'UI/UX Design', 'E-Commerce', 'Technical SEO'],
-      previewDescription:
-        'Engineered websites designed with brand-focused typography, responsive-first layouts, and zero visual clutter to establish instant authority.',
-      highlights: [
-        'Custom component-driven UI/UX design',
-        'Sub-second Core Web Vitals optimization',
-        'Direct WhatsApp & form lead routing',
-        '1-Year maintenance & ongoing support'
-      ],
-      previewImage: '/assets/service_web.png'
+      previewImage: '/assets/service_web.png',
+      stack: 'React, Next.js, Tailwind, Vite',
+      shipTime: '2 to 4 weeks',
+      output: 'Production app, full source, docs'
     },
     {
       id: 'apps',
       number: '02',
-      title: 'App Services',
-      summary: 'Turn ideas into useful products.',
+      shortName: 'Apps',
+      fullName: 'App Systems',
+      oneLiner: 'Role-based portals, booking engines, cross-platform tools.',
       link: '/services/app-services',
-      icon: Smartphone,
-      tags: ['Business Apps', 'Customer Portals', 'Booking Systems', 'Custom Apps'],
-      previewDescription:
-        'Ergonomic, role-based business applications built to coordinate appointments, record attendance, manage inventory, and serve customers.',
-      highlights: [
-        'Cross-platform mobile & responsive web apps',
-        'Role-based permissions & secure authentication',
-        'Real-time database sync & data export',
-        'Automated booking & customer notification flow'
-      ],
-      previewImage: '/assets/project_mobile_app.png'
+      previewImage: '/assets/project_mobile_app.png',
+      stack: 'React Native, Node, PostgreSQL',
+      shipTime: '3 to 6 weeks',
+      output: 'iOS, Android & Web Portal'
     },
     {
       id: 'social',
       number: '03',
-      title: 'Social Media',
-      summary: 'Create content that gets attention.',
+      shortName: 'Social',
+      fullName: 'Social Media',
+      oneLiner: 'Short-form video production, reel shooting, Meta ad operations.',
       link: '/social-media',
-      icon: Share2,
-      tags: ['Reels Production', 'Brand Posts', 'Meta Ads', 'Community Growth'],
-      previewDescription:
-        'Complete short-form video scripting, filming, and post-production paired with hyper-targeted Meta advertising campaigns.',
-      highlights: [
-        'High-retention reel scripting and shooting',
-        'Designed graphics, carousels & daily stories',
-        'Radius & pincode-specific Meta Ads management',
-        'Consistent weekly brand publishing cadence'
-      ],
-      previewImage: '/assets/project_social_campaign.png'
+      previewImage: '/assets/project_social_campaign.png',
+      stack: 'Premiere, After Effects, DaVinci',
+      shipTime: 'Weekly sprints (monthly retainer)',
+      output: '12–20 Reels / mo + Meta Ads setup'
     },
     {
-      id: 'ai',
+      id: 'automation',
       number: '04',
-      title: 'AI Automation',
-      summary: 'Remove repetitive work.',
+      shortName: 'Automation',
+      fullName: 'AI Automation',
+      oneLiner: 'Lead routing pipelines, WhatsApp booking bots, automated sync.',
       link: '/ai-automation',
-      icon: Cpu,
-      tags: ['Business Workflows', 'WhatsApp Bots', 'CRM Pipelines', 'AI Agents'],
-      previewDescription:
-        'Connect your lead channels, databases, and customer support with intelligent automated pipelines that work reliably 24/7.',
-      highlights: [
-        'Automated WhatsApp inquiry & booking bots',
-        'Instant multi-channel CRM lead distribution',
-        'Inventory threshold & restock alert triggers',
-        'Custom grounded AI agents for customer Q&A'
-      ],
-      previewImage: '/assets/service_ai.png'
+      previewImage: '/assets/service_ai.png',
+      stack: 'Python, n8n, OpenAI, WhatsApp API',
+      shipTime: '1 to 3 weeks',
+      output: 'Live webhooks, pipeline logs, SOPs'
     },
     {
       id: '3d',
       number: '05',
-      title: '3D Works',
-      summary: 'Photorealistic CGI, 3D motion, VFX & product visualization.',
+      shortName: '3D',
+      fullName: '3D Works',
+      oneLiner: 'CGI, motion and product visuals.',
       link: '/3d-works',
-      icon: Box,
-      tags: ['Photorealistic CGI Stills', '3D Motion & Commercials', 'VFX & Environmental Scenes', 'Product Visualization'],
-      previewDescription:
-        'Studio-grade photorealistic CGI stills, commercial 3D motion choreographies, atmospheric VFX scenes, and precision product visualization.',
-      highlights: [
-        'Photorealistic CGI stills & studio lighting',
-        '3D motion, commercials & exploded animations',
-        'VFX simulations & environmental scenes',
-        'Precision 3D product visualization'
-      ],
-      previewImage: '/assets/project_3d_chrono.png'
+      previewImage: '/assets/project_3d_chrono.png',
+      stack: 'Blender, Unreal',
+      shipTime: '2 to 5 weeks',
+      output: 'CGI, product renders'
     }
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeService = services[activeIndex];
+  const [activeIndex, setActiveIndex] = useState<number>(4); // Default to 05 3D matching wireframe
+  const activeDepartment = departments[activeIndex];
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = (index + 1) % departments.length;
+      setActiveIndex(nextIndex);
+      rowRefs.current[nextIndex]?.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = (index - 1 + departments.length) % departments.length;
+      setActiveIndex(prevIndex);
+      rowRefs.current[prevIndex]?.focus();
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setActiveIndex(index);
+    }
+  };
 
   return (
-    <section id="service-matrix" className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] border-y border-gray-200/60 dark:border-white/10 transition-colors">
+    <section
+      id="service-matrix"
+      className="py-20 lg:py-28 bg-[#0a1226] text-[#e8edf7] border-y border-[#24304f] transition-colors duration-200"
+    >
       <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
+        
         {/* SECTION HEADER */}
-        <div className="max-w-4xl mb-12 lg:mb-16">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-100/60 dark:bg-blue-900/40">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Capability Matrix</span>
-            </div>
-            <span className="font-handwriting text-lg sm:text-xl font-bold text-[#23469F] dark:text-[#B9DFF2] -rotate-2 select-none">
-              (all 5 departments work as one)
+        <div className="mb-12 sm:mb-16">
+          {/* Eyebrow: mono label in blue with letter-spacing + handwritten italic note */}
+          <div className="flex flex-wrap items-center gap-2 mb-4 font-mono text-xs">
+            <span className="text-[#4d9bff] uppercase tracking-[0.16em] font-mono text-xs font-medium">
+              CAPABILITY MATRIX
+            </span>
+            <span className="font-handwriting italic text-sm sm:text-base text-[#4d9bff] select-none">
+              (5 departments, 1 team)
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101A35] dark:text-white tracking-tight font-display mb-4">
-            ONE PARTNER. MULTIPLE CAPABILITIES.
+
+          {/* Headline: two lines, tight tracking (-0.03em), max two font weights (400 and 500) */}
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.03em] leading-[1.08] mb-4">
+            <span className="block text-[#e8edf7]">One partner.</span>
+            <span className="block text-[#4d9bff]">Five ways to build.</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+
+          {/* Short paragraph in muted blue-grey */}
+          <p className="text-sm sm:text-base text-[#5b6a8f] font-normal max-w-xl leading-relaxed">
             Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards standard.
           </p>
         </div>
 
-        {/* DESKTOP SPLIT VIEW */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
-          {/* LEFT: INTERACTIVE SERVICE LIST */}
-          <div className="lg:col-span-6 space-y-2.5">
-            {services.map((item, idx) => {
-              const isSelected = activeIndex === idx;
-              const Icon = item.icon;
+        {/* TWO COLUMNS: LEDGER INDEX (45%) & SPECIMEN PANEL (55%) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          
+          {/* LEFT: LEDGER INDEX (45% on desktop) */}
+          <div
+            role="tablist"
+            aria-label="Capabilities Directory"
+            className="lg:col-span-5 w-full flex flex-col"
+          >
+            {departments.map((dept, idx) => {
+              const isActive = activeIndex === idx;
               return (
                 <div
-                  key={item.id}
+                  key={dept.id}
+                  ref={(el) => {
+                    rowRefs.current[idx] = el;
+                  }}
+                  tabIndex={0}
+                  role="tab"
+                  aria-selected={isActive}
                   onMouseEnter={() => setActiveIndex(idx)}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`cursor-pointer rounded-2xl p-5 transition-all duration-200 border ${
-                    isSelected
-                      ? 'bg-white dark:bg-[#111C33] border-[#23469F] dark:border-[#B9DFF2] shadow-md -translate-x-1'
-                      : 'bg-white/70 dark:bg-[#111C33]/60 border-gray-200/70 dark:border-white/10 hover:bg-white dark:hover:bg-[#111C33] hover:border-gray-300 dark:hover:border-white/20'
-                  }`}
+                  onFocus={() => setActiveIndex(idx)}
+                  onKeyDown={(e) => handleKeyDown(e, idx)}
+                  className={`relative w-full cursor-pointer border-b border-[#24304f] transition-colors duration-200 ease-out focus:outline-none select-none ${
+                    idx === 0 ? 'border-t border-[#24304f]' : ''
+                  } ${isActive ? 'py-5' : 'py-4 hover:border-[#384872]'}`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <span className={`text-sm font-mono font-bold ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2]' : 'text-gray-400 dark:text-gray-500'}`}>
-                        {item.number}
+                  {/* 2px Solid Blue Bar on Active Row */}
+                  {isActive && (
+                    <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#4d9bff]" />
+                  )}
+
+                  <div className="flex items-baseline justify-between pl-4 pr-1">
+                    {/* Mono Number & Department Name */}
+                    <div className="flex items-baseline gap-4 sm:gap-6">
+                      <span
+                        className={`font-mono text-xs tracking-wider transition-colors duration-200 ${
+                          isActive ? 'text-[#4d9bff] font-medium' : 'text-[#5b6a8f] font-normal'
+                        }`}
+                      >
+                        {dept.number}
                       </span>
-                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2]' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-[#101A35] dark:text-white font-display">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          {item.summary}
-                        </p>
-                      </div>
+                      <span
+                        className={`text-2xl sm:text-3xl tracking-tight transition-colors duration-200 ${
+                          isActive ? 'font-medium text-[#e8edf7]' : 'font-normal text-[#5b6a8f] hover:text-[#8899bf]'
+                        }`}
+                      >
+                        {dept.shortName}
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className={`text-xs font-semibold ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2]' : 'text-gray-400 dark:text-gray-500'}`}>
-                        {isSelected ? 'Active Preview' : 'Hover to View'}
-                      </span>
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2] translate-x-0.5' : 'text-gray-300 dark:text-gray-600'}`} />
-                    </div>
+                    {/* Small Mono Status ("Active" or "View") */}
+                    <span
+                      className={`font-mono text-xs tracking-wider transition-colors duration-200 ${
+                        isActive ? 'text-[#4d9bff] font-medium' : 'text-[#5b6a8f] font-normal'
+                      }`}
+                    >
+                      {isActive ? 'Active' : 'View'}
+                    </span>
                   </div>
+
+                  {/* Active Row Expanded Description */}
+                  {isActive && (
+                    <div className="pl-4 pr-2 mt-2 transition-all duration-200 ease-out">
+                      <p className="text-xs sm:text-sm text-[#5b6a8f] font-normal leading-relaxed">
+                        {dept.oneLiner}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Mobile Specimen Accordion Content */}
+                  {isActive && (
+                    <div className="lg:hidden mt-5 pt-4 border-t border-[#24304f]">
+                      <div className="relative p-5 bg-[#0a1226] border border-[#24304f]">
+                        <CornerCropMarks />
+
+                        {/* Image stage */}
+                        <div className="relative aspect-[16/10] w-full bg-[#111c3a] border border-[#24304f] overflow-hidden mb-4">
+                          <div className="absolute top-2.5 right-3 z-10">
+                            <span className="font-handwriting italic text-sm text-[#4d9bff] select-none">
+                              built in-house
+                            </span>
+                          </div>
+                          <img
+                            src={dept.previewImage}
+                            alt={dept.fullName}
+                            className="w-full h-full object-cover opacity-90"
+                          />
+                          <div className="absolute bottom-2.5 left-3 z-10">
+                            <span className="font-mono text-[10px] text-[#5b6a8f] uppercase tracking-wider bg-[#111c3a]/90 px-1.5 py-0.5">
+                              FIG. {dept.number}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Title & Explore */}
+                        <div className="flex items-baseline justify-between pb-3 mb-2">
+                          <h3 className="text-xl font-medium text-[#e8edf7]">
+                            {dept.fullName}
+                          </h3>
+                          <Link
+                            to={dept.link}
+                            className="font-mono text-xs font-medium uppercase tracking-wider text-[#4d9bff] hover:underline"
+                          >
+                            EXPLORE →
+                          </Link>
+                        </div>
+
+                        {/* Specs */}
+                        <div className="space-y-0 text-xs">
+                          <div className="flex justify-between py-2 border-t border-[#24304f]">
+                            <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
+                              STACK
+                            </span>
+                            <span className="font-normal text-[#e8edf7]">{dept.stack}</span>
+                          </div>
+                          <div className="flex justify-between py-2 border-t border-[#24304f]">
+                            <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
+                              SHIP TIME
+                            </span>
+                            <span className="font-normal text-[#e8edf7]">{dept.shipTime}</span>
+                          </div>
+                          <div className="flex justify-between py-2 border-t border-[#24304f]">
+                            <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
+                              OUTPUT
+                            </span>
+                            <span className="font-normal text-[#e8edf7]">{dept.output}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
 
-          {/* RIGHT: DYNAMIC PREVIEW PANEL */}
-          <div className="lg:col-span-6 sticky top-28">
-            <div className="bg-white dark:bg-[#111C33] rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden p-8 transition-all">
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-gray-100 dark:border-white/10">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 px-2.5 py-1 rounded">
-                    {activeService.number} / 05
-                  </span>
-                  <h4 className="text-xl font-bold text-[#101A35] dark:text-white">
-                    {activeService.title}
-                  </h4>
-                  <span className="font-handwriting text-sm text-blue-600 dark:text-[#B9DFF2] hidden sm:inline-block">
-                    ★ engineered in-house
+          {/* RIGHT: SPECIMEN PANEL (55% on desktop, sticky) */}
+          <div className="hidden lg:block lg:col-span-7 sticky top-28">
+            <div className="relative p-7 xl:p-9 bg-[#0a1226]">
+              {/* 4 Blue Corner Crop Marks (12px, 1.5px stroke #4d9bff) */}
+              <CornerCropMarks />
+
+              {/* Department Preview Image Stage */}
+              <div className="relative aspect-[16/10] w-full bg-[#111c3a] border border-[#24304f] overflow-hidden mb-6">
+                {/* Top-Right Handwritten Italic Note */}
+                <div className="absolute top-3.5 right-4 z-10">
+                  <span className="font-handwriting italic text-sm xl:text-base text-[#4d9bff] select-none">
+                    built in-house
                   </span>
                 </div>
+
+                {/* Crossfading Preview Asset */}
+                <img
+                  key={activeDepartment.id}
+                  src={activeDepartment.previewImage}
+                  alt={activeDepartment.fullName}
+                  className="w-full h-full object-cover transition-opacity duration-300 ease-out opacity-90"
+                />
+
+                {/* Bottom-Left Mono Caption */}
+                <div className="absolute bottom-3.5 left-4 z-10">
+                  <span className="font-mono text-[11px] text-[#5b6a8f] uppercase tracking-wider bg-[#111c3a]/90 px-2 py-0.5 border border-[#24304f]/60">
+                    FIG. {activeDepartment.number}
+                  </span>
+                </div>
+              </div>
+
+              {/* Department Title & Explore Link */}
+              <div className="flex items-baseline justify-between pb-4 mb-2">
+                <h3 className="text-2xl xl:text-3xl font-medium text-[#e8edf7] tracking-tight">
+                  {activeDepartment.fullName}
+                </h3>
                 <Link
-                  to={activeService.link}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white transition-colors"
+                  to={activeDepartment.link}
+                  className="font-mono text-xs font-medium uppercase tracking-wider text-[#4d9bff] hover:underline flex items-center gap-1 group"
                 >
-                  <span>Explore Department</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <span>EXPLORE</span>
+                  <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </Link>
               </div>
 
-              {/* VISUAL PREVIEW ASSET */}
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-slate-900 border border-gray-100 dark:border-white/10">
-                <img
-                  src={activeService.previewImage}
-                  alt={activeService.title}
-                  className="w-full h-full object-cover transition-opacity duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101A35]/80 via-transparent to-transparent flex items-end p-5">
-                  <p className="text-white text-xs font-medium">
-                    {activeService.summary}
-                  </p>
+              {/* 3-Row Spec Table with Hairline Separators */}
+              <div className="space-y-0 text-xs sm:text-sm">
+                {/* STACK */}
+                <div className="grid grid-cols-12 py-3 border-t border-[#24304f] items-baseline">
+                  <span className="col-span-3 font-mono text-xs uppercase tracking-wider text-[#5b6a8f]">
+                    STACK
+                  </span>
+                  <span className="col-span-9 font-normal text-[#e8edf7]">
+                    {activeDepartment.stack}
+                  </span>
+                </div>
+
+                {/* SHIP TIME */}
+                <div className="grid grid-cols-12 py-3 border-t border-[#24304f] items-baseline">
+                  <span className="col-span-3 font-mono text-xs uppercase tracking-wider text-[#5b6a8f]">
+                    SHIP TIME
+                  </span>
+                  <span className="col-span-9 font-normal text-[#e8edf7]">
+                    {activeDepartment.shipTime}
+                  </span>
+                </div>
+
+                {/* OUTPUT */}
+                <div className="grid grid-cols-12 py-3 border-t border-[#24304f] items-baseline">
+                  <span className="col-span-3 font-mono text-xs uppercase tracking-wider text-[#5b6a8f]">
+                    OUTPUT
+                  </span>
+                  <span className="col-span-9 font-normal text-[#e8edf7]">
+                    {activeDepartment.output}
+                  </span>
                 </div>
               </div>
 
-              {/* DESCRIPTION & HIGHLIGHTS */}
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
-                {activeService.previewDescription}
-              </p>
-
-              <div className="space-y-2.5 mb-6">
-                {activeService.highlights.map((highlight, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-200">
-                    <CheckCircle2 className="h-4 w-4 text-[#23469F] dark:text-[#B9DFF2] shrink-0" />
-                    <span>{highlight}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* ACTION LINK */}
-              <Link
-                to={activeService.link}
-                className="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#101A35] dark:bg-[#23469F] text-white hover:bg-[#23469F] dark:hover:bg-[#1b367c] flex items-center justify-center gap-2 transition-colors shadow-sm"
-              >
-                <span>View Full {activeService.title} Specifications</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
           </div>
+
         </div>
 
-        {/* MOBILE ACCORDION VIEW */}
-        <div className="lg:hidden space-y-3">
-          {services.map((item, idx) => {
-            const isExpanded = activeIndex === idx;
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.id}
-                className="bg-white dark:bg-[#111C33] rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden shadow-sm"
-              >
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex(isExpanded ? -1 : idx)}
-                  className="w-full p-4 flex items-center justify-between text-left"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-[#23469F] dark:text-[#B9DFF2]">
-                      {item.number}
-                    </span>
-                    <Icon className="h-4 w-4 text-[#23469F] dark:text-[#B9DFF2]" />
-                    <div>
-                      <h3 className="text-sm font-bold text-[#101A35] dark:text-white">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{item.summary}</p>
-                    </div>
-                  </div>
-                  <ChevronRight
-                    className={`h-4 w-4 text-gray-400 dark:text-gray-500 transition-transform ${isExpanded ? 'rotate-90 text-[#23469F] dark:text-[#B9DFF2]' : ''}`}
-                  />
-                </button>
-
-                {isExpanded && (
-                  <div className="px-4 pb-5 pt-1 border-t border-gray-100 dark:border-white/10 bg-slate-50/50 dark:bg-[#0B1120]/50">
-                    <p className="text-xs text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
-                      {item.previewDescription}
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      {item.highlights.map((h, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-200">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-[#23469F] dark:text-[#B9DFF2] shrink-0" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <Link
-                      to={item.link}
-                      className="inline-flex items-center gap-2 text-xs font-bold text-[#23469F] dark:text-[#B9DFF2] hover:underline"
-                    >
-                      <span>Explore {item.title} Page</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
 };
-
