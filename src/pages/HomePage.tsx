@@ -54,15 +54,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
             </Link>
           </div>
 
-          {/* Varied Editorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project, idx) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                variant={idx === 0 ? 'large' : 'medium'}
-              />
-            ))}
+          {/* SINGLE LINE CONTINUOUS SCROLLING MARQUEE (RIGHT TO LEFT) */}
+          <div className="relative w-full overflow-hidden py-4 -mx-4 sm:-mx-6 lg:-mx-12 xl:-mx-16 2xl:-mx-20 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
+            {/* Fade gradients on left & right edges */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-white dark:from-[#0B1120] to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-white dark:from-[#0B1120] to-transparent z-10" />
+
+            <div className="animate-marquee-left flex items-stretch gap-6">
+              {[...projectsData, ...projectsData].map((project, idx) => (
+                <ProjectCard
+                  key={`${project.id}-${idx}`}
+                  project={project}
+                  variant="compact"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

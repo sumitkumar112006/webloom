@@ -51,8 +51,35 @@ export const PortfolioPage: React.FC = () => {
           </div>
         </div>
 
+        {/* CONTINUOUS LIVE DEPLOYMENT MARQUEE (RIGHT TO LEFT) */}
+        <div className="mb-14">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2]">
+              Continuous Live Deployments Showcase
+            </span>
+            <span className="text-xs font-mono text-gray-500 dark:text-gray-400">
+              Hover to pause • Click to inspect
+            </span>
+          </div>
+
+          <div className="relative w-full overflow-hidden py-2 -mx-4 sm:-mx-6 lg:-mx-12 xl:-mx-16 2xl:-mx-20 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#F6F8FC] dark:from-[#0B1120] to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#F6F8FC] dark:from-[#0B1120] to-transparent z-10" />
+
+            <div className="animate-marquee-left flex items-stretch gap-6">
+              {[...projectsData, ...projectsData].map((project, idx) => (
+                <ProjectCard
+                  key={`marquee-${project.id}-${idx}`}
+                  project={project}
+                  variant="compact"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* 10 — CATEGORY FILTER BUTTONS */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -69,18 +96,15 @@ export const PortfolioPage: React.FC = () => {
           ))}
         </div>
 
-        {/* VARIED EDITORIAL GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project, idx) => {
-            const variantType = project.gridSpan === 'large' ? 'large' : project.gridSpan === 'medium' ? 'medium' : (idx % 3 === 0 ? 'large' : 'standard');
-            return (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                variant={variantType}
-              />
-            );
-          })}
+        {/* COMPACT DIRECTORY GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              variant="standard"
+            />
+          ))}
         </div>
 
         {filteredProjects.length === 0 && (
