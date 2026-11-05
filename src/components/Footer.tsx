@@ -20,9 +20,14 @@ export const Footer: React.FC = () => {
                 alt="Webloom"
                 className="h-10 w-10 rounded-full object-cover border border-white/20 shadow-sm shrink-0"
               />
-              <span className="text-2xl font-black tracking-tight font-display text-white">
-                WEBLOOM
-              </span>
+              <div className="flex flex-col text-left">
+                <span className="text-2xl font-black tracking-tight font-display text-white leading-none">
+                  WEBLOOM
+                </span>
+                <span className="text-[8.5px] font-mono font-bold tracking-[0.28em] text-[#93C5FD] uppercase mt-0.5 select-none">
+                  TECHNOLOGY
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-gray-300 max-w-sm leading-relaxed">
               {companyData.subheadline}
