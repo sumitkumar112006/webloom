@@ -50,9 +50,9 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
           </div>
         </div>
 
-        {/* CENTER STAGE: LARGE ISOMETRIC KEYBOARD IN THE MIDDLE OF THE SCREEN */}
+        {/* CENTER STAGE: LARGE ISOMETRIC KEYBOARD SHIFTED SLIGHTLY TO THE RIGHT */}
         <div className="relative lg:absolute lg:inset-0 flex items-center justify-center pointer-events-none z-10 my-2 sm:my-3 lg:my-0">
-          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-[700px] 2xl:max-w-[760px] pointer-events-auto">
+          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-[700px] 2xl:max-w-[760px] pointer-events-auto transform lg:translate-x-16 xl:translate-x-24 2xl:translate-x-28">
             <HairlineHeroFigure />
           </div>
         </div>
