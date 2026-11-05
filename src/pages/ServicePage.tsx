@@ -29,7 +29,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
     <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors">
       {/* 1. HERO */}
       <section className="bg-white dark:bg-[#0B1120] border-b border-gray-100 dark:border-white/10 pt-12 pb-16 lg:pt-16 lg:pb-24 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="mb-6">
             <Link
               to="/services"
@@ -72,7 +72,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
 
       {/* 2. WHAT WE DO & 3. SERVICES (SUBSERVICES) */}
       <section className="py-16 sm:py-24 bg-[#F6F8FC] dark:bg-[#0B1120] border-b border-gray-200/60 dark:border-white/10 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
               Capabilities Breakdown
@@ -110,7 +110,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
 
       {/* 4. WHO IT'S FOR */}
       <section className="py-16 sm:py-20 bg-white dark:bg-[#0B1120] border-b border-gray-100 dark:border-white/10 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
               Audience Alignment
@@ -146,7 +146,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
 
       {/* 5. OUR PROCESS */}
       <section className="py-16 sm:py-24 bg-[#F6F8FC] dark:bg-[#0B1120] border-b border-gray-200/60 dark:border-white/10 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
               Execution Architecture
@@ -183,7 +183,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
       {/* 6. SELECTED WORK */}
       {relevantProjects.length > 0 && (
         <section className="py-16 sm:py-24 bg-white dark:bg-[#0B1120] border-b border-gray-100 dark:border-white/10 transition-colors">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
             <div className="flex items-end justify-between mb-10">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-1">
@@ -213,7 +213,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onOpenContact }) => {
 
       {/* 7. PRICING & PACKAGES (NO PRICE TAGS IN COMPLIANCE WITH USER RULE) */}
       <section className="py-16 sm:py-24 bg-[#F6F8FC] dark:bg-[#0B1120] border-b border-gray-200/60 dark:border-white/10 transition-colors" id="packages">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
               Scope-Based Tiers

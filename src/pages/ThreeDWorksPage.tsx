@@ -64,7 +64,7 @@ export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact 
     <div className="min-h-screen bg-[#101A35] text-white">
       {/* 13 — 3D HERO: CINEMATIC BUT DISCIPLINED */}
       <section className="relative overflow-hidden pt-16 pb-24 lg:pt-24 lg:pb-32 border-b border-white/10 bg-gradient-to-b from-[#101A35] to-[#0A1022]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#B9DFF2] bg-white/10 border border-white/15">
               <Sparkles className="h-3.5 w-3.5 text-[#B9DFF2]" />
@@ -107,7 +107,7 @@ export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact 
 
       {/* 3D CATEGORIES FILTER */}
       <section className="py-8 bg-[#0D152B] border-b border-white/10 sticky top-20 z-30 backdrop-blur-md" id="showcase">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {categories.map((cat) => (
               <button
@@ -128,7 +128,7 @@ export const ThreeDWorksPage: React.FC<ThreeDWorksPageProps> = ({ onOpenContact 
       </section>
 
       {/* MEDIA SHOWCASE GRID */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredItems.map((item) => (
             <div key={item.id} className="space-y-3">

@@ -39,7 +39,7 @@ export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContac
     <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors">
       {/* 15 — AI AUTOMATION HERO */}
       <section className="bg-white dark:bg-[#0B1120] border-b border-gray-100 dark:border-white/10 pt-14 pb-20 lg:pt-20 lg:pb-28 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 border border-blue-100 dark:border-blue-800/40">
               <Cpu className="h-3.5 w-3.5 text-[#23469F] dark:text-[#B9DFF2]" />
@@ -81,7 +81,7 @@ export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContac
       </section>
 
       {/* 15 — INTERACTIVE CLEAN WORKFLOW DIAGRAMS */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="diagrams">
+      <section className="py-16 sm:py-24 w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20" id="diagrams">
         <div className="max-w-3xl mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
             Execution Logic
@@ -99,7 +99,7 @@ export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContac
 
       {/* CORE CAPABILITIES GRID */}
       <section className="py-16 sm:py-20 bg-white dark:bg-[#0B1120] border-y border-gray-200/60 dark:border-white/10 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
               Capabilities
@@ -131,7 +131,7 @@ export const AIAutomationPage: React.FC<AIAutomationPageProps> = ({ onOpenContac
       </section>
 
       {/* PACKAGES UX (NO PRICE TAGS IN COMPLIANCE WITH USER RULE) */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
             Scope-Based Tiers

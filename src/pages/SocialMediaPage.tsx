@@ -46,7 +46,7 @@ export const SocialMediaPage: React.FC<SocialMediaPageProps> = ({ onOpenContact 
     <div className="min-h-screen bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors">
       {/* 14 — STUDIO HERO */}
       <section className="bg-white dark:bg-[#0B1120] border-b border-gray-100 dark:border-white/10 pt-14 pb-20 lg:pt-20 lg:pb-28 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 border border-blue-100 dark:border-blue-800/40">
               <Film className="h-3.5 w-3.5 text-[#23469F] dark:text-[#B9DFF2]" />
@@ -85,7 +85,7 @@ export const SocialMediaPage: React.FC<SocialMediaPageProps> = ({ onOpenContact 
       </section>
 
       {/* EDITORIAL CONTENT STUDIO GRID */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
             Production Quality
@@ -133,7 +133,7 @@ export const SocialMediaPage: React.FC<SocialMediaPageProps> = ({ onOpenContact 
 
       {/* MONTHLY PLANS UX (NO PRICE TAGS IN COMPLIANCE WITH USER PROMPT) */}
       <section className="py-16 sm:py-24 bg-white dark:bg-[#0B1120] border-y border-gray-200/60 dark:border-white/10 transition-colors" id="plans">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
               Transparent Package Breakdown
