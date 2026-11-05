@@ -53,7 +53,7 @@ export const App: React.FC = () => {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage onOpenContact={handleOpenContact} />} />
-          <Route path="/services" element={<ServicesIndexPage />} />
+          <Route path="/services" element={<ServicesIndexPage onOpenContact={handleOpenContact} />} />
           <Route path="/services/:slug" element={<ServicePage onOpenContact={handleOpenContact} />} />
           <Route path="/3d-works" element={<ThreeDWorksPage onOpenContact={handleOpenContact} />} />
           <Route path="/social-media" element={<SocialMediaPage onOpenContact={handleOpenContact} />} />
