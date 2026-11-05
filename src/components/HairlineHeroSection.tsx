@@ -16,7 +16,7 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
   };
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-[98svh] w-full flex flex-col justify-between bg-white dark:bg-[#070A13] text-[#101A35] dark:text-white overflow-hidden pt-8 pb-8 sm:pt-12 sm:pb-10 border-b border-gray-200/80 dark:border-white/10 transition-colors duration-200">
+    <section className="relative min-h-[90vh] lg:h-[calc(100vh-5rem)] w-full flex flex-col justify-between bg-white dark:bg-[#070A13] text-[#101A35] dark:text-white overflow-hidden pt-4 pb-3 sm:pt-6 sm:pb-4 lg:pt-5 lg:pb-4 border-b border-gray-200/80 dark:border-white/10 transition-colors duration-200">
       {/* 1. AMBIENT BACKGROUND GLOW & GEOMETRIC DISCIPLINE */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-[520px] h-[520px] rounded-full bg-gradient-to-tr from-blue-100/70 via-sky-100/40 to-transparent dark:from-[#23469F]/20 dark:via-[#1E3A8A]/10 blur-[120px]" />
@@ -24,19 +24,19 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
         <div className="absolute inset-0 bg-diagonal-pattern opacity-5 dark:opacity-15" />
       </div>
 
-      {/* 2. MAIN EDITORIAL HERO STAGE */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 flex-1 flex flex-col justify-between py-2 sm:py-4 gap-8 lg:gap-4">
+      {/* 2. MAIN EDITORIAL HERO STAGE (FULL WIDTH & POSITION RELATIVE ALIGNMENT) */}
+      <div className="relative w-full z-10 flex-1 flex flex-col justify-between px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* TOP-LEFT CORNER: HEADLINE & CRAFT ANNOTATION */}
-        <div className="w-full flex justify-start">
-          <div className="max-w-xl lg:max-w-2xl space-y-4 text-left">
+        <div className="relative z-20 pointer-events-auto w-full flex justify-start pt-1 sm:pt-2">
+          <div className="max-w-xl lg:max-w-2xl xl:max-w-[680px] space-y-2.5 sm:space-y-3.5 text-left">
             <div className="flex items-center gap-3">
               <span className="font-handwriting text-lg sm:text-xl font-bold text-blue-600 dark:text-[#B9DFF2] -rotate-2 select-none">
                 ✦ crafted by humans, not templates
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.75rem] font-bold tracking-tight leading-[1.08] font-display text-[#101A35] dark:text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.35rem] 2xl:text-[3.65rem] font-bold tracking-tight leading-[1.08] font-display text-[#101A35] dark:text-white">
               BUILD DIGITAL EXPERIENCES AT THE INTERSECTION OF{' '}
               <span className="font-editorial italic font-normal text-[1.12em] tracking-normal text-[#23469F] dark:text-[#93C5FD]">
                 Creative Code
@@ -50,24 +50,24 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
           </div>
         </div>
 
-        {/* MIDDLE: INCREASED SIZE KEYBOARD AT CENTER OF SCREEN */}
-        <div className="w-full flex items-center justify-center my-2 sm:my-4 lg:my-0 relative z-10">
-          <div className="w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[820px]">
+        {/* CENTER STAGE: LARGE ISOMETRIC KEYBOARD IN THE MIDDLE OF THE SCREEN */}
+        <div className="relative lg:absolute lg:inset-0 flex items-center justify-center pointer-events-none z-10 my-2 sm:my-3 lg:my-0">
+          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-[700px] 2xl:max-w-[760px] pointer-events-auto">
             <HairlineHeroFigure />
           </div>
         </div>
 
         {/* BOTTOM-RIGHT CORNER: DESCRIPTION & CTAS */}
-        <div className="w-full flex justify-end">
-          <div className="max-w-lg lg:max-w-xl space-y-4 text-left sm:text-right">
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
+        <div className="relative z-20 pointer-events-auto w-full flex justify-end pb-1 sm:pb-2">
+          <div className="max-w-md lg:max-w-lg xl:max-w-[540px] space-y-3 sm:space-y-3.5 text-left sm:text-right">
+            <p className="text-sm sm:text-base lg:text-[15px] xl:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
               Webloom unites modern web engineering, internal business applications, automation workflows, and photorealistic 3D visualization under a single high-standards studio.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 sm:justify-end pt-1">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-3.5 sm:justify-end pt-0.5">
               <Link
                 to="/our-work"
-                className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] active:scale-[0.98] transition-all shadow-md hover:shadow-blue-500/20 card-hover group"
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] active:scale-[0.98] transition-all shadow-md hover:shadow-blue-500/20 card-hover group"
               >
                 <span>Explore Our Work</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -76,7 +76,7 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
               <button
                 type="button"
                 onClick={() => onOpenContact('Web Services', 'Interactive Hero Let\'s Talk CTA', 'Homepage Hero')}
-                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-[#101A35] dark:text-white border border-slate-200 dark:border-white/15 active:scale-[0.98] transition-all"
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-[#101A35] dark:text-white border border-slate-200 dark:border-white/15 active:scale-[0.98] transition-all"
               >
                 <span>Let's Talk</span>
               </button>
@@ -92,8 +92,8 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
 
       </div>
 
-      {/* 3. SUBTLE BOTTOM SCROLL INDICATOR */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 pt-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 font-mono">
+      {/* 3. SUBTLE BOTTOM SCROLL INDICATOR (FULL WIDTH) */}
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 z-20 pt-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 font-mono">
         <div className="flex items-center gap-2 text-[11px] text-gray-600 dark:text-gray-400">
           <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
           <span>Zero Outsourced Fluff • Authentic Founder-Led Engineering</span>
