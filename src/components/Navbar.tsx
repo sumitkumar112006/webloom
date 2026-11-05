@@ -38,22 +38,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* LOGO WITH EXCLUSIVE SHIMMER EFFECT */}
+          {/* LOGO: Profile.png + WEBLOOM TEXT WITH SHIMMER EFFECT */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-0.5 sm:p-1 group logo-shimmer"
+            className="flex items-center gap-2.5 sm:gap-3 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg p-0.5 sm:p-1 group logo-shimmer"
             aria-label="Webloom Home"
           >
             <img
-              src="/assets/Logo_light.png"
+              src="/assets/Profile.png"
               alt="Webloom"
-              className="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain dark:hidden transition-opacity"
+              className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-full object-cover border border-[#23469F]/30 dark:border-[#B9DFF2]/40 shadow-sm shrink-0"
             />
-            <img
-              src="/assets/Logo_dark.png"
-              alt="Webloom"
-              className="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain hidden dark:block transition-opacity"
-            />
+            <span className="text-xl sm:text-2xl font-black tracking-tight font-display text-[#101A35] dark:text-white">
+              WEBLOOM
+            </span>
           </Link>
 
           {/* DESKTOP NAVIGATION */}
@@ -112,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   : 'text-[#111827] dark:text-gray-300 hover:text-[#23469F] dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
               }`}
             >
-              Pricing
+              Plans
             </Link>
 
             <Link
@@ -224,7 +222,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 to="/pricing"
                 className="block px-3 py-2 rounded-lg text-base font-semibold text-[#101A35] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
               >
-                Pricing & Packages
+                Plans
               </Link>
               <Link
                 to="/about"

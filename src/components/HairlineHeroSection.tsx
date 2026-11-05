@@ -34,15 +34,8 @@ export const HairlineHeroSection: React.FC<HairlineHeroSectionProps> = ({ onOpen
           {/* LEFT COLUMN: EDITORIAL TYPOGRAPHY & IDENTITY */}
           <div className="lg:col-span-6 space-y-6 text-left">
             
-            {/* Small agency identity label & human-made annotation */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-white/5 border border-blue-200/80 dark:border-white/10 shadow-sm dark:shadow-none backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span>WEBLOOM // STUDIO • PARTAPUR, MEERUT</span>
-              </div>
+            {/* Human-made craft annotation */}
+            <div className="flex items-center gap-3">
               <span className="font-handwriting text-lg sm:text-xl font-bold text-blue-600 dark:text-[#B9DFF2] -rotate-2 select-none">
                 ✦ crafted by humans, not templates
               </span>

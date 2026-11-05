@@ -12,14 +12,17 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <Link
               to="/"
-              className="inline-block focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg logo-shimmer"
+              className="inline-flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#23469F] rounded-lg logo-shimmer p-0.5"
               aria-label="Webloom Home"
             >
               <img
-                src="/assets/Logo_dark.png"
+                src="/assets/Profile.png"
                 alt="Webloom"
-                className="h-8 sm:h-9 w-auto object-contain"
+                className="h-10 w-10 rounded-full object-cover border border-white/20 shadow-sm shrink-0"
               />
+              <span className="text-2xl font-black tracking-tight font-display text-white">
+                WEBLOOM
+              </span>
             </Link>
             <p className="text-sm text-gray-300 max-w-sm leading-relaxed">
               {companyData.subheadline}
@@ -101,7 +104,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/pricing" className="hover:text-[#B9DFF2] transition-colors">
-                  Pricing & Packages
+                  Plans & Packages
                 </Link>
               </li>
               <li>
