@@ -115,179 +115,184 @@ export const ServiceDiscovery: React.FC = () => {
   return (
     <section
       id="service-matrix"
-      className="py-20 lg:py-28 bg-[#0a1226] text-[#e8edf7] border-y border-[#24304f] transition-colors duration-200"
+      className="py-12 sm:py-16 lg:py-20 bg-[#0a1226] text-[#e8edf7] border-y border-[#24304f] transition-colors duration-200"
     >
       <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
         
-        {/* SECTION HEADER */}
-        <div className="mb-12 sm:mb-16">
-          {/* Eyebrow: mono label in blue with letter-spacing + handwritten italic note */}
-          <div className="flex flex-wrap items-center gap-2 mb-4 font-mono text-xs">
-            <span className="text-[#4d9bff] uppercase tracking-[0.16em] font-mono text-xs font-medium">
-              CAPABILITY MATRIX
-            </span>
-            <span className="font-handwriting italic text-sm sm:text-base text-[#4d9bff] select-none">
-              (5 departments, 1 team)
-            </span>
-          </div>
-
-          {/* Headline: two lines, tight tracking (-0.03em), max two font weights (400 and 500) */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.03em] leading-[1.08] mb-4">
-            <span className="block text-[#e8edf7]">One partner.</span>
-            <span className="block text-[#4d9bff]">Five ways to build.</span>
-          </h2>
-
-          {/* Short paragraph in muted blue-grey */}
-          <p className="text-sm sm:text-base text-[#5b6a8f] font-normal max-w-xl leading-relaxed">
-            Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards standard.
-          </p>
-        </div>
-
-        {/* TWO COLUMNS: LEDGER INDEX (45%) & SPECIMEN PANEL (55%) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        {/* TWO COLUMNS ON DESKTOP (~45% / ~55%), STACKED ON MOBILE */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
           
-          {/* LEFT: LEDGER INDEX (45% on desktop) */}
-          <div
-            role="tablist"
-            aria-label="Capabilities Directory"
-            className="lg:col-span-5 w-full flex flex-col"
-          >
-            {departments.map((dept, idx) => {
-              const isActive = activeIndex === idx;
-              return (
-                <div
-                  key={dept.id}
-                  ref={(el) => {
-                    rowRefs.current[idx] = el;
-                  }}
-                  tabIndex={0}
-                  role="tab"
-                  aria-selected={isActive}
-                  onMouseEnter={() => setActiveIndex(idx)}
-                  onFocus={() => setActiveIndex(idx)}
-                  onKeyDown={(e) => handleKeyDown(e, idx)}
-                  className={`relative w-full cursor-pointer border-b border-[#24304f] transition-colors duration-200 ease-out focus:outline-none select-none ${
-                    idx === 0 ? 'border-t border-[#24304f]' : ''
-                  } ${isActive ? 'py-5' : 'py-4 hover:border-[#384872]'}`}
-                >
-                  {/* 2px Solid Blue Bar on Active Row */}
-                  {isActive && (
-                    <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#4d9bff]" />
-                  )}
+          {/* LEFT COLUMN: HEADINGS & LEDGER INDEX */}
+          <div className="lg:col-span-5 w-full flex flex-col">
+            
+            {/* HEADINGS BLOCK */}
+            <div className="mb-8 lg:mb-10">
+              {/* Eyebrow: mono label in blue with letter-spacing + handwritten italic note */}
+              <div className="flex flex-wrap items-center gap-2 mb-3 font-mono text-xs">
+                <span className="text-[#4d9bff] uppercase tracking-[0.16em] font-mono text-xs font-medium">
+                  CAPABILITY MATRIX
+                </span>
+                <span className="font-handwriting italic text-sm sm:text-base text-[#4d9bff] select-none">
+                  (5 departments, 1 team)
+                </span>
+              </div>
 
-                  <div className="flex items-baseline justify-between pl-4 pr-1">
-                    {/* Mono Number & Department Name */}
-                    <div className="flex items-baseline gap-4 sm:gap-6">
+              {/* Headline: two lines, tight tracking (-0.03em), max two font weights (400 and 500) */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.03em] leading-[1.08] mb-4">
+                <span className="block text-[#e8edf7]">One partner.</span>
+                <span className="block text-[#4d9bff]">Five ways to build.</span>
+              </h2>
+
+              {/* Short paragraph in muted blue-grey */}
+              <p className="text-xs sm:text-sm text-[#5b6a8f] font-normal leading-relaxed">
+                Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards standard.
+              </p>
+            </div>
+
+            {/* LEDGER INDEX ROWS */}
+            <div
+              role="tablist"
+              aria-label="Capabilities Directory"
+              className="w-full flex flex-col"
+            >
+              {departments.map((dept, idx) => {
+                const isActive = activeIndex === idx;
+                return (
+                  <div
+                    key={dept.id}
+                    ref={(el) => {
+                      rowRefs.current[idx] = el;
+                    }}
+                    tabIndex={0}
+                    role="tab"
+                    aria-selected={isActive}
+                    onMouseEnter={() => setActiveIndex(idx)}
+                    onFocus={() => setActiveIndex(idx)}
+                    onKeyDown={(e) => handleKeyDown(e, idx)}
+                    className={`relative w-full cursor-pointer border-b border-[#24304f] transition-colors duration-200 ease-out focus:outline-none select-none ${
+                      idx === 0 ? 'border-t border-[#24304f]' : ''
+                    } ${isActive ? 'py-4 sm:py-5' : 'py-3.5 sm:py-4 hover:border-[#384872]'}`}
+                  >
+                    {/* 2px Solid Blue Bar on Active Row */}
+                    {isActive && (
+                      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#4d9bff]" />
+                    )}
+
+                    <div className="flex items-baseline justify-between pl-4 pr-1">
+                      {/* Mono Number & Department Name */}
+                      <div className="flex items-baseline gap-4 sm:gap-6">
+                        <span
+                          className={`font-mono text-xs tracking-wider transition-colors duration-200 ${
+                            isActive ? 'text-[#4d9bff] font-medium' : 'text-[#5b6a8f] font-normal'
+                          }`}
+                        >
+                          {dept.number}
+                        </span>
+                        <span
+                          className={`text-xl sm:text-2xl lg:text-[1.65rem] tracking-tight transition-colors duration-200 ${
+                            isActive ? 'font-medium text-[#e8edf7]' : 'font-normal text-[#5b6a8f] hover:text-[#8899bf]'
+                          }`}
+                        >
+                          {dept.shortName}
+                        </span>
+                      </div>
+
+                      {/* Small Mono Status ("Active" or "View") */}
                       <span
                         className={`font-mono text-xs tracking-wider transition-colors duration-200 ${
                           isActive ? 'text-[#4d9bff] font-medium' : 'text-[#5b6a8f] font-normal'
                         }`}
                       >
-                        {dept.number}
-                      </span>
-                      <span
-                        className={`text-2xl sm:text-3xl tracking-tight transition-colors duration-200 ${
-                          isActive ? 'font-medium text-[#e8edf7]' : 'font-normal text-[#5b6a8f] hover:text-[#8899bf]'
-                        }`}
-                      >
-                        {dept.shortName}
+                        {isActive ? 'Active' : 'View'}
                       </span>
                     </div>
 
-                    {/* Small Mono Status ("Active" or "View") */}
-                    <span
-                      className={`font-mono text-xs tracking-wider transition-colors duration-200 ${
-                        isActive ? 'text-[#4d9bff] font-medium' : 'text-[#5b6a8f] font-normal'
-                      }`}
-                    >
-                      {isActive ? 'Active' : 'View'}
-                    </span>
-                  </div>
+                    {/* Active Row Expanded Description */}
+                    {isActive && (
+                      <div className="pl-4 pr-2 mt-2 transition-all duration-200 ease-out">
+                        <p className="text-xs sm:text-sm text-[#5b6a8f] font-normal leading-relaxed">
+                          {dept.oneLiner}
+                        </p>
+                      </div>
+                    )}
 
-                  {/* Active Row Expanded Description */}
-                  {isActive && (
-                    <div className="pl-4 pr-2 mt-2 transition-all duration-200 ease-out">
-                      <p className="text-xs sm:text-sm text-[#5b6a8f] font-normal leading-relaxed">
-                        {dept.oneLiner}
-                      </p>
-                    </div>
-                  )}
+                    {/* Mobile Specimen Accordion Content */}
+                    {isActive && (
+                      <div className="lg:hidden mt-4 pt-4 border-t border-[#24304f]">
+                        <div className="relative p-5 bg-[#0a1226] border border-[#24304f]">
+                          <CornerCropMarks />
 
-                  {/* Mobile Specimen Accordion Content */}
-                  {isActive && (
-                    <div className="lg:hidden mt-5 pt-4 border-t border-[#24304f]">
-                      <div className="relative p-5 bg-[#0a1226] border border-[#24304f]">
-                        <CornerCropMarks />
-
-                        {/* Image stage */}
-                        <div className="relative aspect-[16/10] w-full bg-[#111c3a] border border-[#24304f] overflow-hidden mb-4">
-                          <div className="absolute top-2.5 right-3 z-10">
-                            <span className="font-handwriting italic text-sm text-[#4d9bff] select-none">
-                              built in-house
-                            </span>
+                          {/* Image stage */}
+                          <div className="relative aspect-[16/10] w-full bg-[#111c3a] border border-[#24304f] overflow-hidden mb-4">
+                            <div className="absolute top-2.5 right-3 z-10">
+                              <span className="font-handwriting italic text-sm text-[#4d9bff] select-none">
+                                built in-house
+                              </span>
+                            </div>
+                            <img
+                              src={dept.previewImage}
+                              alt={dept.fullName}
+                              className="w-full h-full object-cover opacity-90"
+                            />
+                            <div className="absolute bottom-2.5 left-3 z-10">
+                              <span className="font-mono text-[10px] text-[#5b6a8f] uppercase tracking-wider bg-[#111c3a]/90 px-1.5 py-0.5">
+                                FIG. {dept.number}
+                              </span>
+                            </div>
                           </div>
-                          <img
-                            src={dept.previewImage}
-                            alt={dept.fullName}
-                            className="w-full h-full object-cover opacity-90"
-                          />
-                          <div className="absolute bottom-2.5 left-3 z-10">
-                            <span className="font-mono text-[10px] text-[#5b6a8f] uppercase tracking-wider bg-[#111c3a]/90 px-1.5 py-0.5">
-                              FIG. {dept.number}
-                            </span>
-                          </div>
-                        </div>
 
-                        {/* Title & Explore */}
-                        <div className="flex items-baseline justify-between pb-3 mb-2">
-                          <h3 className="text-xl font-medium text-[#e8edf7]">
-                            {dept.fullName}
-                          </h3>
-                          <Link
-                            to={dept.link}
-                            className="font-mono text-xs font-medium uppercase tracking-wider text-[#4d9bff] hover:underline"
-                          >
-                            EXPLORE →
-                          </Link>
-                        </div>
+                          {/* Title & Explore */}
+                          <div className="flex items-baseline justify-between pb-3 mb-2">
+                            <h3 className="text-xl font-medium text-[#e8edf7]">
+                              {dept.fullName}
+                            </h3>
+                            <Link
+                              to={dept.link}
+                              className="font-mono text-xs font-medium uppercase tracking-wider text-[#4d9bff] hover:underline"
+                            >
+                              EXPLORE →
+                            </Link>
+                          </div>
 
-                        {/* Specs */}
-                        <div className="space-y-0 text-xs">
-                          <div className="flex justify-between py-2 border-t border-[#24304f]">
-                            <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
-                              STACK
-                            </span>
-                            <span className="font-normal text-[#e8edf7]">{dept.stack}</span>
-                          </div>
-                          <div className="flex justify-between py-2 border-t border-[#24304f]">
-                            <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
-                              SHIP TIME
-                            </span>
-                            <span className="font-normal text-[#e8edf7]">{dept.shipTime}</span>
-                          </div>
-                          <div className="flex justify-between py-2 border-t border-[#24304f]">
-                            <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
-                              OUTPUT
-                            </span>
-                            <span className="font-normal text-[#e8edf7]">{dept.output}</span>
+                          {/* Specs */}
+                          <div className="space-y-0 text-xs">
+                            <div className="flex justify-between py-2 border-t border-[#24304f]">
+                              <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
+                                STACK
+                              </span>
+                              <span className="font-normal text-[#e8edf7]">{dept.stack}</span>
+                            </div>
+                            <div className="flex justify-between py-2 border-t border-[#24304f]">
+                              <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
+                                SHIP TIME
+                              </span>
+                              <span className="font-normal text-[#e8edf7]">{dept.shipTime}</span>
+                            </div>
+                            <div className="flex justify-between py-2 border-t border-[#24304f]">
+                              <span className="font-mono text-[11px] uppercase tracking-wider text-[#5b6a8f]">
+                                OUTPUT
+                              </span>
+                              <span className="font-normal text-[#e8edf7]">{dept.output}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
 
-          {/* RIGHT: SPECIMEN PANEL (55% on desktop, sticky) */}
-          <div className="hidden lg:block lg:col-span-7 sticky top-28">
-            <div className="relative p-7 xl:p-9 bg-[#0a1226]">
+          {/* RIGHT COLUMN: SPECIMEN PANEL (ALIGNED WITH HEADINGS AT THE TOP) */}
+          <div className="hidden lg:block lg:col-span-7 sticky top-24">
+            <div className="relative p-6 xl:p-8 bg-[#0a1226]">
               {/* 4 Blue Corner Crop Marks (12px, 1.5px stroke #4d9bff) */}
               <CornerCropMarks />
 
               {/* Department Preview Image Stage */}
-              <div className="relative aspect-[16/10] w-full bg-[#111c3a] border border-[#24304f] overflow-hidden mb-6">
+              <div className="relative aspect-[16/10] w-full bg-[#111c3a] border border-[#24304f] overflow-hidden mb-5">
                 {/* Top-Right Handwritten Italic Note */}
                 <div className="absolute top-3.5 right-4 z-10">
                   <span className="font-handwriting italic text-sm xl:text-base text-[#4d9bff] select-none">
@@ -312,7 +317,7 @@ export const ServiceDiscovery: React.FC = () => {
               </div>
 
               {/* Department Title & Explore Link */}
-              <div className="flex items-baseline justify-between pb-4 mb-2">
+              <div className="flex items-baseline justify-between pb-3.5 mb-1">
                 <h3 className="text-2xl xl:text-3xl font-medium text-[#e8edf7] tracking-tight">
                   {activeDepartment.fullName}
                 </h3>
@@ -328,7 +333,7 @@ export const ServiceDiscovery: React.FC = () => {
               {/* 3-Row Spec Table with Hairline Separators */}
               <div className="space-y-0 text-xs sm:text-sm">
                 {/* STACK */}
-                <div className="grid grid-cols-12 py-3 border-t border-[#24304f] items-baseline">
+                <div className="grid grid-cols-12 py-2.5 sm:py-3 border-t border-[#24304f] items-baseline">
                   <span className="col-span-3 font-mono text-xs uppercase tracking-wider text-[#5b6a8f]">
                     STACK
                   </span>
@@ -338,7 +343,7 @@ export const ServiceDiscovery: React.FC = () => {
                 </div>
 
                 {/* SHIP TIME */}
-                <div className="grid grid-cols-12 py-3 border-t border-[#24304f] items-baseline">
+                <div className="grid grid-cols-12 py-2.5 sm:py-3 border-t border-[#24304f] items-baseline">
                   <span className="col-span-3 font-mono text-xs uppercase tracking-wider text-[#5b6a8f]">
                     SHIP TIME
                   </span>
@@ -348,7 +353,7 @@ export const ServiceDiscovery: React.FC = () => {
                 </div>
 
                 {/* OUTPUT */}
-                <div className="grid grid-cols-12 py-3 border-t border-[#24304f] items-baseline">
+                <div className="grid grid-cols-12 py-2.5 sm:py-3 border-t border-[#24304f] items-baseline">
                   <span className="col-span-3 font-mono text-xs uppercase tracking-wider text-[#5b6a8f]">
                     OUTPUT
                   </span>
