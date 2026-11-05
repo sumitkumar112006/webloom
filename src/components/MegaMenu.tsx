@@ -55,23 +55,28 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="absolute top-full left-0 w-full bg-white dark:bg-[#0E1626] border-b border-gray-200/80 dark:border-white/10 shadow-2xl py-8 px-4 transition-all duration-200 z-40"
+      className="absolute top-full left-0 w-full bg-white/90 backdrop-blur-2xl border-b border-slate-200/80 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.09)] py-8 px-4 transition-all duration-200 z-40 relative overflow-hidden"
       onMouseLeave={onClose}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between pb-5 mb-6 border-b border-gray-100 dark:border-white/10">
+      {/* Specular glass reflection line at top */}
+      <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none" />
+      {/* Subtle warm ambient glow */}
+      <div className="absolute top-0 right-1/4 w-96 h-32 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex items-center justify-between pb-5 mb-6 border-b border-slate-100">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 font-mono">
               One Partner • Multiple Capabilities
             </span>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+            <p className="text-sm text-slate-500 mt-0.5">
               Explore specialized engineering, creative design, and automation departments.
             </p>
           </div>
           <Link
             to="/services"
             onClick={onClose}
-            className="text-xs font-semibold text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white flex items-center gap-1.5 group"
+            className="text-xs font-bold text-[#0F172A] hover:text-amber-700 flex items-center gap-1.5 group transition-colors"
           >
             <span>View All Capabilities Overview</span>
             <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -86,26 +91,26 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
                 <Link
                   to={cat.slug}
                   onClick={onClose}
-                  className="group flex items-start gap-2.5 p-2 -ml-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors"
+                  className="group flex items-start gap-2.5 p-2 -ml-2 rounded-xl hover:bg-[#FEFCE8]/80 hover:shadow-xs transition-all"
                 >
-                  <div className="p-2 rounded-md bg-[#F6F8FC] dark:bg-slate-800 text-[#23469F] dark:text-[#B9DFF2] group-hover:bg-[#23469F] group-hover:text-white transition-colors">
+                  <div className="p-2 rounded-lg bg-amber-50 text-amber-800 border border-amber-200/60 group-hover:bg-[#0F172A] group-hover:text-white transition-colors">
                     <Icon className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#101A35] dark:text-white group-hover:text-[#23469F] dark:group-hover:text-[#B9DFF2] transition-colors">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] group-hover:text-amber-800 transition-colors">
                       {cat.title}
                     </h3>
-                    <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-1">{cat.tag}</p>
+                    <p className="text-[11px] text-slate-500 line-clamp-1">{cat.tag}</p>
                   </div>
                 </Link>
 
-                <ul className="space-y-1.5 pl-2 border-l border-gray-100 dark:border-white/10">
+                <ul className="space-y-1.5 pl-2 border-l border-slate-100">
                   {cat.items.map((item) => (
                     <li key={item}>
                       <Link
                         to={cat.slug}
                         onClick={onClose}
-                        className="text-xs text-gray-600 dark:text-gray-300 hover:text-[#23469F] dark:hover:text-[#B9DFF2] hover:translate-x-0.5 inline-block transition-all"
+                        className="text-xs text-slate-600 hover:text-amber-800 hover:translate-x-0.5 inline-block transition-all"
                       >
                         {item}
                       </Link>

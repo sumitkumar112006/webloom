@@ -13,12 +13,9 @@
     <script>
       (function() {
         try {
-          var saved = localStorage.getItem('webloom-theme');
-          if (saved === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
+          // Reset dark mode to guarantee pristine light/glass mode with yellow & white theme
+          localStorage.setItem('webloom-theme', 'light');
+          document.documentElement.classList.remove('dark');
         } catch (e) {
           document.documentElement.classList.remove('dark');
         }

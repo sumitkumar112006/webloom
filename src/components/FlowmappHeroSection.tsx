@@ -324,3 +324,4 @@ export const FlowmappHeroSection: React.FC<FlowmappHeroSectionProps> = ({ onOpen
     </section>
   );
 };
+
