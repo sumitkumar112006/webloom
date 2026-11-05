@@ -37,9 +37,9 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "large",
     year: "2025",
-    thumbnail: "/assets/service_ai.png",
+    thumbnail: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/service_ai.png",
+    mediaUrl: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://www.deepshospital.com/",
     overview:
       "An enterprise multi-specialty healthcare web portal built for Deeps Hospital, providing patients with department directories, physician profiles, direct appointment requests, and emergency care hotlines. Engineered with accessibility standards and sub-second load times.",
@@ -55,7 +55,10 @@ export const projectsData: ProjectItem[] = [
       "SEO & Local Healthcare Authority Setup"
     ],
     techStack: ["React", "Tailwind CSS", "Node.js", "SSL Secure Hosting", "Mobile Optimization"],
-    galleryImages: ["/assets/service_ai.png", "/assets/service_web.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "Webloom rebuilt our entire digital hospital presence. Patients now easily find our emergency contacts and book OPD consultations online. Load times dropped under 1 second. Exceptional engineering.",
       author: "Dr. Deepak Sharma",
@@ -72,9 +75,9 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "medium",
     year: "2025",
-    thumbnail: "/assets/project_luxury_studio.png",
+    thumbnail: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/project_luxury_studio.png",
+    mediaUrl: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://floracafesite.netlify.app/",
     overview:
       "A vibrant botanical culinary web platform designed for Flora Cafe, showcasing handcrafted coffee menus, daily specials, aesthetic indoor atmospheres, and seamless direct table reservations on Netlify.",
@@ -89,7 +92,10 @@ export const projectsData: ProjectItem[] = [
       "Google Maps & Contact Integration"
     ],
     techStack: ["React", "Vite", "Tailwind CSS", "Netlify", "WhatsApp API"],
-    galleryImages: ["/assets/project_luxury_studio.png", "/assets/service_web.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "The botanical design captures our cafe's exact vibe. Customers love scanning our digital menu, and weekend reservations have become seamless. Zero bugs, delivered right on schedule.",
       author: "Rohan Mehta",
@@ -106,9 +112,9 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "medium",
     year: "2025",
-    thumbnail: "/assets/service_web.png",
+    thumbnail: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/service_web.png",
+    mediaUrl: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://kadappacafe-weld.vercel.app/",
     overview:
       "A traditional South Indian culinary brand web presence celebrating authentic flavors, specialty dosas, filter coffee, and hassle-free dining reservations deployed on Vercel.",
@@ -123,7 +129,10 @@ export const projectsData: ProjectItem[] = [
       "Vercel Edge Deployment"
     ],
     techStack: ["Next.js", "React", "Tailwind CSS", "Vercel"],
-    galleryImages: ["/assets/service_web.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "Webloom understood the cultural heritage and culinary appeal of our brand. The site is super fast on mobile and brings us continuous footfalls. Highly recommend.",
       author: "Priya Raghavan",
@@ -140,9 +149,9 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "standard",
     year: "2025",
-    thumbnail: "/assets/hero_showcase.png",
+    thumbnail: "https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/hero_showcase.png",
+    mediaUrl: "https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://animated-boba-914138.netlify.app/",
     overview:
       "An engaging, playful web platform featuring animated beverage visuals, interactive topping selectors, and fluid UI animations built to elevate modern Gen-Z dessert brands.",
@@ -157,7 +166,10 @@ export const projectsData: ProjectItem[] = [
       "Netlify Edge Deployment"
     ],
     techStack: ["HTML5", "CSS3 Animation", "JavaScript", "Netlify"],
-    galleryImages: ["/assets/hero_showcase.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "The animated customizer and playful micro-interactions brought our boba brand alive! Our Gen-Z customer engagement increased by over 40%.",
       author: "Ananya Gupta",
@@ -174,9 +186,9 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "standard",
     year: "2025",
-    thumbnail: "/assets/project_luxury_studio.png",
+    thumbnail: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/project_luxury_studio.png",
+    mediaUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://kingfisher-wheat.vercel.app/",
     overview:
       "A vibrant lifestyle brand landing page built to spotlight premium dining experiences, social gatherings, curated venues, and seasonal brand activities.",
@@ -191,7 +203,10 @@ export const projectsData: ProjectItem[] = [
       "Vercel CDN Optimization"
     ],
     techStack: ["React", "Next.js", "Tailwind CSS", "Vercel"],
-    galleryImages: ["/assets/project_luxury_studio.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "From fluid responsive animations to crisp typography, the experience is top notch. The deployment on Vercel has been rock solid.",
       author: "Vikramaditya Rao",
@@ -208,9 +223,9 @@ export const projectsData: ProjectItem[] = [
     featured: false,
     gridSpan: "standard",
     year: "2025",
-    thumbnail: "/assets/hero_showcase.png",
+    thumbnail: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/hero_showcase.png",
+    mediaUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://dazzling-melba-4264c5.netlify.app/",
     overview:
       "An ultra-clean modern studio portfolio emphasizing architectural negative space, smooth layout transitions, and high-contrast typography hierarchy.",
@@ -224,7 +239,10 @@ export const projectsData: ProjectItem[] = [
       "Responsive Client Presentation"
     ],
     techStack: ["React", "Tailwind CSS", "Netlify"],
-    galleryImages: ["/assets/hero_showcase.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "Clean, uncompromising code. No template junk. The Webloom team engineered our portfolio with sub-millisecond precision.",
       author: "Kabir Sen",
@@ -241,9 +259,9 @@ export const projectsData: ProjectItem[] = [
     featured: false,
     gridSpan: "standard",
     year: "2025",
-    thumbnail: "/assets/project_social_campaign.png",
+    thumbnail: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/project_social_campaign.png",
+    mediaUrl: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://warm-kashata-3f0e8d.netlify.app/",
     overview:
       "A heritage-focused artisanal showcase highlighting handcrafted goods with tactile textures, warm lighting palettes, and detailed maker stories.",
@@ -257,7 +275,10 @@ export const projectsData: ProjectItem[] = [
       "Inquiry & Order Flow"
     ],
     techStack: ["React", "Vite", "Tailwind CSS", "Netlify"],
-    galleryImages: ["/assets/project_social_campaign.png"],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=80"
+    ],
     testimonial: {
       quote: "The earthy palette and storytelling typography showcase our handcrafted products with the dignity they deserve. Great communication throughout.",
       author: "Meenakshi Sundaram",
@@ -326,9 +347,9 @@ export const projectsData: ProjectItem[] = [
     featured: true,
     gridSpan: "medium",
     year: "2025",
-    thumbnail: "/assets/project_luxury_studio.png",
+    thumbnail: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80",
     mediaType: "image",
-    mediaUrl: "/assets/project_luxury_studio.png",
+    mediaUrl: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://sumitkumar112006.github.io/Beauty_Parlour/",
     githubUrl: "https://github.com/sumitkumar112006/Beauty_Parlour",
     overview:
@@ -346,8 +367,8 @@ export const projectsData: ProjectItem[] = [
     ],
     techStack: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "WhatsApp API Integration"],
     galleryImages: [
-      "/assets/project_luxury_studio.png",
-      "/assets/service_web.png"
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80"
     ],
     testimonial: {
       quote: "Our bridal bookings doubled after launching the website. The direct WhatsApp inquiry flow filters serious brides and saves me 3 hours of messaging every day. Truly five-star work.",

@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   : 'text-[#111827] dark:text-gray-300 hover:text-[#23469F] dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
               }`}
             >
-              Work
+              Projects
             </Link>
 
             <Link
@@ -111,20 +111,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               }`}
             >
               Plans
-            </Link>
-
-            <Link
-              to="/reviews"
-              className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors inline-flex items-center gap-1.5 ${
-                location.pathname === '/reviews'
-                  ? 'text-[#23469F] dark:text-[#B9DFF2] bg-blue-50/60 dark:bg-blue-950/40'
-                  : 'text-[#111827] dark:text-gray-300 hover:text-[#23469F] dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
-              }`}
-            >
-              <span>Reviews</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 font-bold">
-                5.0 ★
-              </span>
             </Link>
 
             <Link
@@ -224,7 +210,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 to="/our-work"
                 className="block px-3 py-2 rounded-lg text-base font-semibold text-[#101A35] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
               >
-                Our Work
+                Projects
               </Link>
               <Link
                 to="/video-showcase"
@@ -237,15 +223,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 className="block px-3 py-2 rounded-lg text-base font-semibold text-[#101A35] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
               >
                 Plans
-              </Link>
-              <Link
-                to="/reviews"
-                className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-semibold text-[#101A35] dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800"
-              >
-                <span>50+ Projects & Reviews</span>
-                <span className="text-xs font-mono px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 font-bold">
-                  5.0 ★
-                </span>
               </Link>
               <Link
                 to="/about"

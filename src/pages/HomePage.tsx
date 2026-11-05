@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Smartphone, Cpu, Box, Sparkles, CheckCircle2, ShieldCheck, Layers } from 'lucide-react';
+import { ArrowRight, Globe, Smartphone, Cpu, Box, Sparkles, CheckCircle2, ShieldCheck, Layers, Star } from 'lucide-react';
 import { HairlineHeroSection } from '../components/HairlineHeroSection';
 import { ServiceDiscovery } from '../components/ServiceDiscovery';
 import { ProjectCard } from '../components/ProjectCard';
+import { ReviewCard } from '../components/ReviewCard';
 import { ProcessTimeline } from '../components/ProcessTimeline';
 import { ContactForm } from '../components/ContactForm';
 import { projectsData } from '../data/projectsData';
+import { reviewsData } from '../data/reviewsData';
 import { companyData } from '../data/companyData';
 
 interface HomePageProps {
@@ -68,6 +70,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
                   variant="compact"
                 />
               ))}
+            </div>
+          </div>
+
+          {/* VERIFIED 5-STAR RATINGS SCROLLING FROM LEFT TO RIGHT */}
+          <div className="pt-6">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                  Verified 5.0 ★ Client Ratings • Continuous Left to Right
+                </span>
+                <span className="hidden sm:inline-block font-handwriting text-sm text-gray-500 dark:text-gray-400">
+                  (50+ delivered projects)
+                </span>
+              </div>
+              <span className="text-xs font-mono text-gray-500 dark:text-gray-400">
+                Hover to pause
+              </span>
+            </div>
+
+            <div className="relative w-full overflow-hidden py-3 -mx-4 sm:-mx-6 lg:-mx-12 xl:-mx-16 2xl:-mx-20 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20">
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-white dark:from-[#0B1120] to-transparent z-10" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-white dark:from-[#0B1120] to-transparent z-10" />
+
+              <div className="animate-marquee-right flex items-stretch gap-6">
+                {[...reviewsData, ...reviewsData].map((review, idx) => (
+                  <ReviewCard
+                    key={`home-rev-${review.id}-${idx}`}
+                    review={review}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
