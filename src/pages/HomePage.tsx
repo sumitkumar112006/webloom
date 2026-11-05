@@ -24,38 +24,70 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
       {/* 02 — OUR SERVICES EDITORIAL MATRIX (Exact Reference Match, Full Width) */}
       <ServiceDiscovery />
 
-      {/* 03 — FEATURED EDITORIAL WORK GRID */}
-      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 transition-colors">
-        <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-16 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2 font-mono">
-                Production Case Studies
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] font-display tracking-tight">
-                Featured Work
+      {/* 03 — FEATURED EDITORIAL WORK GRID (With Physical Stickers & Asymmetrical Rhythm) */}
+      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 relative overflow-hidden transition-colors select-none">
+        
+        {/* Subtle warm sunshine background ambient glow */}
+        <div className="absolute top-1/3 left-1/3 w-[600px] h-[400px] bg-gradient-to-r from-[#FEF08A]/30 to-transparent rounded-full blur-[130px] pointer-events-none" />
+
+        <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-amber-800 bg-[#FEF9C3] border border-amber-200/80 mb-3">
+                <span>PORTFOLIO // SELECTED CASE STUDIES (2025 – 2026)</span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] font-display tracking-tight leading-[1.06]">
+                Work that commands <br />
+                attention.
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-xl">
-                Real web platforms, interactive systems, and spatial 3D visualization engineered with craft and architectural discipline.
+              <p className="text-base sm:text-lg text-slate-600 mt-3 max-w-xl font-normal leading-relaxed">
+                Real web platforms, interactive systems, short-form creative production, and 3D precision visualization engineered with zero outsourced fluff.
               </p>
             </div>
 
-            <Link
-              to="/our-work"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0F172A] hover:text-amber-600 transition-colors"
-            >
-              <span>View All Projects</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            {/* Circular Rotating Studio Stamp & Link */}
+            <div className="flex items-center gap-6 self-start lg:self-auto">
+              {/* Rotating Circular Stamp Seal */}
+              <div className="hidden sm:block relative w-24 h-24 pointer-events-none">
+                <svg
+                  className="w-full h-full animate-[spin_18s_linear_infinite]"
+                  viewBox="0 0 100 100"
+                >
+                  <defs>
+                    <path
+                      id="circlePath"
+                      d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                    />
+                  </defs>
+                  <text className="text-[8.5px] font-mono font-bold uppercase tracking-[0.22em] fill-slate-500">
+                    <textPath href="#circlePath">
+                      ✦ WEBLOOM CRAFT ✦ VERIFIED BUILD ✦
+                    </textPath>
+                  </text>
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center font-bold text-amber-600 text-sm">
+                  ✦
+                </div>
+              </div>
+
+              <Link
+                to="/our-work"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F172A] text-white hover:bg-slate-800 shadow-sm transition-all"
+              >
+                <span>View All Projects</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
 
-          {/* Varied Editorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Asymmetrical Editorial Grid with Tactile Physical Stickers */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {featuredProjects.map((project, idx) => (
               <ProjectCard
                 key={project.id}
                 project={project}
-                variant={idx === 0 ? 'large' : 'medium'}
+                variant={idx === 0 ? 'large' : 'standard'}
+                index={idx}
               />
             ))}
           </div>
