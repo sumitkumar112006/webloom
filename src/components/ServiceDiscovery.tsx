@@ -1,305 +1,255 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight, CheckCircle2, Sparkles, Globe, Smartphone, Share2, Cpu, Box } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceItem {
   id: string;
   number: string;
   title: string;
-  summary: string;
+  tagline: string;
   link: string;
-  icon: React.ComponentType<{ className?: string }>;
   tags: string[];
-  previewDescription: string;
-  highlights: string[];
   previewImage: string;
+  icon: (props: { className?: string }) => React.JSX.Element;
 }
 
 export const ServiceDiscovery: React.FC = () => {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
   const services: ServiceItem[] = [
     {
       id: 'web',
       number: '01',
       title: 'Web Services',
-      summary: 'Build your digital presence.',
+      tagline: 'Websites, platforms & digital products',
       link: '/services/web-services',
-      icon: Globe,
-      tags: ['Websites', 'UI/UX Design', 'E-Commerce', 'Technical SEO'],
-      previewDescription:
-        'Engineered websites designed with brand-focused typography, responsive-first layouts, and zero visual clutter to establish instant authority.',
-      highlights: [
-        'Custom component-driven UI/UX design',
-        'Sub-second Core Web Vitals optimization',
-        'Direct WhatsApp & form lead routing',
-        '1-Year maintenance & ongoing support'
-      ],
-      previewImage: '/assets/service_web.png'
+      tags: ['React & Next.js', 'UI/UX Systems', 'E-Commerce', 'Core Web Vitals'],
+      previewImage: '/assets/service_web.png',
+      // Bespoke Hand-Crafted Browser Wireframe SVG Icon
+      icon: ({ className = 'w-5 h-5' }) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <rect x="2" y="3" width="20" height="18" rx="3" className="stroke-current" />
+          <line x1="2" y1="8" x2="22" y2="8" />
+          <circle cx="5" cy="5.5" r="0.75" fill="currentColor" />
+          <circle cx="8" cy="5.5" r="0.75" fill="currentColor" />
+          <line x1="6" y1="12" x2="14" y2="12" strokeDasharray="1 1" />
+          <rect x="6" y="15" width="5" height="3" rx="0.5" className="fill-current/10" />
+          <rect x="13" y="15" width="5" height="3" rx="0.5" className="fill-current/10" />
+        </svg>
+      )
     },
     {
       id: 'apps',
       number: '02',
       title: 'App Services',
-      summary: 'Turn ideas into useful products.',
+      tagline: 'Scalable applications & software solutions',
       link: '/services/app-services',
-      icon: Smartphone,
-      tags: ['Business Apps', 'Customer Portals', 'Booking Systems', 'Custom Apps'],
-      previewDescription:
-        'Ergonomic, role-based business applications built to coordinate appointments, record attendance, manage inventory, and serve customers.',
-      highlights: [
-        'Cross-platform mobile & responsive web apps',
-        'Role-based permissions & secure authentication',
-        'Real-time database sync & data export',
-        'Automated booking & customer notification flow'
-      ],
-      previewImage: '/assets/project_mobile_app.png'
+      tags: ['Cross-Platform', 'Client Portals', 'Role Auth', 'Realtime Sync'],
+      previewImage: '/assets/project_mobile_app.png',
+      // Bespoke Hand-Crafted Mobile App & System Interface SVG Icon
+      icon: ({ className = 'w-5 h-5' }) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <rect x="5" y="2" width="14" height="20" rx="3" className="stroke-current" />
+          <line x1="10" y1="5" x2="14" y2="5" />
+          <rect x="8" y="9" width="8" height="4" rx="1" className="fill-current/10" />
+          <rect x="8" y="15" width="3.5" height="3.5" rx="0.5" />
+          <rect x="12.5" y="15" width="3.5" height="3.5" rx="0.5" />
+        </svg>
+      )
     },
     {
       id: 'social',
       number: '03',
       title: 'Social Media',
-      summary: 'Create content that gets attention.',
+      tagline: 'Creative strategy, content & brand presence',
       link: '/social-media',
-      icon: Share2,
-      tags: ['Reels Production', 'Brand Posts', 'Meta Ads', 'Community Growth'],
-      previewDescription:
-        'Complete short-form video scripting, filming, and post-production paired with hyper-targeted Meta advertising campaigns.',
-      highlights: [
-        'High-retention reel scripting and shooting',
-        'Designed graphics, carousels & daily stories',
-        'Radius & pincode-specific Meta Ads management',
-        'Consistent weekly brand publishing cadence'
-      ],
-      previewImage: '/assets/project_social_campaign.png'
+      tags: ['Short-Form Reels', 'Meta Ads', 'Brand Assets', 'Motion Graphics'],
+      previewImage: '/assets/project_social_campaign.png',
+      // Bespoke Hand-Crafted Media Production Reel SVG Icon
+      icon: ({ className = 'w-5 h-5' }) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <rect x="3" y="4" width="18" height="16" rx="3" />
+          <path d="M7 4v16" strokeDasharray="2 2" />
+          <path d="M17 4v16" strokeDasharray="2 2" />
+          <polygon points="11,10 15,12 11,14" fill="currentColor" stroke="none" />
+        </svg>
+      )
     },
     {
       id: 'ai',
       number: '04',
       title: 'AI Automation',
-      summary: 'Remove repetitive work.',
+      tagline: 'Intelligent workflows & AI-driven solutions',
       link: '/ai-automation',
-      icon: Cpu,
-      tags: ['Business Workflows', 'WhatsApp Bots', 'CRM Pipelines', 'AI Agents'],
-      previewDescription:
-        'Connect your lead channels, databases, and customer support with intelligent automated pipelines that work reliably 24/7.',
-      highlights: [
-        'Automated WhatsApp inquiry & booking bots',
-        'Instant multi-channel CRM lead distribution',
-        'Inventory threshold & restock alert triggers',
-        'Custom grounded AI agents for customer Q&A'
-      ],
-      previewImage: '/assets/service_ai.png'
+      tags: ['WhatsApp Bots', 'CRM Pipelines', 'Task Routing', 'Custom Agents'],
+      previewImage: '/assets/service_ai.png',
+      // Bespoke Hand-Crafted Neural Nodes & Flow Graph SVG Icon
+      icon: ({ className = 'w-5 h-5' }) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <circle cx="6" cy="6" r="3" />
+          <circle cx="18" cy="6" r="3" />
+          <circle cx="12" cy="18" r="3" />
+          <path d="M8.5 7.5L15.5 7.5" />
+          <path d="M7.5 8.5L10.5 15.5" />
+          <path d="M16.5 8.5L13.5 15.5" />
+        </svg>
+      )
     },
     {
       id: '3d',
       number: '05',
       title: '3D Works',
-      summary: 'Photorealistic CGI, 3D motion, VFX & product visualization.',
+      tagline: 'Photorealistic CGI, VFX & product visualization',
       link: '/3d-works',
-      icon: Box,
-      tags: ['Photorealistic CGI Stills', '3D Motion & Commercials', 'VFX & Environmental Scenes', 'Product Visualization'],
-      previewDescription:
-        'Studio-grade photorealistic CGI stills, commercial 3D motion choreographies, atmospheric VFX scenes, and precision product visualization.',
-      highlights: [
-        'Photorealistic CGI stills & studio lighting',
-        '3D motion, commercials & exploded animations',
-        'VFX simulations & environmental scenes',
-        'Precision 3D product visualization'
-      ],
-      previewImage: '/assets/project_3d_chrono.png'
+      tags: ['Product CGI Stills', '3D Motion', 'Exploded Animation', 'Spatial VFX'],
+      previewImage: '/assets/project_3d_chrono.png',
+      // Bespoke Hand-Crafted Isometric 3D Prism SVG Icon
+      icon: ({ className = 'w-5 h-5' }) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <path d="M12 2L3 7L12 12L21 7L12 2Z" />
+          <path d="M3 7V17L12 22V12" />
+          <path d="M21 7V17L12 22" />
+          <path d="M12 12L17 9.5" strokeDasharray="1 1" />
+        </svg>
+      )
     }
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeService = services[activeIndex];
+  const activeHoverItem = services.find((s) => s.id === hoveredId);
 
   return (
-    <section id="service-matrix" className="py-20 lg:py-28 bg-white border-y border-amber-100/70 relative overflow-hidden transition-colors">
-      {/* Subtle warm yellow ambient glow */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#FEF08A]/35 via-[#FDE68A]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
+    <section id="our-services" className="py-20 lg:py-28 bg-white border-y border-amber-100/60 relative overflow-hidden transition-colors select-none">
+      
+      {/* WARM YELLOW AMBIENT SUNSHINE GLOW (Strictly Yellow Gradient & White BG) */}
+      <div className="absolute bottom-0 right-0 w-[550px] h-[450px] bg-gradient-to-tl from-[#FEF08A]/45 via-[#FDE68A]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-10 left-10 w-[380px] h-[380px] bg-[#FEF9C3]/50 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* SECTION HEADER */}
-        <div className="max-w-3xl mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-800 bg-[#FEF9C3] border border-amber-200/80 mb-4 font-mono">
-            <span>Capability Matrix</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight font-display mb-4">
-            ONE PARTNER. MULTIPLE CAPABILITIES.
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards studio.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* LEFT COLUMN: EDITORIAL ANCHOR (Matching FlowStudio reference) */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
+            <div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] tracking-[-0.03em] font-display leading-[1.06]">
+                Our <br />
+                Services
+              </h2>
+              <p className="text-sm sm:text-base text-slate-500 mt-4 max-w-sm leading-relaxed font-normal">
+                End-to-end digital, creative and AI solutions for modern businesses.
+              </p>
+            </div>
 
-        {/* DESKTOP SPLIT VIEW */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
-          {/* LEFT: INTERACTIVE SERVICE LIST */}
-          <div className="lg:col-span-6 space-y-2.5">
-            {services.map((item, idx) => {
-              const isSelected = activeIndex === idx;
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.id}
-                  onMouseEnter={() => setActiveIndex(idx)}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`cursor-pointer rounded-2xl p-5 transition-all duration-200 border ${
-                    isSelected
-                      ? 'bg-[#FEFCE8]/80 border-amber-300 shadow-[0_8px_24px_-8px_rgba(251,191,36,0.3)] -translate-x-1'
-                      : 'bg-white border-slate-200/70 hover:bg-[#FEFCE8]/40 hover:border-amber-200'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <span className={`text-sm font-mono font-bold ${isSelected ? 'text-amber-800' : 'text-slate-400'}`}>
-                        {item.number}
-                      </span>
-                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-amber-100 text-amber-900' : 'bg-slate-100 text-slate-500'}`}>
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-[#0F172A] font-display">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs text-slate-500">
-                          {item.summary}
-                        </p>
-                      </div>
-                    </div>
+            <div className="pt-2">
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-2 text-sm font-bold text-[#0F172A] hover:text-amber-700 transition-colors"
+              >
+                <span className="underline decoration-slate-300 decoration-2 underline-offset-6 group-hover:decoration-amber-500 transition-all">
+                  View all services
+                </span>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className={`text-xs font-semibold ${isSelected ? 'text-amber-800' : 'text-slate-400'}`}>
-                        {isSelected ? 'Active Preview' : 'Select'}
-                      </span>
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isSelected ? 'text-amber-700 translate-x-0.5' : 'text-slate-300'}`} />
+            {/* DYNAMIC FLOATING PREVIEW CARD (Visible on hover on desktop) */}
+            <div
+              className={`hidden lg:block transition-all duration-300 ease-out pt-4 ${
+                activeHoverItem ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
+              }`}
+            >
+              {activeHoverItem && (
+                <div className="rounded-2xl bg-white/95 backdrop-blur-md p-3.5 border border-amber-200/80 shadow-[0_16px_36px_-12px_rgba(251,191,36,0.35)] w-72">
+                  <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-900 mb-3 border border-slate-100">
+                    <img
+                      src={activeHoverItem.previewImage}
+                      alt={activeHoverItem.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/70 text-white backdrop-blur">
+                      {activeHoverItem.number} / 05
                     </div>
                   </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {activeHoverItem.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-[#FEF9C3] text-amber-900 border border-amber-200/60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+              )}
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: SLEEK EDITORIAL ROWS WITH BESPOKE ICON CRAFT */}
+          <div className="lg:col-span-8 divide-y divide-slate-200/80">
+            {services.map((item) => {
+              const Icon = item.icon;
+              const isHovered = hoveredId === item.id;
+
+              return (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  onMouseEnter={() => setHoveredId(item.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  className={`group flex flex-col sm:flex-row sm:items-center justify-between py-6 sm:py-7 px-4 -mx-4 rounded-2xl transition-all duration-200 cursor-pointer ${
+                    isHovered
+                      ? 'bg-[#FEFCE8]/80 shadow-[0_6px_20px_-6px_rgba(251,191,36,0.22)]'
+                      : 'hover:bg-[#FEFCE8]/40'
+                  }`}
+                >
+                  {/* Left: Number + Bespoke Icon + Title */}
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    {/* Editorial Number */}
+                    <span className="text-sm font-mono font-semibold text-slate-400 group-hover:text-amber-800 transition-colors w-6">
+                      {item.number}
+                    </span>
+
+                    {/* Bespoke Hand-Crafted Icon Badge */}
+                    <div
+                      className={`h-11 w-11 rounded-2xl flex items-center justify-center transition-all duration-200 shrink-0 ${
+                        isHovered
+                          ? 'bg-[#FEF9C3] text-amber-900 border border-amber-300 scale-105 shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border border-slate-200/80 group-hover:bg-[#FEF9C3] group-hover:text-amber-900 group-hover:border-amber-300'
+                      }`}
+                    >
+                      <Icon className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
+                    </div>
+
+                    {/* Service Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] tracking-[-0.02em] font-display transition-transform duration-200 group-hover:translate-x-1">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  {/* Right: Tagline / Description & Directional Arrow */}
+                  <div className="flex items-center justify-between sm:justify-end gap-5 mt-3 sm:mt-0 pl-16 sm:pl-0">
+                    <span className="text-xs sm:text-sm text-slate-500 group-hover:text-slate-800 font-normal transition-colors">
+                      {item.tagline}
+                    </span>
+
+                    {/* Interactive Arrow Button */}
+                    <div
+                      className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${
+                        isHovered
+                          ? 'bg-[#0F172A] text-white shadow-xs'
+                          : 'text-slate-400 group-hover:text-[#0F172A] group-hover:bg-white'
+                      }`}
+                    >
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </div>
+                </Link>
               );
             })}
           </div>
 
-          {/* RIGHT: DYNAMIC PREVIEW PANEL */}
-          <div className="lg:col-span-6 sticky top-28">
-            <div className="bg-white rounded-2xl border border-amber-200/70 shadow-[0_16px_36px_-12px_rgba(0,0,0,0.08)] overflow-hidden p-8 transition-all">
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-amber-800 bg-[#FEF9C3] px-2.5 py-1 rounded border border-amber-200">
-                    {activeService.number} / 05
-                  </span>
-                  <h4 className="text-xl font-bold text-[#0F172A] font-display">
-                    {activeService.title}
-                  </h4>
-                </div>
-                <Link
-                  to={activeService.link}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 hover:text-amber-900 transition-colors"
-                >
-                  <span>Explore Department</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-
-              {/* VISUAL PREVIEW ASSET */}
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-slate-900 border border-slate-100">
-                <img
-                  src={activeService.previewImage}
-                  alt={activeService.title}
-                  className="w-full h-full object-cover transition-opacity duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-transparent flex items-end p-5">
-                  <p className="text-white text-xs font-medium">
-                    {activeService.summary}
-                  </p>
-                </div>
-              </div>
-
-              {/* DESCRIPTION & HIGHLIGHTS */}
-              <p className="text-sm text-slate-600 mb-5 leading-relaxed">
-                {activeService.previewDescription}
-              </p>
-
-              <div className="space-y-2.5 mb-6">
-                {activeService.highlights.map((highlight, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-                    <span>{highlight}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* ACTION LINK */}
-              <Link
-                to={activeService.link}
-                className="w-full py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#0F172A] hover:bg-slate-800 text-white flex items-center justify-center gap-2 transition-colors shadow-sm"
-              >
-                <span>View Full {activeService.title} Specifications</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* MOBILE ACCORDION VIEW */}
-        <div className="lg:hidden space-y-3">
-          {services.map((item, idx) => {
-            const isExpanded = activeIndex === idx;
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.id}
-                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs"
-              >
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex(isExpanded ? -1 : idx)}
-                  className="w-full p-4 flex items-center justify-between text-left"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-amber-700">
-                      {item.number}
-                    </span>
-                    <Icon className="h-4 w-4 text-amber-600" />
-                    <div>
-                      <h3 className="text-sm font-bold text-[#0F172A]">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs text-slate-500">{item.summary}</p>
-                    </div>
-                  </div>
-                  <ChevronRight
-                    className={`h-4 w-4 text-slate-400 transition-transform ${isExpanded ? 'rotate-90 text-amber-700' : ''}`}
-                  />
-                </button>
-
-                {isExpanded && (
-                  <div className="px-4 pb-5 pt-1 border-t border-slate-100 bg-[#FEFCE8]/30">
-                    <p className="text-xs text-slate-600 mb-3 leading-relaxed">
-                      {item.previewDescription}
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      {item.highlights.map((h, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <Link
-                      to={item.link}
-                      className="inline-flex items-center gap-2 text-xs font-bold text-amber-800 hover:underline"
-                    >
-                      <span>Explore {item.title} Page</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                )}
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>
   );
 };
-
