@@ -11,17 +11,17 @@
   --color-text-muted: #667085;
   
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
 @layer base {
   :root {
-    --bg-main: #F6F8FC;
+    --bg-main: #FFFFFF;
     --bg-surface: #FFFFFF;
-    --bg-subtle: #F1F5F9;
-    --text-heading: #101A35;
-    --text-body: #111827;
-    --text-muted: #667085;
+    --bg-subtle: #FEFCE8;
+    --text-heading: #0F172A;
+    --text-body: #1E293B;
+    --text-muted: #64748B;
     --border-subtle: rgba(226, 232, 240, 0.8);
   }
 

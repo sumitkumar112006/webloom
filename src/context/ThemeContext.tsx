@@ -15,9 +15,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     try {
       const saved = localStorage.getItem('webloom-theme');
       if (saved === 'dark' || saved === 'light') return saved;
-      return 'dark'; // Dark theme is default
+      return 'light'; // Light theme default with yellow gradient & white bg
     } catch {
-      return 'dark';
+      return 'light';
     }
   });
 

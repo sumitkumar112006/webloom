@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Smartphone, Cpu, Box, Sparkles, CheckCircle2, ShieldCheck, Layers } from 'lucide-react';
-import { HairlineHeroSection } from '../components/HairlineHeroSection';
+import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { FlowmappHeroSection } from '../components/FlowmappHeroSection';
 import { ServiceDiscovery } from '../components/ServiceDiscovery';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProcessTimeline } from '../components/ProcessTimeline';
@@ -17,32 +17,32 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
   const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 4);
 
   return (
-    <div className="min-h-screen">
-      {/* 06 — INTERACTIVE HAIRLINE HERO SECTION */}
-      <HairlineHeroSection onOpenContact={onOpenContact} />
+    <div className="min-h-screen bg-white">
+      {/* 01 — FLOWMAPP-INSPIRED HUMAN-CRAFTED HERO SECTION */}
+      <FlowmappHeroSection onOpenContact={onOpenContact} />
 
-      {/* 07 — SERVICE DISCOVERY SECTION */}
+      {/* 02 — SERVICE DISCOVERY SECTION */}
       <ServiceDiscovery />
 
-      {/* 10 — FEATURED EDITORIAL WORK GRID */}
-      <section className="py-20 lg:py-28 bg-white dark:bg-[#0B1120] transition-colors">
+      {/* 03 — FEATURED EDITORIAL WORK GRID */}
+      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-16 gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] block mb-2">
-                Selected Case Studies
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2 font-mono">
+                Production Case Studies
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
-                OUR WORK
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] font-display tracking-tight">
+                Featured Work
               </h2>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">
-                See what we've built across web applications, mock platforms, local studios, and 3D visualization.
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-xl">
+                Real web platforms, interactive systems, and spatial 3D visualization engineered with craft and architectural discipline.
               </p>
             </div>
 
             <Link
               to="/our-work"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0F172A] hover:text-amber-600 transition-colors"
             >
               <span>View All Projects</span>
               <ArrowRight className="h-4 w-4" />
@@ -62,39 +62,42 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
         </div>
       </section>
 
-      {/* 16 — AUTHENTIC WEBLOOM POSITIONING */}
-      <section className="py-20 bg-slate-50 dark:bg-[#0A1022] text-[#101A35] dark:text-white border-y border-gray-200/80 dark:border-white/10 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 04 — AUTHENTIC WEBLOOM PHILOSOPHY & FOUNDER CARD */}
+      <section className="py-24 bg-gradient-to-b from-white via-[#FEFCE8]/40 to-white text-[#0F172A] border-y border-amber-100/60 relative overflow-hidden">
+        {/* Subtle yellow gradient highlight orb */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-[#FEF08A]/40 to-[#FDE68A]/30 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#23469F] dark:text-[#B9DFF2]">
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-700 font-mono">
               The Webloom Philosophy
             </span>
-            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug font-display text-[#101A35] dark:text-white">
+            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug font-display text-[#0F172A]">
               “At Webloom, we believe a website should be more than just a digital business card. It should be an experience, a communication tool, and a driver of growth.”
             </blockquote>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              We bring together thoughtful web design, development, UI/UX, branding, and digital marketing to help businesses build a stronger and more memorable online identity.
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              We bring together thoughtful web design, modern front-end engineering, UI/UX architecture, and 3D precision to help companies build an authentic, authoritative presence.
             </p>
 
             {/* Founder Profile Badge */}
-            <div className="pt-2 flex items-center justify-center gap-3.5">
+            <div className="pt-4 flex items-center justify-center gap-3.5">
               <img
                 src="/assets/Profile.png"
                 alt="Founder & Principal"
-                className="h-12 w-12 rounded-full object-cover border-2 border-[#23469F]/30 dark:border-[#B9DFF2]/50 shadow-md"
+                className="h-12 w-12 rounded-full object-cover border-2 border-amber-300 shadow-sm"
               />
               <div className="text-left">
-                <p className="text-xs font-bold text-[#101A35] dark:text-white uppercase tracking-wider">Webloom Leadership</p>
-                <p className="text-[11px] text-[#23469F] dark:text-[#B9DFF2] font-medium">Founder & Lead Technical Strategist</p>
+                <p className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">Webloom Leadership</p>
+                <p className="text-[11px] text-amber-700 font-medium font-mono">Founder & Lead Technical Strategist</p>
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap justify-center gap-4">
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#23469F] text-white hover:bg-[#1b367c] dark:bg-white dark:text-[#101A35] dark:hover:bg-[#B9DFF2] shadow-sm transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F172A] text-white hover:bg-slate-800 shadow-sm transition-all"
               >
-                <span>Read Mission & Vision</span>
+                <span>Read Mission & Studio Principles</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -102,51 +105,51 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenContact }) => {
         </div>
       </section>
 
-      {/* 4-STEP DISCIPLINED APPROACH TIMELINE */}
+      {/* 05 — 4-STEP DISCIPLINED APPROACH TIMELINE */}
       <ProcessTimeline />
 
-      {/* ONBOARDING TIMELINE */}
+      {/* 06 — ONBOARDING TIMELINE */}
       <ProcessTimeline
         title="Client Onboarding Journey"
         subtitle="Transparent onboarding designed for clarity and rapid time-to-market without guesswork."
         type="onboarding"
       />
 
-      {/* 18 — CONTACT & PROJECT INQUIRY */}
-      <section className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] transition-colors" id="contact">
+      {/* 07 — CONTACT & PROJECT INQUIRY */}
+      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 transition-colors" id="contact">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2]">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 font-mono">
                 Start A Conversation
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101A35] dark:text-white font-display tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] font-display tracking-tight">
                 Have a project in mind?
               </h2>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Whether you need a full digital redesign, an internal workflow app, or continuous short-form content and Meta Ads, our engineers and strategists are ready to collaborate.
               </p>
 
-              <div className="pt-4 space-y-4 border-t border-gray-200 dark:border-white/10 text-xs text-gray-700 dark:text-gray-300">
+              <div className="pt-4 space-y-4 border-t border-slate-200 text-xs text-slate-700">
                 <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2] flex items-center justify-center shrink-0">
+                  <div className="h-8 w-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
                     <ShieldCheck className="h-4 w-4" />
                   </div>
                   <span>Documented scope of work with milestone timelines</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2] flex items-center justify-center shrink-0">
+                  <div className="h-8 w-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
                     <CheckCircle2 className="h-4 w-4" />
                   </div>
                   <span>Direct founder & engineer accessibility — zero outsourced fluff</span>
                 </div>
               </div>
 
-              <div className="pt-6 p-5 rounded-2xl bg-white dark:bg-[#111C33] border border-gray-200 dark:border-white/10 space-y-2 text-xs">
-                <p className="font-bold text-[#101A35] dark:text-white">Headquarters & Direct Inquiries</p>
-                <p className="text-gray-600 dark:text-gray-300">{companyData.legalLocation}</p>
-                <p className="text-[#23469F] dark:text-[#B9DFF2] font-semibold">{companyData.primaryPhone}</p>
-                <p className="text-gray-500 dark:text-gray-400">{companyData.email}</p>
+              <div className="pt-6 p-5 rounded-2xl bg-[#FEFCE8]/50 border border-amber-200/80 space-y-2 text-xs">
+                <p className="font-bold text-[#0F172A]">Headquarters & Direct Inquiries</p>
+                <p className="text-slate-600">{companyData.legalLocation}</p>
+                <p className="text-amber-800 font-semibold">{companyData.primaryPhone}</p>
+                <p className="text-slate-500">{companyData.email}</p>
               </div>
             </div>
 

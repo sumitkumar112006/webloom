@@ -113,19 +113,21 @@ export const ServiceDiscovery: React.FC = () => {
   const activeService = services[activeIndex];
 
   return (
-    <section id="service-matrix" className="py-20 lg:py-28 bg-[#F6F8FC] dark:bg-[#0B1120] border-y border-gray-200/60 dark:border-white/10 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="service-matrix" className="py-20 lg:py-28 bg-white border-y border-amber-100/70 relative overflow-hidden transition-colors">
+      {/* Subtle warm yellow ambient glow */}
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#FEF08A]/35 via-[#FDE68A]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* SECTION HEADER */}
         <div className="max-w-3xl mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] bg-blue-100/60 dark:bg-blue-900/40 mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-800 bg-[#FEF9C3] border border-amber-200/80 mb-4 font-mono">
             <span>Capability Matrix</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101A35] dark:text-white tracking-tight font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight font-display mb-4">
             ONE PARTNER. MULTIPLE CAPABILITIES.
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards standard.
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Rather than coordinating between five disjointed vendors, Webloom unifies digital strategy, software engineering, short-form creative production, automation, and 3D visualization under a cohesive, high-standards studio.
           </p>
         </div>
 
@@ -143,33 +145,33 @@ export const ServiceDiscovery: React.FC = () => {
                   onClick={() => setActiveIndex(idx)}
                   className={`cursor-pointer rounded-2xl p-5 transition-all duration-200 border ${
                     isSelected
-                      ? 'bg-white dark:bg-[#111C33] border-[#23469F] dark:border-[#B9DFF2] shadow-md -translate-x-1'
-                      : 'bg-white/70 dark:bg-[#111C33]/60 border-gray-200/70 dark:border-white/10 hover:bg-white dark:hover:bg-[#111C33] hover:border-gray-300 dark:hover:border-white/20'
+                      ? 'bg-[#FEFCE8]/80 border-amber-300 shadow-[0_8px_24px_-8px_rgba(251,191,36,0.3)] -translate-x-1'
+                      : 'bg-white border-slate-200/70 hover:bg-[#FEFCE8]/40 hover:border-amber-200'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <span className={`text-sm font-mono font-bold ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2]' : 'text-gray-400 dark:text-gray-500'}`}>
+                      <span className={`text-sm font-mono font-bold ${isSelected ? 'text-amber-800' : 'text-slate-400'}`}>
                         {item.number}
                       </span>
-                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-blue-50 dark:bg-blue-900/40 text-[#23469F] dark:text-[#B9DFF2]' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
+                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-amber-100 text-amber-900' : 'bg-slate-100 text-slate-500'}`}>
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-[#101A35] dark:text-white font-display">
+                        <h3 className="text-lg font-bold text-[#0F172A] font-display">
                           {item.title}
                         </h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                        <p className="text-xs text-slate-500">
                           {item.summary}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className={`text-xs font-semibold ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2]' : 'text-gray-400 dark:text-gray-500'}`}>
-                        {isSelected ? 'Active Preview' : 'Hover to View'}
+                      <span className={`text-xs font-semibold ${isSelected ? 'text-amber-800' : 'text-slate-400'}`}>
+                        {isSelected ? 'Active Preview' : 'Select'}
                       </span>
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isSelected ? 'text-[#23469F] dark:text-[#B9DFF2] translate-x-0.5' : 'text-gray-300 dark:text-gray-600'}`} />
+                      <ChevronRight className={`h-4 w-4 transition-transform ${isSelected ? 'text-amber-700 translate-x-0.5' : 'text-slate-300'}`} />
                     </div>
                   </div>
                 </div>
@@ -179,19 +181,19 @@ export const ServiceDiscovery: React.FC = () => {
 
           {/* RIGHT: DYNAMIC PREVIEW PANEL */}
           <div className="lg:col-span-6 sticky top-28">
-            <div className="bg-white dark:bg-[#111C33] rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden p-8 transition-all">
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-gray-100 dark:border-white/10">
+            <div className="bg-white rounded-2xl border border-amber-200/70 shadow-[0_16px_36px_-12px_rgba(0,0,0,0.08)] overflow-hidden p-8 transition-all">
+              <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-[#23469F] dark:text-[#B9DFF2] bg-blue-50 dark:bg-blue-900/40 px-2.5 py-1 rounded">
+                  <span className="text-xs font-mono font-bold text-amber-800 bg-[#FEF9C3] px-2.5 py-1 rounded border border-amber-200">
                     {activeService.number} / 05
                   </span>
-                  <h4 className="text-xl font-bold text-[#101A35] dark:text-white">
+                  <h4 className="text-xl font-bold text-[#0F172A] font-display">
                     {activeService.title}
                   </h4>
                 </div>
                 <Link
                   to={activeService.link}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#23469F] dark:text-[#B9DFF2] hover:text-[#101A35] dark:hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 hover:text-amber-900 transition-colors"
                 >
                   <span>Explore Department</span>
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -199,13 +201,13 @@ export const ServiceDiscovery: React.FC = () => {
               </div>
 
               {/* VISUAL PREVIEW ASSET */}
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-slate-900 border border-gray-100 dark:border-white/10">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-slate-900 border border-slate-100">
                 <img
                   src={activeService.previewImage}
                   alt={activeService.title}
                   className="w-full h-full object-cover transition-opacity duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101A35]/80 via-transparent to-transparent flex items-end p-5">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-transparent flex items-end p-5">
                   <p className="text-white text-xs font-medium">
                     {activeService.summary}
                   </p>
@@ -213,14 +215,14 @@ export const ServiceDiscovery: React.FC = () => {
               </div>
 
               {/* DESCRIPTION & HIGHLIGHTS */}
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+              <p className="text-sm text-slate-600 mb-5 leading-relaxed">
                 {activeService.previewDescription}
               </p>
 
               <div className="space-y-2.5 mb-6">
                 {activeService.highlights.map((highlight, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-200">
-                    <CheckCircle2 className="h-4 w-4 text-[#23469F] dark:text-[#B9DFF2] shrink-0" />
+                  <div key={i} className="flex items-center gap-2.5 text-xs text-slate-700">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
                     <span>{highlight}</span>
                   </div>
                 ))}
@@ -229,7 +231,7 @@ export const ServiceDiscovery: React.FC = () => {
               {/* ACTION LINK */}
               <Link
                 to={activeService.link}
-                className="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#101A35] dark:bg-[#23469F] text-white hover:bg-[#23469F] dark:hover:bg-[#1b367c] flex items-center justify-center gap-2 transition-colors shadow-sm"
+                className="w-full py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#0F172A] hover:bg-slate-800 text-white flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
                 <span>View Full {activeService.title} Specifications</span>
                 <ArrowRight className="h-4 w-4" />
@@ -246,7 +248,7 @@ export const ServiceDiscovery: React.FC = () => {
             return (
               <div
                 key={item.id}
-                className="bg-white dark:bg-[#111C33] rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden shadow-sm"
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs"
               >
                 <button
                   type="button"
@@ -254,38 +256,38 @@ export const ServiceDiscovery: React.FC = () => {
                   className="w-full p-4 flex items-center justify-between text-left"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-[#23469F] dark:text-[#B9DFF2]">
+                    <span className="text-xs font-mono font-bold text-amber-700">
                       {item.number}
                     </span>
-                    <Icon className="h-4 w-4 text-[#23469F] dark:text-[#B9DFF2]" />
+                    <Icon className="h-4 w-4 text-amber-600" />
                     <div>
-                      <h3 className="text-sm font-bold text-[#101A35] dark:text-white">
+                      <h3 className="text-sm font-bold text-[#0F172A]">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{item.summary}</p>
+                      <p className="text-xs text-slate-500">{item.summary}</p>
                     </div>
                   </div>
                   <ChevronRight
-                    className={`h-4 w-4 text-gray-400 dark:text-gray-500 transition-transform ${isExpanded ? 'rotate-90 text-[#23469F] dark:text-[#B9DFF2]' : ''}`}
+                    className={`h-4 w-4 text-slate-400 transition-transform ${isExpanded ? 'rotate-90 text-amber-700' : ''}`}
                   />
                 </button>
 
                 {isExpanded && (
-                  <div className="px-4 pb-5 pt-1 border-t border-gray-100 dark:border-white/10 bg-slate-50/50 dark:bg-[#0B1120]/50">
-                    <p className="text-xs text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                  <div className="px-4 pb-5 pt-1 border-t border-slate-100 bg-[#FEFCE8]/30">
+                    <p className="text-xs text-slate-600 mb-3 leading-relaxed">
                       {item.previewDescription}
                     </p>
                     <div className="space-y-2 mb-4">
                       {item.highlights.map((h, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-200">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-[#23469F] dark:text-[#B9DFF2] shrink-0" />
+                        <div key={i} className="flex items-center gap-2 text-xs text-slate-700">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
                           <span>{h}</span>
                         </div>
                       ))}
                     </div>
                     <Link
                       to={item.link}
-                      className="inline-flex items-center gap-2 text-xs font-bold text-[#23469F] dark:text-[#B9DFF2] hover:underline"
+                      className="inline-flex items-center gap-2 text-xs font-bold text-amber-800 hover:underline"
                     >
                       <span>Explore {item.title} Page</span>
                       <ArrowRight className="h-3.5 w-3.5" />
